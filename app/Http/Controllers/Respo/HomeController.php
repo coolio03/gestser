@@ -37,7 +37,7 @@ class HomeController extends Controller
         ->responsive(true);
 
         $saisie = Charts::create('pie', 'highcharts')
-        ->title('Traitement des demandes')
+        ->title('Saisie des demandes dans Hr')
         ->labels(['Non Saisie', 'Saisie'])
         ->values([Demande::where('responsable_id',Auth::user()->id)->whereNull('date_saisir_hr')->count(),Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_saisir_hr')->count() ])
         ->responsive(true);
