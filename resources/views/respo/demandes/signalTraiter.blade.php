@@ -1,4 +1,4 @@
-<form action=" #" method="post">
+<form action=" " method="post">
     @method('put')
     {{csrf_field()}}
     <div class="modal-header">
