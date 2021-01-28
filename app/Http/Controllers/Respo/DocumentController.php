@@ -22,7 +22,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $arr['demandes'] = Demande::where('responsable_id','like',Auth::user()->id)->get();
+        $arr['demandes'] = Demande::where('responsable_id',Auth::user()->id)->get();
         return view('respo.documents.index')->with($arr);
     }
 
