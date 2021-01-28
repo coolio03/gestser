@@ -14,9 +14,9 @@ class CollaborateursTableSeeder extends Seeder
         DB::table('collaborateurs')->insert([
             [
                 'cadre_id' => 1,
+                'civilite'=>'Monsieur',
                 'matricule' => '061771D',
                 'nom' => 'COULIBALY',
-                'civilite'=>'Monsieur',
                 'prenoms' => 'ADAMA',
                 'date_de_naissance' => '1900-05-01',
                 'lieu_de_naissance' => 'ABOBO / ABIDJAN',
@@ -27,9 +27,9 @@ class CollaborateursTableSeeder extends Seeder
             ],
             [
                 'cadre_id' => 1,
+                'civilite'=>'Monsieur',
                 'matricule' => '071871D',
                 'nom' => 'BAN',
-                'civilite'=>'Monsieur',
                 'prenoms' => 'KOUATO CYRILLE',
                 'date_de_naissance' => '1996-05-03',
                 'lieu_de_naissance' => 'ABOBO / ABIDJAN',
@@ -40,9 +40,9 @@ class CollaborateursTableSeeder extends Seeder
             ],
             [
                 'cadre_id' => 1,
+                'civilite' => 'Madame',
                 'matricule' => '082771D',
                 'nom' => 'MARIAM',
-                'civilite'=>'Madame',
                 'prenoms' => 'BAMBA EPSE COULIBALY',
                 'date_de_naissance' => '1900-05-01',
                 'lieu_de_naissance' => 'DALOA',
@@ -53,9 +53,9 @@ class CollaborateursTableSeeder extends Seeder
             ],
             [
                 'cadre_id' => 1,
+                'civilite'=>'Monsieur',
                 'matricule' => '059571D',
                 'nom' => 'BILE',
-                'civilite'=>'Monsieur',
                 'prenoms' => 'PACOME',
                 'date_de_naissance' => '1900-05-01',
                 'lieu_de_naissance' => 'GUGLO',
@@ -66,9 +66,9 @@ class CollaborateursTableSeeder extends Seeder
             ],
             [
                 'cadre_id' => 1,
+                'civilite'=>'Mademoiselle',
                 'matricule' => '043571D',
                 'nom' => 'DIANE',
-                'civilite'=>'Mademoiselle',
                 'prenoms' => 'DOBE',
                 'date_de_naissance' => '1900-05-01',
                 'lieu_de_naissance' => 'DIVO',
