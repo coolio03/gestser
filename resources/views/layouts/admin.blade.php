@@ -48,7 +48,6 @@
     </li>
   </ul>
 
-
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown user-menu">
