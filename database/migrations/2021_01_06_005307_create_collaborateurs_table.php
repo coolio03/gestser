@@ -16,7 +16,7 @@ class CreateCollaborateursTable extends Migration
         Schema::create('collaborateurs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('cadre_id')->unsigned();
-            $table->string('civilite');
+            $table->string('civilite')->nullable();
             $table->string('matricule');
             $table->string('nom');
             $table->string('prenoms');
