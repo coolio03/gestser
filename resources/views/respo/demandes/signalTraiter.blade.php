@@ -17,7 +17,7 @@
                     'type'=>'date',
                     'name'=>'date_reception',
                     'value' =>,
-                    'required'=>false
+                    'required'=>false  
                 ])                                          
                 @include('partials.form-group-d',[
                     'title'=>__('Date de remise RA'),
