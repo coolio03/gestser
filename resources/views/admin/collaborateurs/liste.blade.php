@@ -112,7 +112,7 @@
             </div>
         <!-- /.row (main row) -->
             </div><!-- /.container-fluid -->
-       
+       {{$collaborateurs->render()}}
         
     </section>
     
