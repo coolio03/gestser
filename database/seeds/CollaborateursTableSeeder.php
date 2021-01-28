@@ -13,7 +13,7 @@ class CollaborateursTableSeeder extends Seeder
     {
         DB::table('collaborateurs')->insert([
             [
-                'cadre_id' => 1,
+                'cadre_id' =>  '1',
                 'civilite'=>'Monsieur',
                 'matricule' => '061771D',
                 'nom' => 'COULIBALY',
@@ -26,7 +26,7 @@ class CollaborateursTableSeeder extends Seeder
                 'contact' => '78845245',
             ],
             [
-                'cadre_id' => 1,
+                'cadre_id' => '1',
                 'civilite'=>'Monsieur',
                 'matricule' => '071871D',
                 'nom' => 'BAN',
@@ -39,7 +39,7 @@ class CollaborateursTableSeeder extends Seeder
                 'contact' => '78845245',
             ],
             [
-                'cadre_id' => 1,
+                'cadre_id' =>  '1',
                 'civilite' => 'Madame',
                 'matricule' => '082771D',
                 'nom' => 'MARIAM',
@@ -52,7 +52,7 @@ class CollaborateursTableSeeder extends Seeder
                 'contact' => '78845245',
             ],
             [
-                'cadre_id' => 1,
+                'cadre_id' =>  '1',
                 'civilite'=>'Monsieur',
                 'matricule' => '059571D',
                 'nom' => 'BILE',
@@ -65,7 +65,7 @@ class CollaborateursTableSeeder extends Seeder
                 'contact' => '78845245',
             ],
             [
-                'cadre_id' => 1,
+                'cadre_id' =>  '1',
                 'civilite'=>'Mademoiselle',
                 'matricule' => '043571D',
                 'nom' => 'DIANE',
