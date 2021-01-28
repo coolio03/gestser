@@ -1,4 +1,4 @@
-<form action=" {{route('suivieSaisie', $demande->id)}}" method="post">
+<form action=" #" method="post">
     @method('put')
     {{csrf_field()}}
     <div class="modal-header">
@@ -31,15 +31,12 @@
                     'name'=>'date_traitement',
                     'required'=>false
                 ])  
-                @if ($demande->date_cloture != null)
-                    @include('partials.form-group',[
-                        'title'=>__('Date de traitement'),
-                        'type'=>'date',
-                        'name'=>'date_traitement',
-                        'required'=>false
-                    ]) 
-                @endif
-                            
+                @include('partials.form-group',[
+                    'title'=>__('Date de Saisie Hr'),
+                    'type'=>'date',
+                    'name'=>'date_saisir_hr',
+                    'required'=>false
+                ])                      
             </div>
                 
         </div>
