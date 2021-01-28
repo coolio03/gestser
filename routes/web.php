@@ -79,13 +79,13 @@ Route::namespace('Respo')->prefix('home')->middleware('auth')->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/demandes/traites', 'DemandeController@traite',['as'=>'home'])->name('traite');
     Route::get('/demandes/non_traites', 'DemandeController@nonTraite',['as'=>'home'])->name('non_traite');
-    Route::patch('/demandes/{demande}/traiter', 'DemandeController@traiter',['as'=>'home'])->name('traiter');
+    Route::put('/demandes/{demande}/traiter', 'DemandeController@traiter',['as'=>'home'])->name('traiter');
     Route::put('/demandes/{demande}/suivieSaisie', 'DemandeController@suivieSaisie',['as'=>'home'])->name('suivieSaisie');
     Route::put('/document/{demande}/redige', 'DocumentController@redige',['as'=>'home'])->name('redige');
     Route::put('/document/{demande}/redigeNote', 'DocumentController@redigeNote',['as'=>'home'])->name('redigeNote');
     Route::get('/documents/rediger/{demande}/attestationStage','DocumentController@attestationStage',['as'=>'home'])->name('attestationStage');
     Route::get('/documents/rediger/{demande}/noteStage','DocumentController@noteStage',['as'=>'home'])->name('noteStage');
-    Route::get('/demandes/saisie/{demande}/suivie','DemandeController@signalTraiter',['as'=>'home'])->name('signalTraiter');
+    Route::get('/demandes/saisie/{id}/suivie','DemandeController@signalTraiter',['as'=>'home'])->name('signalTraiter');
     Route::get('/demandes/documents', 'DemandeController@document',['as'=>'home'])->name('redaction');
     Route::resource('/documents', 'DocumentController',['as'=>'home']);
     Route::resource('/demandes', 'DemandeController',['as'=>'home']);

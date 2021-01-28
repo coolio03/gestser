@@ -76,9 +76,9 @@
                                     <i title="Voir Detail de la demande de {{$dde->collaborateur->nom.' '. $dde->collaborateur->prenoms}}" class="nav-icon fas fa-eye"></i>
                                 </button>
                                 &nbsp;
-                                <a class="btn btn-warning" data-toggle="modal" id="traiteButton"  class="btn btn-success" data-target="#traiteModal" data-attr=" {{route('signalTraiter', $dde->id)}} " title="signaler Saisie HR">
-                                    <i class="nav-icon fas fa-chart-pie"></i>
-                                </a>
+                                <a class="btn btn-success" data-toggle="modal" id="signeButton"  class="btn btn-success" data-target="#signeModal" data-attr="{{ route('signalTraiter', $dde->id) }}" title="Continuer le suivie ">
+                                    <i class="nav-icon fas fa-chart-pie"></i> 
+                                </a> 
 
                                 
                             </td>
@@ -92,8 +92,6 @@
                                 </div>
                         
                                 <form action=" {{route('traiter', $dde->id)}}" method="post">
-                                        @method('patch')
-                                        {{csrf_field()}}
                                     <div class="modal-body">
                                             <input type="hidden" name="id" id="dde_id" value="">
                                             <div class="row">                                               
@@ -120,8 +118,7 @@
                                                     'type'=>'date',
                                                     'name'=>'date_saisir_hr',
                                                     'required'=>false
-                                                ])
-                                                
+                                                ]) 
                                             </div>
                                           
                                     </div>
@@ -141,10 +138,9 @@
         <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
     </section>
-    <!-- Modal -->
-    <div class="modal fade" id="traiteModal" tabindex="-1" role="dialog" aria-labelledby="traiteModalLabel" aria-hidden="true">
+    <div class="modal fade" id="signeModal" tabindex="-1" role="dialog" aria-labelledby="signeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content" id="traiteContent" >
+            <div class="modal-content" id="signeContent" >
             
                 
             </div>
@@ -153,10 +149,10 @@
 @endsection
 @push('scripts')
 <!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="{{asset('js/app.js')}}"></script>
-
 <script>
-  $(document).on('click', '#traiteButton', function(event) {
+     $(document).on('click', '#signeButton', function(event) {
             event.preventDefault();
             let href = $(this).attr('data-attr');
             $.ajax({
@@ -166,8 +162,8 @@
                 },
                 // return the result
                 success: function(result) {
-                    $('#traiteModal').modal("show");
-                    $('#traiteContent').html(result).show();
+                    $('#signeModal').modal("show");
+                    $('#signeContent').html(result).show();
                     
                 },
                 complete: function() {
@@ -181,7 +177,32 @@
                 timeout: 8000
             })
         });
-  $('#traite').on('show.bs.modal', function (event) {
+        $(document).on('click', '#consulterButton', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#consulterModal').modal("show");
+                    $('#consulterContent').html(result).show();
+                    
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+        $('#traite').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) 
         var date_reception = button.data('mydatereception') 
         var date_remise = button.data('mydateremise') 

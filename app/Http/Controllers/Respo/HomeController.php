@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Respo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Demande;
+use App\Models\Collaborateur;
+
+use Charts;
+use DB;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -25,6 +30,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('respo.index');
+        $traitement = Charts::create('pie', 'highcharts')
+        ->title('Traitement des demandes')
+        ->labels(['Non Traitées', 'Traitées'])
+        ->values([Demande::where('responsable_id',Auth::user()->id)->whereNull('date_traitement')->count(),Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_traitement')->count() ])
+        ->responsive(true);
+
+        $saisie = Charts::create('pie', 'highcharts')
+        ->title('Traitement des demandes')
+        ->labels(['Non Saisie', 'Saisie'])
+        ->values([Demande::where('responsable_id',Auth::user()->id)->whereNull('date_saisir_hr')->count(),Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_saisir_hr')->count() ])
+        ->responsive(true);
+
+        return view('respo.index',['traitement'=>$traitement, 'saisie'=>$saisie]);
     }
 }
