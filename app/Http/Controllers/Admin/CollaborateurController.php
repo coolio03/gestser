@@ -21,7 +21,7 @@ class CollaborateurController extends Controller
      */
     public function index()
     {
-        $arr['collaborateurs'] = Collaborateur::paginate(5);
+        $arr['collaborateurs'] = Collaborateur::paginate(4);
         return view('admin.collaborateurs.liste')->with($arr);
     }
 
