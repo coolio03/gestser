@@ -11,7 +11,7 @@
         <input type="hidden" name="id" value=" {{$demande->id}} ">
         <div class="row">
            
-                @if(!isset($demande->date_remise_ra))
+                @if($demande->date_remise_ra==null)
                     @include('partials.form-group',[
                         'title'=>__('Date de Remise RA'),
                         'type'=>'date',
@@ -27,7 +27,7 @@
                         'required'=>true
                     ])
                 @endif
-                @if (!isset($demande->date_traitement))
+                @if ($demande->date_traitement==null)
                     @include('partials.form-group',[
                         'title'=>__('Date de Traitement'),
                         'type'=>'date',
@@ -43,7 +43,7 @@
                         'required'=>true
                     ])
                 @endif
-                @if (!isset($demande->date_visa_ce))
+                @if ($demande->date_visa_ce==null)
                     @include('partials.form-group',[
                     'title'=>__('Date de Visa CE'),
                     'type'=>'date',
@@ -59,7 +59,7 @@
                         'required'=>true
                     ])
                 @endif
-                @if (!isset($demande->date_visa_cser))
+                @if ($demande->date_visa_cser==null)
                     @include('partials.form-group',[
                         'title'=>__('Date de Visa CSER'),
                         'type'=>'date',
@@ -75,7 +75,7 @@
                         'required'=>true
                     ])  
                 @endif
-                @if (!isset($demande->date_visa_sdap))
+                @if ($demande->date_visa_sdap==null)
                     @include('partials.form-group',[
                         'title'=>__('Date de Visa SDAP'),
                         'type'=>'date',
