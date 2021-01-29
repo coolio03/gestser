@@ -153,7 +153,7 @@
                                                 @endif
                                                     
                                                 
-                                                @if (!empty($dde->date_remise_ra))
+                                                @if ( $dde->date_remise_ra == null)
                                                     @include('partials.form-group',[
                                                         'title'=>__('Date de remise RA'),
                                                         'type'=>'date',
@@ -169,7 +169,7 @@
                                                     ])
                                                 @endif     
                                             
-                                                @if (empty($dde->date_traitement))
+                                                @if ($dde->date_traitement==null)
                                                     @include('partials.form-group',[
                                                         'title'=>__('Date de traitement'),
                                                         'type'=>'date',
