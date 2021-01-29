@@ -165,6 +165,7 @@
                                                         'title'=>__('Date de remise RA'),
                                                         'type'=>'date',
                                                         'name'=>'date_remise_ra',
+                                                        'value' => $demande->date_remise_ra,
                                                         'required'=>false,
                                                     ])
                                                 @endif     
@@ -181,6 +182,7 @@
                                                         'title'=>__('Date de traitement'),
                                                         'type'=>'date',
                                                         'name'=>'date_traitement',
+                                                        'value' => $demande->date_remise_ra,
                                                         'required'=>false
                                                     ])
                                                 @endif
