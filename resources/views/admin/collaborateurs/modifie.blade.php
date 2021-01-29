@@ -48,7 +48,7 @@
                       <div class="form-group">
                           <label for="" class="col-md-6">Civilité</label>
                           <div class="col-md-14">
-                              <select name="responsable_id" id="" class="form-control">
+                              <select name="civilite" id="" class="form-control">
                                       <option value="">Choisir civilité</option>
                                       <option value="Monsieur">Monsieur</option>
                                       <option value="Madame">Madame</option>

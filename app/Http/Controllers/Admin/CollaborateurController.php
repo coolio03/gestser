@@ -21,7 +21,7 @@ class CollaborateurController extends Controller
      */
     public function index()
     {
-        $arr['collaborateurs'] = Collaborateur::paginate(4);
+        $arr['collaborateurs'] = Collaborateur::paginate(5);
         return view('admin.collaborateurs.liste')->with($arr);
     }
 
@@ -83,6 +83,7 @@ class CollaborateurController extends Controller
         ]);*/
         $collaborateur->cadre_id= $request->cadre_id;
         $collaborateur->matricule = $request->matricule;
+        $collaborateur->civilite = $request->civilite;
         $collaborateur->nom = $request->nom;
         $collaborateur->prenoms = $request->prenoms;
         $collaborateur->date_de_naissance = $request->date_de_naissance;
@@ -130,7 +131,7 @@ class CollaborateurController extends Controller
      */
     public function update(Request $request, Collaborateur $collaborateur)
     {
-        $collaborateur->cadre_id= $request->cadre_id;
+       /* $collaborateur->cadre_id= $request->cadre_id;
         $collaborateur->matricule = $request->matricule;
         $collaborateur->nom = $request->nom;
         $collaborateur->prenoms = $request->prenoms;
@@ -139,8 +140,8 @@ class CollaborateurController extends Controller
         $collaborateur->ancienne_fonction = $request->ancienne_fonction;
         $collaborateur->nouvelle_fonction = $request->nouvelle_fonction;
         $collaborateur->categorie = $request->categorie;
-        $collaborateur->contact = $request->contact;
-        $collaborateur->update();
+        $collaborateur->contact = $request->contact;*/
+        $collaborateur->update($request->all());
         return redirect()->route('admin.collaborateurs.index');
     }
 
