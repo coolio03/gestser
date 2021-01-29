@@ -120,8 +120,10 @@ class DocumentController extends Controller
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('destinataire',$request->destinataire);
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
+        $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
         $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
+        $my_template->setValue('matricule', $desc->collaborateur->matricule);
         $my_template->setValue('copie', $request->copie);
         $my_template->setValue('poste', $request->poste);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
