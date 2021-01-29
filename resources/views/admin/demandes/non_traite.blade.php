@@ -153,7 +153,7 @@
                                                 @endif
                                                     
                                                 
-                                                @if ( !isset($dde->date_remise_ra))
+                                                @if ($dde->date_remise_ra==null)
                                                     @include('partials.form-group',[
                                                         'title'=>__('Date de remise RA'),
                                                         'type'=>'date',
@@ -165,7 +165,6 @@
                                                         'title'=>__('Date de remise RA'),
                                                         'type'=>'date',
                                                         'name'=>'date_remise_ra',
-                                                        'value' => $demande->date_remise_ra,
                                                         'required'=>false,
                                                     ])
                                                 @endif     
@@ -182,7 +181,6 @@
                                                         'title'=>__('Date de traitement'),
                                                         'type'=>'date',
                                                         'name'=>'date_traitement',
-                                                        'value' => $demande->date_remise_ra,
                                                         'required'=>false
                                                     ])
                                                 @endif
