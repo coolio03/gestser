@@ -62,7 +62,7 @@ class DocumentController extends Controller
         $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_fin)));
         $filename = "Attestation Stage".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
-            $my_template->saveAs(public_path("$filename.docx"));
+            $my_template->saveAs(storage_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
         }
@@ -94,7 +94,35 @@ class DocumentController extends Controller
         $my_template->setValue('objet',$request->objet);
         $filename = "Note de Stage".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
-            $my_template->saveAs(public_path("$filename.docx"));
+            $my_template->saveAs(storage_path("$filename.docx"));
+        }catch (Exception $e){
+           dd($e);
+        }
+        $downloadName = $downloadName??$filename;
+       
+       
+        return response()->download(public_path("$filename.docx"));
+        
+    }
+
+    public function redigeNoteEmbauche(Request $request,Demande $demande,$downloadName = null)
+    {
+        setlocale(LC_TIME, 'fra_fra');
+        $desc = Demande::find($demande->id);
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE A L ESSAI/DCRH IS 71 25 01 NOTE D'NFO EMBAUCHE EO M.doc"));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('emetteur',strtoupper($desc->user->name) );
+        $my_template->setValue('destinataire',$request->destinataire);
+        $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
+        $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
+        $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
+        $my_template->setValue('copie', $request->copie);
+        $my_template->setValue('poste', $request->poste);
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
+        $my_template->setValue('objet',$request->objet);
+        $filename = "Note d'embauche".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        try{
+            $my_template->saveAs(storage_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
         }

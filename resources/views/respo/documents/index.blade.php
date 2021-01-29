@@ -49,7 +49,7 @@
                                 </a>
                                @endif
                                @if ($dde->type == "EMBAUCHE A L ESSAI")
-                               <a class="btn btn-warning" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr="" title="Note d'information embauche">
+                               <a class="btn btn-warning" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr="{{route('noteEmbauche', $dde->id)}} " title="Note d'information embauche">
                                     <i class="nav-icon fas fa-file"></i>
                                 </a>&nbsp;
                                 <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr="  " title="Fiche d'attribution de Reglement Interieur">

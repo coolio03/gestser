@@ -83,8 +83,10 @@ Route::namespace('Respo')->prefix('home')->middleware('auth')->group(function(){
     Route::put('/demandes/{demande}/suivieSaisie', 'DemandeController@suivieSaisie',['as'=>'home'])->name('suivieSaisie');
     Route::put('/document/{demande}/redige', 'DocumentController@redige',['as'=>'home'])->name('redige');
     Route::put('/document/{demande}/redigeNote', 'DocumentController@redigeNote',['as'=>'home'])->name('redigeNote');
+    Route::put('/document/{demande}/redigeNoteEmbauche', 'DocumentController@redigeNoteEmbauche',['as'=>'home'])->name('redigeNoteEmbauche');
     Route::get('/documents/rediger/{demande}/attestationStage','DocumentController@attestationStage',['as'=>'home'])->name('attestationStage');
     Route::get('/documents/rediger/{demande}/noteStage','DocumentController@noteStage',['as'=>'home'])->name('noteStage');
+    Route::get('/documents/rediger/{demande}/noteEmbauche','DocumentController@noteEmbauche',['as'=>'home'])->name('noteEmbauche');
     Route::get('/demandes/saisie/{id}/suivie','DemandeController@signalTraiter',['as'=>'home'])->name('signalTraiter');
     Route::get('/demandes/documents', 'DemandeController@document',['as'=>'home'])->name('redaction');
     Route::resource('/documents', 'DocumentController',['as'=>'home']);
