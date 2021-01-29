@@ -40,7 +40,7 @@
                             <td>{{$dde->collaborateur->prenoms}} </td>
                             <td> {{$dde->type}} </td>
                             <td>
-                               @if ($dde->type == "STAGE ECOLE")
+                               @if ($dde->type == "STAGE ECOLE" && $dde->type == "STAGE QUALIFICATION" && $dde->type == "STAGE IMMERSION")
                                <a class="btn btn-warning" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr="{{ route('attestationStage', $dde->id) }}" title="Attestation de stage ">
                                     <i class="nav-icon fas fa-file"></i>
                                 </a>&nbsp;
