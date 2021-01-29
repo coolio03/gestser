@@ -28,7 +28,7 @@
                     <th>Nom</th>
                     <th>Prénoms</th>
                     <th>Type de demande</th>
-                    <th>Documents a rediger</th>
+                    <th>Documents à rediger</th>
                 </tr {{$i=1}}>
                 @if (count($demandes))
                     @foreach ($demandes as $dde)

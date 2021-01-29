@@ -49,7 +49,7 @@ class DocumentController extends Controller
     {
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);   
-        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("ATTESTATION_STAGE.docx"));
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
@@ -76,7 +76,7 @@ class DocumentController extends Controller
     {
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
-        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("STAGE/Note_de_STAGE.docx"));
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('destinataire',$request->destinataire);
@@ -94,14 +94,14 @@ class DocumentController extends Controller
         $my_template->setValue('objet',$request->objet);
         $filename = "Note de Stage".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
-            $my_template->saveAs(storage_path("$filename.docx"));
+            $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
         }
         $downloadName = $downloadName??$filename;
        
        
-        return response()->download(storage_path("$filename.docx"));
+        return response()->download(public_path("$filename.docx"));
         
     }
 
