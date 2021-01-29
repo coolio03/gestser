@@ -1,4 +1,4 @@
-<form method="post" action=" {{route('redige', $demande->id)}}  ">
+<form method="post" action=" {{route('redigeReglementInterieur', $demande->id)}}  ">
     @method('PUT')
     <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
     <input type="hidden" name="id" value=" {{$demande->id}} ">
@@ -20,24 +20,14 @@
                 'required'=>true
             ]) 
             @include('partials.form-group',[
-                'title'=>__("Niveau d'etude "),
+                'title'=>__('Direction S/C'),
                 'type'=>'text',
-                'name'=>'niveau',
+                'name'=>'direction_sc',
                 'required'=>true
             ]) 
-            @include('partials.form-group',[
-            'title'=>__('Option'),
-            'type'=>'text',
-            'name'=>'option',
-            'required'=>true
-            ]) 
-            @include('partials.form-group',[
-            'title'=>__('Ecole'),
-            'type'=>'text',
-            'name'=>'ecole',
-            'required'=>true
-            ]) 
             
+            
+
         </div> 
     </div>            
       

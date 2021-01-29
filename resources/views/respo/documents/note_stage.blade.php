@@ -72,18 +72,7 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
-            @include('partials.form-group',[
-            'title'=>__('Date de debut'),
-            'type'=>'date',
-            'name'=>'date_debut',
-            'required'=>true
-            ])
-            @include('partials.form-group',[
-            'title'=>__('Date de fin'),
-            'type'=>'date',
-            'name'=>'date_fin',
-            'required'=>true
-            ]) 
+            
             @include('partials.form-group',[
                 'title'=>__('Objet'),
                 'type'=>'text',

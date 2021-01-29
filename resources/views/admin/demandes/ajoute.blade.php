@@ -74,6 +74,18 @@
                         'name'=>'motif_demande',
                         'required'=>true
                     ]) 
+                    @include('partials.form-group',[
+                      'title'=>__('Date de debut'),
+                      'type'=>'date',
+                      'name'=>'date_debut',
+                      'required'=>false
+                    ]) 
+                    @include('partials.form-group',[
+                      'title'=>__('Date de Fin'),
+                      'type'=>'text',
+                      'name'=>'date_fin',
+                      'required'=>true
+                  ]) 
                     
                     @include('partials.form-group',[
                         'title'=>__('Date Reception'),

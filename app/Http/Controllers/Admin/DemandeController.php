@@ -243,6 +243,8 @@ class DemandeController extends Controller
         $demande->type = $request->type;
         $demande->motif_demande = $request->motif_demande;
         $demande->direction = $request->direction;
+        $demande->date_debut = $request->date_debut;
+        $demande->date_fin = $request->date_fin;
         $demande->date_reception = $request->date_reception;
         $demande->save();
         return redirect()->route('admin.demandes.index')->with('success','Demande creer avec succes!!!!');
@@ -320,6 +322,8 @@ class DemandeController extends Controller
             $demande->responsable_id = $request->responsable_id;
             $demande->type = $request->type;
             $demande->motif_demande = $request->motif_demande;
+            $demande->date_debut = $request->date_debut;
+            $demande->date_fin = $request->date_fin;
             $demande->direction = $request->direction;
             $demande->date_reception = $request->date_reception;
         
