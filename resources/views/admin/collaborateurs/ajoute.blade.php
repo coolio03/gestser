@@ -43,6 +43,20 @@
                       'name'=>'matricule',
                       'required'=>true
                     ])
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                          <label for="" class="col-md-6">Civilité</label>
+                          <div class="col-md-14">
+                              <select name="responsable_id" id="" class="form-control">
+                                      <option value="">Choisir civilité</option>
+                                      <option value="Monsieur">Monsieur</option>
+                                      <option value="Madame">Madame</option>
+                                      <option value="Mademoiselle">Mademoiselle</option>                                                                       
+                              </select>
+                          </div>
+                          <div class="clearfix"></div>
+                      </div>
+                  </div>
                     @include('partials.form-group',[
                         'title'=>__('Nom'),
                         'type'=>'text',
