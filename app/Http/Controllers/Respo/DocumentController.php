@@ -113,7 +113,7 @@ class DocumentController extends Controller
 
     public function redigeNoteEmbauche(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale('LC_TIME', 'fra_fra');
+        setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/NOTE_EMBAUCHE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
