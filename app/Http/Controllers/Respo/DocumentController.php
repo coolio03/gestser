@@ -36,6 +36,11 @@ class DocumentController extends Controller
         $arr['demande'] = Demande::findOrFail($demande->id);
         return view('respo.documents.note_stage')->with($arr);
     }
+    public function noteEmbauche(Demande $demande)
+    {   
+        $arr['demande'] = Demande::findOrFail($demande->id);
+        return view('respo.documents.note_embauche')->with($arr);
+    }
     /**
      * Show the form for creating a new resource.
      *
