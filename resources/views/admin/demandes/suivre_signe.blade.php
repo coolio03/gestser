@@ -16,17 +16,31 @@
                         'title'=>__('Date de Remise RA'),
                         'type'=>'date',
                         'name'=>'date_remise_ra',
+                        'required'=>true
+                    ])
+                @else
+                    @include('partials.form-group-d',[
+                        'title'=>__('Date de Remise RA'),
+                        'type'=>'date',
+                        'name'=>'date_remise_ra',
                         'value' => $demande->date_remise_ra,
                         'required'=>true
                     ])
                 @endif
                 @if (!isset($demande->date_traitement))
                     @include('partials.form-group',[
-                    'title'=>__('Date de Traitement'),
-                    'type'=>'date',
-                    'name'=>'date_traitement',
-                    'value' => $demande->date_traitement,
-                    'required'=>true
+                        'title'=>__('Date de Traitement'),
+                        'type'=>'date',
+                        'name'=>'date_traitement',
+                        'required'=>true
+                    ])
+                @else 
+                    @include('partials.form-group-d',[
+                        'title'=>__('Date de Traitement'),
+                        'type'=>'date',
+                        'name'=>'date_traitement',
+                        'value' => $demande->date_traitement,
+                        'required'=>true
                     ])
                 @endif
                 @if (!isset($demande->date_visa_ce))
@@ -34,12 +48,26 @@
                     'title'=>__('Date de Visa CE'),
                     'type'=>'date',
                     'name'=>'date_visa_ce',
-                    'value' => $demande->date_visa_ce,
                     'required'=>true
+                    ])
+                @else 
+                    @include('partials.form-group-d',[
+                        'title'=>__('Date de Visa CE'),
+                        'type'=>'date',
+                        'name'=>'date_visa_ce',
+                        'value' => $demande->date_visa_ce,
+                        'required'=>true
                     ])
                 @endif
                 @if (!isset($demande->date_visa_cser))
                     @include('partials.form-group',[
+                        'title'=>__('Date de Visa CSER'),
+                        'type'=>'date',
+                        'name'=>'date_visa_cser',
+                        'required'=>true
+                    ]) 
+                @else 
+                    @include('partials.form-group-d',[
                         'title'=>__('Date de Visa CSER'),
                         'type'=>'date',
                         'name'=>'date_visa_cser',
