@@ -53,9 +53,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>Matricule</th>
+                                <th>Civilité</th>
                                 <th>Nom</th>
                                 <th>Prénoms</th>
-                                <th>Date de naissance</th>
                                 <th>Lieu de naissance</th>
                                 <th>Ancienne Fonction</th>
                                 <th>Nouvelle Fonction</th>
@@ -70,9 +70,9 @@
                                 <tr>              
                                     <td> {{$loop->index+1}} </td>
                                     <td> {{$collabo->matricule}} </td>
+                                    <td> {{$collabo->civilite}} </td>
                                     <td> {{$collabo->nom}} </td>
                                     <td> {{$collabo->prenoms}} </td>
-                                    <td> {{date('d/m/Y',strtotime($collabo->date_de_naissance))}} </td>
                                     <td> {{$collabo->lieu_de_naissance}} </td>
                                     <td> {{$collabo->ancienne_fonction}} </td>
                                     <td> {{$collabo->nouvelle_fonction}} </td>
