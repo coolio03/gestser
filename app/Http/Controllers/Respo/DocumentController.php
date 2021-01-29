@@ -49,7 +49,7 @@ class DocumentController extends Controller
     {
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);   
-        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(storage_path("app/public/STAGE/ATTESTATION STAGE.docx"));
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(storage_path("app/public/STAGE/ATTESTATION_STAGE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
@@ -76,7 +76,7 @@ class DocumentController extends Controller
     {
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
-        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(storage_path("app/public/STAGE/Note de STAGE.docx"));
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(storage_path("app/public/STAGE/Note_de_STAGE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('destinataire',$request->destinataire);
