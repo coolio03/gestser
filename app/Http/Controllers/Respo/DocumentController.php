@@ -41,6 +41,7 @@ class DocumentController extends Controller
         $arr['demande'] = Demande::findOrFail($demande->id);
         return view('respo.documents.note_embauche')->with($arr);
     }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -67,7 +68,7 @@ class DocumentController extends Controller
         $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_fin)));
         $filename = "Attestation Stage".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
-            $my_template->saveAs(storage_path("$filename.docx"));
+            $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
         }
@@ -99,7 +100,7 @@ class DocumentController extends Controller
         $my_template->setValue('objet',$request->objet);
         $filename = "Note de Stage".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
-            $my_template->saveAs(storage_path("$filename.docx"));
+            $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
         }
@@ -127,7 +128,7 @@ class DocumentController extends Controller
         $my_template->setValue('objet',$request->objet);
         $filename = "Note d'embauche".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
-            $my_template->saveAs(storage_path("$filename.docx"));
+            $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
         }
