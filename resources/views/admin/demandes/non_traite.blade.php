@@ -148,6 +148,7 @@
                                                         'title'=>__('Date reception'),
                                                         'type'=>'date',
                                                         'name'=>'date_reception',
+                                                        'value'=>$demande->date_reception,
                                                         'required'=>false
                                                     ])
                                                 @endif

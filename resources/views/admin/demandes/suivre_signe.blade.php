@@ -3,9 +3,7 @@
     {{csrf_field()}}
     <div class="modal-header">
         <h4 class="modal-title" >Mise a jour du suivie de la demande de <em  style="color: blue" >{{$demande->type}}  </em> de <em  style="color: blue">{{$demande->collaborateur->nom.' '.$demande->collaborateur->prenoms }}  </em> </h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidemanden="true">&times;</span>
-        </button>
+       
     </div>
     <div class="modal-body">
         <input type="hidden" name="id" value=" {{$demande->id}} ">
@@ -81,16 +79,18 @@
                             'value' => $demande->date_visa_sg,
                             'required'=>true
                         ])
-                        @include('partials.form-group',[
-                            'title'=>__('Date de Visa DG'),
-                            'type'=>'date',
-                            'name'=>'date_visa_dg',
-                            'value' => $demande->date_visa_dg,
-                            'required'=>true
-                        ])
+                        @if ($demande->type != "PROROGATION")
+                            @include('partials.form-group',[
+                                'title'=>__('Date de Visa DG'),
+                                'type'=>'date',
+                                'name'=>'date_visa_dg',
+                                'value' => $demande->date_visa_dg,
+                                'required'=>true
+                            ])
+                        @endif
+                       
                     @endif
                 @endif
-
                     @if (!isset($demande->date_cloture))
                         @include('partials.form-group',[
                         'title'=>__('Date de Cloture'),
@@ -131,7 +131,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
         <button type="submit" class="btn btn-primary">Enregistrer</button>
     </div>
 </form>
