@@ -69,7 +69,7 @@ class DocumentController extends Controller
         $downloadName = $downloadName??$filename;
        
        
-        return response()->download(storage_path("$filename.docx"));
+        return response()->download(public_path("$filename.docx"));
         
     }
     public function redigeNote(Request $request,Demande $demande,$downloadName = null)
