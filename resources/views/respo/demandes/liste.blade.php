@@ -28,8 +28,9 @@
                     <th>Nom</th>
                     <th>Prénoms</th>
                     <th>Type de demande</th>
-                    <th>Date de demande</th>
+                    <th>Date de remise RA</th>
                     <th>Date de traitement</th>
+                    <th>Delai traitement</th>
                     <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                     <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 
@@ -44,13 +45,16 @@
                             <td> {{$dde->collaborateur->nom}} </td>
                             <td>{{$dde->collaborateur->prenoms}} </td>
                             <td> {{$dde->type}} </td>
-                            <td> {{date('d/m/Y',strtotime($dde->date_reception))}} </td>
+                            <td> {{date('d/m/Y',strtotime($dde->date_remise°ra))}} </td>
                             <td>
                                 @if (!$dde->date_traitement == null)
                                     {{date('d/m/Y',strtotime($dde->date_traitement))}} 
                                 @else 
                                     
                                 @endif 
+                            </td>
+                            <td>
+                                {{((new DateTime($dde->date_remise_ra))->diff(new DateTime($date->date_traitement)))->days}}
                             </td>
                             <td  @if ($dde->date_traitement == null))
                                 style="background-color: silver"
