@@ -54,7 +54,7 @@
                                 @endif 
                             </td>
                             <td>
-                                {{((new DateTime($dde->date_remise_ra))->diff(new DateTime($date->date_traitement)))->days}}
+                            
                             </td>
                             <td  @if ($dde->date_traitement == null))
                                 style="background-color: silver"
