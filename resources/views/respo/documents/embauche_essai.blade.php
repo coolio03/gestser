@@ -1,4 +1,4 @@
-<form method="post" action=" {{route('redigeContratEmn=bauche', $demande->id)}}  ">
+<form method="post" action=" {{route('redigeContratEmbauche', $demande->id)}}  ">
     @method('PUT')
     <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
     <input type="hidden" name="id" value=" {{$demande->id}} ">
