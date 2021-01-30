@@ -46,6 +46,12 @@ class DocumentController extends Controller
         $arr['demande'] = Demande::findOrFail($demande->id);
         return view('respo.documents.attribution_ri')->with($arr);
     }
+
+    public function contratEmbauche(Demande $demande)
+    {
+        $arr['demande'] = Demande::findOrFail($demande->id);
+        return view('respo.documents.embauche_essai')->with($arr);
+    }
     
     /**
      * Show the form for creating a new resource.
@@ -160,8 +166,45 @@ class DocumentController extends Controller
         $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
         $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('direction_sc', $request->direction_sc);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $filename = "Lettre attribution RI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        try{
+            $my_template->saveAs(public_path("$filename.docx"));
+        }catch (Exception $e){
+           dd($e);
+        }
+        $downloadName = $downloadName??$filename;
+       
+       
+        return response()->download(public_path("$filename.docx"));
+        
+    }
+
+    public function redigeContratEmbauche(Request $request,Demande $demande,$downloadName = null)
+    {
+        setlocale(LC_TIME, 'fra_fra');
+        $desc = Demande::find($demande->id);
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/CONTRAT_EMBAUCHE_A_ESSAI.docx"));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('emetteur',strtoupper($desc->user->name) );
+        $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
+        $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
+        $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
+        $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
+        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('delai', $request->delai);
+        $my_template->setValue('unite', $request->unite);
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
+        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
+        $my_template->setValue('direction_acceuil',$request->direction_acceuil);
+        $my_template->setValue('service_acceuil',$request->service_acceuil);
+        $my_template->setValue('fonction',$request->fonction);
+        $my_template->setValue('classement',$request->classement);
+        $my_template->setValue('salaire_mensuelle',$request->salaire_mensuelle);
+        $my_template->setValue('prime_logement',$request->prime_logement);
+        $my_template->setValue('prime_entretien',$request->prime_entretien);
+        $filename = "Contrat d'embauche essai".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){

@@ -24,10 +24,7 @@
                 'type'=>'text',
                 'name'=>'direction_sc',
                 'required'=>true
-            ]) 
-            
-            
-
+            ])            
         </div> 
     </div>            
       
