@@ -80,7 +80,7 @@
                     ]) 
                     @include('partials.form-group',[
                       'title'=>__('Date de Fin'),
-                      'type'=>'text',
+                      'type'=>'date',
                       'name'=>'date_fin',
                       'value'=>$demande->date_fin,
                       'required'=>true
