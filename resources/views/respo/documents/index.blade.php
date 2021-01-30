@@ -58,7 +58,7 @@
                                 <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('contratEmbauche', $dde->id)}} " title="Contrat Embauche a l'essai ">
                                     <i class="nav-icon fas fa-file"></i>
                                 </a>&nbsp;
-                                <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('lettreRenouvel', $dde->id)}} " title="Lettre renouvellement periode essai ">
+                                <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" " title="Lettre renouvellement periode essai ">
                                     <i class="nav-icon fas fa-file"></i>
                                 </a>
                                @endif
