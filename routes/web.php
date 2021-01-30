@@ -88,7 +88,7 @@ Route::namespace('Respo')->prefix('home')->middleware('auth')->group(function(){
     Route::get('/documents/rediger/{demande}/attestationStage','DocumentController@attestationStage',['as'=>'home'])->name('attestationStage');
     Route::get('/documents/rediger/{demande}/noteStage','DocumentController@noteStage',['as'=>'home'])->name('noteStage');
     Route::get('/documents/rediger/{demande}/noteEmbauche','DocumentController@noteEmbauche',['as'=>'home'])->name('noteEmbauche');
-    Route::get('/documents/rediger/{demande}/reglementInterieur','DocumentController@reglementInterieur',['as'=>'home'])->name('reglement_interieur');
+    Route::get('/documents/rediger/{demande}/reglementInterieur','DocumentController@reglementInterieur',['as'=>'home'])->name('reglementInterieur');
     Route::get('/demandes/saisie/{id}/suivie','DemandeController@signalTraiter',['as'=>'home'])->name('signalTraiter');
     Route::get('/demandes/documents', 'DemandeController@document',['as'=>'home'])->name('redaction');
     Route::resource('/documents', 'DocumentController',['as'=>'home']);
