@@ -98,10 +98,10 @@ class DocumentController extends Controller
     }
     public function redige(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, "fr_FR","French");
+        setlocale(LC_TIME, 'fr_FR.utf8','fra');
         $desc = Demande::find($demande->id);   
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
-        $my_template->setValue('date_redaction',utf8_encode(strftime('%d %B %Y')));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
@@ -126,10 +126,10 @@ class DocumentController extends Controller
     }
     public function redigeNote(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, "fr_FR","French");
+        setlocale(LC_TIME, 'fr_FR.utf8','fra');
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/Note_de_STAGE.docx"));
-        $my_template->setValue('date_redaction',utf8_encode(strftime('%d %B %Y')));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('destinataire',$request->destinataire);
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
@@ -160,10 +160,10 @@ class DocumentController extends Controller
 
     public function redigeNoteEmbauche(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, "fr_FR","French");
+        setlocale(LC_TIME, 'fr_FR.utf8','fra');
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/NOTE_EMBAUCHE.docx"));
-        $my_template->setValue('date_redaction',utf8_encode(strftime('%d %B %Y')));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('destinataire',$request->destinataire);
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
@@ -193,8 +193,8 @@ class DocumentController extends Controller
         setlocale(LC_TIME, "fr_FR","French");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/FICHE_ATTRIBUTION_Attribution_Règlement_Intérieur.docx"));
-        $my_template->setValue('date_redaction',utf8_encode(strftime('%d %B %Y')));
-        $my_template->setValue('emetteur',strtoupper($desc->user->name));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
         $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
@@ -220,7 +220,7 @@ class DocumentController extends Controller
         setlocale(LC_TIME, "fr_FR","French");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/LETTRE_DE_RENOUVELLEMENT_PERIODE_ESSAI.docx"));
-        $my_template->setValue('date_redaction',utf8_encode(strftime('%d %B %Y')));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
@@ -252,7 +252,7 @@ class DocumentController extends Controller
         setlocale(LC_TIME, "fr_FR","French");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/CONTRAT_EMBAUCHE_A_ESSAI.docx"));
-        $my_template->setValue('date_redaction',utf8_encode(strftime('%d %B %Y')));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
@@ -378,7 +378,7 @@ class DocumentController extends Controller
         setlocale(LC_TIME, "fr_FR","French");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/TITULARISATION.docx"));
-        $my_template->setValue('date_redaction',utf8_encode(strftime('%d %B %Y')));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
@@ -406,7 +406,7 @@ class DocumentController extends Controller
         setlocale(LC_TIME, "fr_FR","French");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/LETTRE_FIN_DE_CDD.docx"));
-        $my_template->setValue('date_redaction',utf8_encode(strftime('%d %B %Y')));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
@@ -436,7 +436,7 @@ class DocumentController extends Controller
         setlocale(LC_TIME, "fr_FR","French");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/AVIS_TITULARISATION.docx"));
-        $my_template->setValue('date_redaction',utf8_encode(strftime('%d %B %Y')));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
