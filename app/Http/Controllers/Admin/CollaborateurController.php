@@ -80,7 +80,7 @@ class CollaborateurController extends Controller
         ],
         [
             'matricule'=>'Matricule existant dans la base de donnee'
-        ]);
+        ]);*/
         $collaborateur->cadre_id= $request->cadre_id;
         $collaborateur->matricule = $request->matricule;
         $collaborateur->civilite = $request->civilite;
@@ -93,9 +93,9 @@ class CollaborateurController extends Controller
         $collaborateur->ancienne_fonction = $request->ancienne_fonction;
         $collaborateur->nouvelle_fonction = $request->nouvelle_fonction;
         $collaborateur->categorie = $request->categorie;
-        $collaborateur->contact = $request->contact;*/
+        $collaborateur->contact = $request->contact;
 
-        $collaborateur->save($request->all());
+        $collaborateur->save();
         
         return redirect()->route('admin.collaborateurs.index');
 
