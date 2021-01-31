@@ -36,6 +36,13 @@
                     @method('PUT')
                   <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
                   <input type="hidden" name="cadre_id" value=" {{ Auth::user()->id }} ">
+                  @include('partials.form-group',[
+                    'title'=>__('Direction'),
+                    'type'=>'text',
+                    'name'=>'direction',
+                    'value'=>$demande->direction,
+                    'required'=>true
+                  ])
                     @include('partials.form-group',[
                       'title'=>__('Matricule'),
                       'type'=>'text',
