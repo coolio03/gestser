@@ -80,20 +80,22 @@ class CollaborateurController extends Controller
         ],
         [
             'matricule'=>'Matricule existant dans la base de donnee'
-        ]);*/
+        ]);
         $collaborateur->cadre_id= $request->cadre_id;
         $collaborateur->matricule = $request->matricule;
         $collaborateur->civilite = $request->civilite;
         $collaborateur->nom = $request->nom;
         $collaborateur->prenoms = $request->prenoms;
+        $collaborateur->numero_identite = $request->numero_identite;
+        $collaborateur->numero_cnps = $request->numero_cnps;
         $collaborateur->date_de_naissance = $request->date_de_naissance;
         $collaborateur->lieu_de_naissance = $request->lieu_de_naissance;
         $collaborateur->ancienne_fonction = $request->ancienne_fonction;
         $collaborateur->nouvelle_fonction = $request->nouvelle_fonction;
         $collaborateur->categorie = $request->categorie;
-        $collaborateur->contact = $request->contact;
+        $collaborateur->contact = $request->contact;*/
 
-        $collaborateur->save();
+        $collaborateur->save($request->all());
         
         return redirect()->route('admin.collaborateurs.index');
 
