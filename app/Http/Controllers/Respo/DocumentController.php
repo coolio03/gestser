@@ -272,9 +272,11 @@ class DocumentController extends Controller
         $my_template->setValue('direction_sc', strtoupper($request->direction_sc));
         $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
+        $my_template->setValue('date_de_naissance', $desc->collaborateur->date_de_naissance);
+        $my_template->setValue('lieu_de_naissance', strtoupper($desc->collaborateur->lieu_de_naissance));
         $my_template->setValue('nom_pere', strtoupper($request->nom_pere));
         $my_template->setValue('nom_mere', strtoupper($request->nom_mere));
-        $my_template->setValue('situation_familiale', strtoupper($request->situation_familiale));
+        $my_template->setValue('situation_familiale', $request->situation_familiale);
         $my_template->setValue('adresse_actuelle', strtoupper($request->adresse_actuelle));
         $my_template->setValue('profession', strtoupper($request->profession));
         $my_template->setValue('matricule', $desc->collaborateur->matricule);
@@ -282,13 +284,14 @@ class DocumentController extends Controller
         $my_template->setValue('direction_acceuil',$request->direction_acceuil);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $my_template->setValue('fonction',$request->fonction);
+        $my_template->setValue('nationnalite',$request->nationnalite);
         $my_template->setValue('classement',$request->classement);
         $my_template->setValue('categorie',$desc->collaborateur->categorie);
-        $my_template->setValue('echellon',$desc->collaborateur->echellon);
+        $my_template->setValue('echellon',$request->echellon);
         $my_template->setValue('salaire_mensuelle',$request->salaire_mensuelle);
         $my_template->setValue('prime_logement',$request->prime_logement);
         $my_template->setValue('prime_transport',$request->prime_transport);
-        $my_template->setValue('ind_tranche_grat',$request->prime_transport);
+        $my_template->setValue('ind_tranche_grat',$request->ind_tranche_grat);
         $filename = "CONTRAT EMBAUCHE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));

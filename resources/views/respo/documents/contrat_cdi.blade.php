@@ -95,7 +95,7 @@
             @include('partials.form-group',[
                 'title'=>__('Prime de transport'),
                 'type'=>'text',
-                'name'=>'pime_transport',
+                'name'=>'prime_transport',
                 'required'=>true
             ])
             @include('partials.form-group',[
