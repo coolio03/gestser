@@ -76,10 +76,10 @@
                                     <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('renouvellementEmbEssai', $dde->id)}} " title="Lettre renouvellement periode essai ">
                                         <i class="nav-icon fas fa-file"></i>
                                     </a>
-                                    <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('titularisation',$dde->id)}} " title="Avis de Titularisation">
+                                    <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('avisTitularisation',$dde->id)}} " title="Avis de Titularisation">
                                         <i class="nav-icon fas fa-file"></i>
                                     </a>
-                                    <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('avisTitularisation', $dde->id)}} " title="Titularisation">
+                                    <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('titularisation', $dde->id)}} " title="Titularisation">
                                         <i class="nav-icon fas fa-file"></i>
                                     </a>
                                @endif
