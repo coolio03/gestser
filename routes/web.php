@@ -89,6 +89,7 @@ Route::namespace('Respo')->prefix('home')->middleware('auth')->group(function(){
     Route::put('/document/{demande}/redigeContratCDI', 'DocumentController@redigeContratCDI',['as'=>'home'])->name('redigeContratCDI');
     Route::put('/document/{demande}/redigeContratCDD', 'DocumentController@redigeContratCDD',['as'=>'home'])->name('redigeContratCDD');
     Route::put('/document/{demande}/redigeTitularisation', 'DocumentController@redigeTitularisation',['as'=>'home'])->name('redigeTitularisation');
+    Route::put('/document/{demande}/redigeAvisTitularisation', 'DocumentController@redigeAvisTitularisation',['as'=>'home'])->name('redigeAvisTitularisation');
     Route::put('/document/{demande}/redigeFinContratCDD', 'DocumentController@redigeFinContratCDD',['as'=>'home'])->name('redigeFinContratCDD');
     Route::put('/document/{demande}/redigeRenouvellementEmbEssai', 'DocumentController@redigeRenouvellementEmbEssai',['as'=>'home'])->name('redigeRenouvellementEmbEssai');
     Route::get('/documents/rediger/{demande}/attestationStage','DocumentController@attestationStage',['as'=>'home'])->name('attestationStage');
@@ -99,6 +100,7 @@ Route::namespace('Respo')->prefix('home')->middleware('auth')->group(function(){
     Route::get('/documents/rediger/{demande}/contratCDI','DocumentController@contratCDI',['as'=>'home'])->name('contratCDI');
     Route::get('/documents/rediger/{demande}/contratCDD','DocumentController@contratCDD',['as'=>'home'])->name('contratCDD');
     Route::get('/documents/rediger/{demande}/titularisation','DocumentController@titularisation',['as'=>'home'])->name('titularisation');
+    Route::get('/documents/rediger/{demande}/avisTitularisation','DocumentController@avisTitularisation',['as'=>'home'])->name('avisTitularisation');
     Route::get('/documents/rediger/{demande}/finContratCDD','DocumentController@finContratCDD',['as'=>'home'])->name('finContratCDD');
     Route::get('/documents/rediger/{demande}/renouvellementEmbEssai','DocumentController@renouvellementEmbEssai',['as'=>'home'])->name('renouvellementEmbEssai');
     Route::get('/demandes/saisie/{id}/suivie','DemandeController@signalTraiter',['as'=>'home'])->name('signalTraiter');
