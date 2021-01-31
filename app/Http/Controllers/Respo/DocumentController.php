@@ -219,7 +219,7 @@ class DocumentController extends Controller
     {
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
-        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/FICHE_ATTRIBUTION_Attribution_Règlement_Intérieur.docx"));
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/LETTRE_DE_RENOUVELLEMENT_PERIODE_ESSAI.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
@@ -401,7 +401,7 @@ class DocumentController extends Controller
     {
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
-        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/TITULARISATION.docx"));
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/LETTRE_FIN_DE_CDD.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
