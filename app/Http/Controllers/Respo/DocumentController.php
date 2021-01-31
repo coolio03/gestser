@@ -75,6 +75,16 @@ class DocumentController extends Controller
         $arr['demande'] = Demande::findOrFail($demande->id);
         return view('respo.documents.avis_titularisation')->with($arr);
     }
+    public function contratCDD(Demande $demande)
+    {
+        $arr['demande'] = Demande::findOrFail($demande->id);
+        return view('respo.documents.contrat_cdd')->with($arr);
+    }
+    public function finContratCDD(Demande $demande)
+    {
+        $arr['demande'] = Demande::findOrFail($demande->id);
+        return view('respo.documents.fin_contrat_cdd')->with($arr);
+    }
     
     
     /**
@@ -275,7 +285,7 @@ class DocumentController extends Controller
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/Contrat_CDI.docx"));
-        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('date_redaction',date('d/m/Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
@@ -315,6 +325,50 @@ class DocumentController extends Controller
         
     }
 
+    public function redigeContratCDD(Request $request,Demande $demande,$downloadName = null)
+    {
+        setlocale(LC_TIME, 'fra_fra');
+        $desc = Demande::find($demande->id);
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/Contrat_CDD.docx"));
+        $my_template->setValue('date_redaction',date('d/m/Y'));
+        $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
+        $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
+        $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
+        $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
+        $my_template->setValue('date_de_naissance', $desc->collaborateur->date_de_naissance);
+        $my_template->setValue('lieu_de_naissance', strtoupper($desc->collaborateur->lieu_de_naissance));
+        $my_template->setValue('nom_pere', strtoupper($request->nom_pere));
+        $my_template->setValue('nom_mere', strtoupper($request->nom_mere));
+        $my_template->setValue('numero_identite', strtoupper($desc->collaborateur->numero_identite));
+        $my_template->setValue('numero_cnps', strtoupper($desc->collaborateur->numero_cnps));
+        $my_template->setValue('situation_matrimoniale', $request->situation_familiale);
+        $my_template->setValue('lieu_habitation', strtoupper($request->adresse_actuelle));
+        $my_template->setValue('profession', strtoupper($request->profession));
+        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('fonction', $request->fonction);
+        $my_template->setValue('direction_acceuil',$request->direction_acceuil);
+        $my_template->setValue('chef_service',$request->chef_service);
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
+        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
+        $my_template->setValue('fonction',$request->fonction);
+        $my_template->setValue('nationnalite',$request->nationnalite);
+        $my_template->setValue('categorie',$desc->collaborateur->categorie);
+        $my_template->setValue('echellon',$request->echellon);
+        $my_template->setValue('salaire_mensuelle',$request->salaire_mensuelle);
+        $my_template->setValue('prime_transport',$request->prime_transport);
+        $filename = "CONTRAT EMBAUCHE CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        try{
+            $my_template->saveAs(public_path("$filename.docx"));
+        }catch (Exception $e){
+           dd($e);
+        }
+        $downloadName = $downloadName??$filename;
+       
+       
+        return response()->download(public_path("$filename.docx"));
+        
+    }
+
     public function redigeTitularisation(Request $request,Demande $demande,$downloadName = null)
     {
         setlocale(LC_TIME, 'fra_fra');
@@ -330,6 +384,36 @@ class DocumentController extends Controller
         $my_template->setValue('direction_sc', $request->direction_sc);
         $my_template->setValue('copie', $request->copie);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
+        $filename = "TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        try{
+            $my_template->saveAs(public_path("$filename.docx"));
+        }catch (Exception $e){
+           dd($e);
+        }
+        $downloadName = $downloadName??$filename;
+       
+       
+        return response()->download(public_path("$filename.docx"));
+        
+    }
+
+    public function redigeFinContratCDD(Request $request,Demande $demande,$downloadName = null)
+    {
+        setlocale(LC_TIME, 'fra_fra');
+        $desc = Demande::find($demande->id);
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/TITULARISATION.docx"));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('emetteur',strtoupper($desc->user->name) );
+        $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
+        $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
+        $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
+        $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
+        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('direction_sc', $request->direction_sc);
+        $my_template->setValue('destinataire', $request->destinataire);
+        $my_template->setValue('copie', $request->copie);
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
+        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
         $filename = "TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));

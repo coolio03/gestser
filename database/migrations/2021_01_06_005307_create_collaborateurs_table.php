@@ -18,6 +18,8 @@ class CreateCollaborateursTable extends Migration
             $table->integer('cadre_id')->unsigned();
             $table->enum('civilite',['Monsieur','Madame','Mademoiselle']);
             $table->string('matricule');
+            $table->string('numero_identite');
+            $table->string('numero_cnps')->nullable();
             $table->string('nom');
             $table->string('prenoms');
             $table->date('date_de_naissance');
