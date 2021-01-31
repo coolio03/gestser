@@ -172,7 +172,7 @@ class DocumentController extends Controller
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $filename = "Lettre attribution RI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
-            $my_template->saveAs(storage_path("$filename.docx"));
+            $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
         }
