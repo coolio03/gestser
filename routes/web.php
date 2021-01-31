@@ -86,12 +86,14 @@ Route::namespace('Respo')->prefix('home')->middleware('auth')->group(function(){
     Route::put('/document/{demande}/redigeNoteEmbauche', 'DocumentController@redigeNoteEmbauche',['as'=>'home'])->name('redigeNoteEmbauche');
     Route::put('/document/{demande}/redigeReglementInterieur', 'DocumentController@redigeReglementInterieur',['as'=>'home'])->name('redigeReglementInterieur');
     Route::put('/document/{demande}/redigeContratEmbauche', 'DocumentController@redigeContratEmbauche',['as'=>'home'])->name('redigeContratEmbauche');
+    Route::put('/document/{demande}/redigeContratCDI', 'DocumentController@redigeContratCDI',['as'=>'home'])->name('redigeContratCDI');
     Route::put('/document/{demande}/redigeRenouvellementEmbEssai', 'DocumentController@redigeRenouvellementEmbEssai',['as'=>'home'])->name('redigeRenouvellementEmbEssai');
     Route::get('/documents/rediger/{demande}/attestationStage','DocumentController@attestationStage',['as'=>'home'])->name('attestationStage');
     Route::get('/documents/rediger/{demande}/noteStage','DocumentController@noteStage',['as'=>'home'])->name('noteStage');
     Route::get('/documents/rediger/{demande}/noteEmbauche','DocumentController@noteEmbauche',['as'=>'home'])->name('noteEmbauche');
     Route::get('/documents/rediger/{demande}/reglementInterieur','DocumentController@reglementInterieur',['as'=>'home'])->name('reglementInterieur');
     Route::get('/documents/rediger/{demande}/contratEmbauche','DocumentController@contratEmbauche',['as'=>'home'])->name('contratEmbauche');
+    Route::get('/documents/rediger/{demande}/contratCDI','DocumentController@contratCDI',['as'=>'home'])->name('contratCDI');
     Route::get('/documents/rediger/{demande}/renouvellementEmbEssai','DocumentController@renouvellementEmbEssai',['as'=>'home'])->name('renouvellementEmbEssai');
     Route::get('/demandes/saisie/{id}/suivie','DemandeController@signalTraiter',['as'=>'home'])->name('signalTraiter');
     Route::get('/demandes/documents', 'DemandeController@document',['as'=>'home'])->name('redaction');

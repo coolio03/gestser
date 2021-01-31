@@ -74,7 +74,7 @@
           onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();" class="btn btn-default btn-flat float-right">
                    <i class="nav-icon far fa-circle text-danger"></i>
-          Se Déconnexion
+              Déconnexion
           </a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               {{ csrf_field() }}

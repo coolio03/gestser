@@ -53,11 +53,19 @@ class DocumentController extends Controller
         return view('respo.documents.embauche_essai')->with($arr);
     }
 
+    public function contratCDI(Demande $demande)
+    {
+        $arr['demande'] = Demande::findOrFail($demande->id);
+        return view('respo.documents.contrat_cdi')->with($arr);
+    }
+
     public function renouvellementEmbEssai(Demande $demande)
     {
         $arr['demande'] = Demande::findOrFail($demande->id);
         return view('respo.documents.renouvellement_emb_essai')->with($arr);
     }
+
+    
     
     /**
      * Show the form for creating a new resource.
@@ -84,7 +92,7 @@ class DocumentController extends Controller
         $my_template->setValue('ecole', $request->ecole);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
-        $filename = "Attestation Stage".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "ATTESTATION DE STAGE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -117,7 +125,7 @@ class DocumentController extends Controller
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
         $my_template->setValue('objet',$request->objet);
-        $filename = "Note de Stage".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "NOTE DE STAGE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -147,7 +155,7 @@ class DocumentController extends Controller
         $my_template->setValue('poste', $request->poste);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $my_template->setValue('objet',$request->objet);
-        $filename = "Note d'embauche".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "NOTE D'EMBAUCHE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -174,7 +182,7 @@ class DocumentController extends Controller
         $my_template->setValue('matricule', $desc->collaborateur->matricule);
         $my_template->setValue('direction_sc', $request->direction_sc);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
-        $filename = "Lettre attribution RI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "LETTRE ATTRIBUTION RI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -202,7 +210,7 @@ class DocumentController extends Controller
         $my_template->setValue('direction_sc', $request->direction_sc);
         $my_template->setValue('copie', $request->copie);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
-        $filename = "Renouvellement embauche essai".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "RENOUVELLEMENT EBAUCHE ESSAI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -239,7 +247,7 @@ class DocumentController extends Controller
         $my_template->setValue('salaire_mensuelle',$request->salaire_mensuelle);
         $my_template->setValue('prime_logement',$request->prime_logement);
         $my_template->setValue('prime_entretien',$request->prime_entretien);
-        $filename = "Contrat d'embauche essai".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "CONTRAT EMBAUCHE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -252,6 +260,47 @@ class DocumentController extends Controller
         
     }
 
+    public function redigeContratCDI(Request $request,Demande $demande,$downloadName = null)
+    {
+        setlocale(LC_TIME, 'fra_fra');
+        $desc = Demande::find($demande->id);
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/DCRH IS 71 01 02 Contrat CDI.docx"));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('emetteur',strtoupper($desc->user->name) );
+        $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
+        $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
+        $my_template->setValue('direction_sc', strtoupper($request->direction_sc));
+        $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
+        $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
+        $my_template->setValue('nom_pere', strtoupper($request->nom_pere));
+        $my_template->setValue('nom_mere', strtoupper($request->nom_mere));
+        $my_template->setValue('situation_familiale', strtoupper($request->situation_familiale));
+        $my_template->setValue('adresse_actuelle', strtoupper($request->adresse_actuelle));
+        $my_template->setValue('profession', strtoupper($request->profession));
+        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('fonction', $request->fonction);
+        $my_template->setValue('direction_acceuil',$request->direction_acceuil);
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
+        $my_template->setValue('fonction',$request->fonction);
+        $my_template->setValue('classement',$request->classement);
+        $my_template->setValue('categorie',$desc->collaborateur->categorie);
+        $my_template->setValue('echellon',$desc->collaborateur->echellon);
+        $my_template->setValue('salaire_mensuelle',$request->salaire_mensuelle);
+        $my_template->setValue('prime_logement',$request->prime_logement);
+        $my_template->setValue('prime_transport',$request->prime_transport);
+        $my_template->setValue('ind_tranche_grat',$request->prime_transport);
+        $filename = "CONTRAT EMBAUCHE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        try{
+            $my_template->saveAs(public_path("$filename.docx"));
+        }catch (Exception $e){
+           dd($e);
+        }
+        $downloadName = $downloadName??$filename;
+       
+       
+        return response()->download(public_path("$filename.docx"));
+        
+    }
     /**
      * Store a newly created resource in storage.
      *
