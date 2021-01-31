@@ -65,6 +65,16 @@ class DocumentController extends Controller
         return view('respo.documents.renouvellement_emb_essai')->with($arr);
     }
 
+    public function titularisation(Demande $demande)
+    {
+        $arr['demande'] = Demande::findOrFail($demande->id);
+        return view('respo.documents.titularisation')->with($arr);
+    }
+    public function avisTitularisation(Demande $demande)
+    {
+        $arr['demande'] = Demande::findOrFail($demande->id);
+        return view('respo.documents.avis_titularisation')->with($arr);
+    }
     
     
     /**
@@ -292,7 +302,66 @@ class DocumentController extends Controller
         $my_template->setValue('prime_logement',$request->prime_logement);
         $my_template->setValue('prime_transport',$request->prime_transport);
         $my_template->setValue('ind_tranche_grat',$request->ind_tranche_grat);
-        $filename = "CONTRAT EMBAUCHE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "CONTRAT EMBAUCHE CDI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        try{
+            $my_template->saveAs(public_path("$filename.docx"));
+        }catch (Exception $e){
+           dd($e);
+        }
+        $downloadName = $downloadName??$filename;
+       
+       
+        return response()->download(public_path("$filename.docx"));
+        
+    }
+
+    public function redigeTitularisation(Request $request,Demande $demande,$downloadName = null)
+    {
+        setlocale(LC_TIME, 'fra_fra');
+        $desc = Demande::find($demande->id);
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/TITULARISATION.docx"));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('emetteur',strtoupper($desc->user->name) );
+        $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
+        $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
+        $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
+        $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
+        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('direction_sc', $request->direction_sc);
+        $my_template->setValue('copie', $request->copie);
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
+        $filename = "TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        try{
+            $my_template->saveAs(public_path("$filename.docx"));
+        }catch (Exception $e){
+           dd($e);
+        }
+        $downloadName = $downloadName??$filename;
+       
+       
+        return response()->download(public_path("$filename.docx"));
+        
+    }
+
+    public function redigeAvisTitularisation(Request $request,Demande $demande,$downloadName = null)
+    {
+        setlocale(LC_TIME, 'fra_fra');
+        $desc = Demande::find($demande->id);
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/AVIS_TITULARISATION.docx"));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('emetteur',strtoupper($desc->user->name) );
+        $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
+        $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
+        $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
+        $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
+        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('direction', $request->direction);
+        $my_template->setValue('copie', $request->copie);
+        $my_template->setValue('classement_actuel', $request->classement);
+        $my_template->setValue('fonction', $request->classement);
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
+        $my_template->setValue('date_fin_essai',strftime('%d %B %Y',strtotime($request->date_fin_essaie)));
+        $filename = "AVIS_TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
