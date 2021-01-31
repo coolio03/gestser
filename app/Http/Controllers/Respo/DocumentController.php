@@ -333,7 +333,7 @@ class DocumentController extends Controller
     {
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
-        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/Contrat_CDD.docx"));
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/CONTRAT_CDD.docx"));
         $my_template->setValue('date_redaction',date('d/m/Y'));
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
