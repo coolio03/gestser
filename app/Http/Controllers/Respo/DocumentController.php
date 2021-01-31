@@ -387,6 +387,7 @@ class DocumentController extends Controller
         $my_template->setValue('matricule', $desc->collaborateur->matricule);
         $my_template->setValue('direction_sc', $request->direction_sc);
         $my_template->setValue('copie', $request->copie);
+        $my_template->setValue('poste', $request->poste);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $filename = "DCRH IS 71 06 01 TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{

@@ -172,7 +172,7 @@ class DemandeController extends Controller
         $arr['demande'] = $demande;
         $arr['collaborateurs'] = Collaborateur::all();
         $arr['users']=User::all();
-        return view('admin.demandes.affectation')->with($arr);
+        return view('admin.demandes.affectation')->with($arr)->with('success','Demande affectee avec succes!!!');
     }
 
     public function affecter(Request $request, Demande $demande)

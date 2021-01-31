@@ -22,19 +22,19 @@ class DemandeController extends Controller
      */
     public function index()
     {
-        $arr['demandes'] = Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_remise_ra')->paginate(5);
+        $arr['demandes'] = Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_remise_ra')->latest()->paginate(5);
         return view('respo.demandes.liste')->with($arr);
     }
 
     public function traite()
     {
-        $arr['demandes'] = Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_traitement')->whereNotNull('date_remise_ra')->paginate(5);
+        $arr['demandes'] = Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_traitement')->whereNotNull('date_remise_ra')->latest()->paginate(5);
         return view('respo.demandes.traite')->with($arr);
     }
 
     public function nonTraite()
     {
-        $arr['demandes'] = Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_remise_ra')->whereNull('date_traitement')->paginate(5);
+        $arr['demandes'] = Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_remise_ra')->whereNull('date_traitement')->latest()->paginate(5);
         return view('respo.demandes.liste')->with($arr);
     }
     /**
