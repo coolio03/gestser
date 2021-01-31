@@ -30,7 +30,31 @@
                 'type'=>'text',
                 'name'=>'copie',
                 'required'=>true
-            ])            
+            ])  
+             @include('partials.form-group',[
+                'title'=>__('Poste'),
+                'type'=>'text',
+                'name'=>'poste',
+                'required'=>true
+            ])   
+             @include('partials.form-group',[
+                'title'=>__('delai'),
+                'type'=>'text',
+                'name'=>'delai',
+                'required'=>true
+            ]) 
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="" >Unite du delai</label>
+                    <select name="unite" id="" class="form-control">
+                        <option value="">Choisir type</option>
+                        <option value="jours">Jours</option>
+                        <option value="semaine">Semaine</option>
+                        <option value="mois">Mois</option>                                    
+                    </select>
+                </div>
+                <div class="clearfix"></div>
+            </div>
         </div> 
     </div>            
       

@@ -112,7 +112,7 @@ class DocumentController extends Controller
         $my_template->setValue('ecole', $request->ecole);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
-        $filename = "ATTESTATION DE STAGE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "DCRH IS 71 18 01 ATTESTATION STAGE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -145,7 +145,7 @@ class DocumentController extends Controller
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
         $my_template->setValue('objet',$request->objet);
-        $filename = "NOTE DE STAGE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "DCRH IS 71 16 01 Note de STAGE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -175,7 +175,7 @@ class DocumentController extends Controller
         $my_template->setValue('poste', $request->poste);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $my_template->setValue('objet',$request->objet);
-        $filename = "NOTE D'EMBAUCHE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "DCRH IS 71 25 01 NOTE D'INFO EMBAUCHE EO M".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -202,7 +202,7 @@ class DocumentController extends Controller
         $my_template->setValue('matricule', $desc->collaborateur->matricule);
         $my_template->setValue('direction_sc', $request->direction_sc);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
-        $filename = "LETTRE ATTRIBUTION RI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "DCRH IS 71 22 01 FICHE D'ATTRIBUTION RI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -229,8 +229,12 @@ class DocumentController extends Controller
         $my_template->setValue('matricule', $desc->collaborateur->matricule);
         $my_template->setValue('direction_sc', $request->direction_sc);
         $my_template->setValue('copie', $request->copie);
+        $my_template->setValue('poste', $request->poste);
+        $my_template->setValue('delai', $request->delai);
+        $my_template->setValue('unite', $request->unite);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
-        $filename = "RENOUVELLEMENT EBAUCHE ESSAI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
+        $filename = "DCRH IS 71 21 01 LETTRE DE RENOUVELLEMENT PERIODE D'ESSAI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -267,7 +271,7 @@ class DocumentController extends Controller
         $my_template->setValue('salaire_mensuelle',$request->salaire_mensuelle);
         $my_template->setValue('prime_logement',$request->prime_logement);
         $my_template->setValue('prime_entretien',$request->prime_entretien);
-        $filename = "CONTRAT EMBAUCHE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "DCRH IS 71 04 01 EMBAUCHE A ESSAI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -292,12 +296,12 @@ class DocumentController extends Controller
         $my_template->setValue('direction_sc', strtoupper($request->direction_sc));
         $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
-        $my_template->setValue('date_de_naissance', $desc->collaborateur->date_de_naissance);
+        $my_template->setValue('date_de_naissance', date('d/m/Y',strtotime($desc->collaborateur->date_de_naissance)));
         $my_template->setValue('lieu_de_naissance', strtoupper($desc->collaborateur->lieu_de_naissance));
         $my_template->setValue('nom_pere', strtoupper($request->nom_pere));
         $my_template->setValue('nom_mere', strtoupper($request->nom_mere));
         $my_template->setValue('situation_familiale', $request->situation_familiale);
-        $my_template->setValue('adresse_actuelle', strtoupper($request->adresse_actuelle));
+        $my_template->setValue('adresse_actuelle', strtoupper($request->lieu_habitation));
         $my_template->setValue('profession', strtoupper($request->profession));
         $my_template->setValue('matricule', $desc->collaborateur->matricule);
         $my_template->setValue('fonction', $request->fonction);
@@ -312,7 +316,7 @@ class DocumentController extends Controller
         $my_template->setValue('prime_logement',$request->prime_logement);
         $my_template->setValue('prime_transport',$request->prime_transport);
         $my_template->setValue('ind_tranche_grat',$request->ind_tranche_grat);
-        $filename = "CONTRAT EMBAUCHE CDI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "DCRH IS 71 01 02 Contrat CDI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -335,7 +339,7 @@ class DocumentController extends Controller
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
         $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
-        $my_template->setValue('date_de_naissance', $desc->collaborateur->date_de_naissance);
+        $my_template->setValue('date_de_naissance', date('d/m/Y',strtotime($desc->collaborateur->date_de_naissance)));
         $my_template->setValue('lieu_de_naissance', strtoupper($desc->collaborateur->lieu_de_naissance));
         $my_template->setValue('nom_pere', strtoupper($request->nom_pere));
         $my_template->setValue('nom_mere', strtoupper($request->nom_mere));
@@ -356,7 +360,7 @@ class DocumentController extends Controller
         $my_template->setValue('echellon',$request->echellon);
         $my_template->setValue('salaire_mensuelle',$request->salaire_mensuelle);
         $my_template->setValue('prime_transport',$request->prime_transport);
-        $filename = "CONTRAT EMBAUCHE CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "DCRH IS 71 09 02 CONTRAT CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -384,7 +388,7 @@ class DocumentController extends Controller
         $my_template->setValue('direction_sc', $request->direction_sc);
         $my_template->setValue('copie', $request->copie);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
-        $filename = "TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "DCRH IS 71 06 01 TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -414,7 +418,7 @@ class DocumentController extends Controller
         $my_template->setValue('copie', $request->copie);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
-        $filename = "LETTRE DE FIN DE CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "DCRH IS 71 10 01 LETTRE DE FIN DE CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -445,7 +449,7 @@ class DocumentController extends Controller
         $my_template->setValue('fonction', $request->classement);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $my_template->setValue('date_fin_essai',strftime('%d %B %Y',strtotime($request->date_fin_essaie)));
-        $filename = "AVIS_TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $filename = "DCRH IS 71 05 01 AVIS DE TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){

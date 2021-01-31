@@ -1,4 +1,4 @@
-<form method="post" action=" {{route('redigeContratCDI', $demande->id)}}  ">
+<form method="post" action=" {{route('redigeContratCDD', $demande->id)}}  ">
     @method('PUT')
     <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
     <input type="hidden" name="id" value=" {{$demande->id}} ">
@@ -75,6 +75,12 @@
                 'required'=>true
             ]) 
             @include('partials.form-group',[
+                'title'=>__("Chef acceude Service"),
+                'type'=>'text',
+                'name'=>'chef_service',
+                'required'=>true
+            ]) 
+            @include('partials.form-group',[
                 'title'=>__("Echellon"),
                 'type'=>'text',
                 'name'=>'echellon',
@@ -86,24 +92,14 @@
                 'name'=>'salaire_mensuelle',
                 'required'=>true
             ]) 
-            @include('partials.form-group',[
-                'title'=>__('Prime Logement'),
-                'type'=>'text',
-                'name'=>'prime_logement',
-                'required'=>true
-            ]) 
+             
             @include('partials.form-group',[
                 'title'=>__('Prime de transport'),
                 'type'=>'text',
                 'name'=>'prime_transport',
                 'required'=>true
             ])
-            @include('partials.form-group',[
-                'title'=>__('Indemnité Tranche Gratuite'),
-                'type'=>'text',
-                'name'=>'ind_tranche_grat',
-                'required'=>true
-            ])  
+            
         </div> 
     </div>            
       
