@@ -24,6 +24,12 @@
                 'type'=>'text',
                 'name'=>'direction_sc',
                 'required'=>true
+            ])
+            @include('partials.form-group',[
+                'title'=>__('Copie'),
+                'type'=>'text',
+                'name'=>'copie',
+                'required'=>true
             ])            
         </div> 
     </div>            

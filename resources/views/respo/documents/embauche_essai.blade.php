@@ -80,9 +80,9 @@
                 'required'=>true
             ]) 
             @include('partials.form-group',[
-                'title'=>__('Ind. Entretien Bleu'),
+                'title'=>__('Ind. Entretient Bleu'),
                 'type'=>'text',
-                'name'=>'prime_entratien',
+                'name'=>'prime_entretien',
                 'required'=>true
             ]) 
         </div> 
