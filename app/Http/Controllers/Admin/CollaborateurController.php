@@ -97,7 +97,7 @@ class CollaborateurController extends Controller
 
         $collaborateur->save();
         
-        return redirect()->route('admin.collaborateurs.index');
+        return redirect()->route('admin.collaborateurs.index')->with('success','collaborateur enregistre avec succes');
 
     }
 
@@ -144,7 +144,7 @@ class CollaborateurController extends Controller
         $collaborateur->categorie = $request->categorie;
         $collaborateur->contact = $request->contact;*/
         $collaborateur->update($request->all());
-        return redirect()->route('admin.collaborateurs.index');
+        return redirect()->route('admin.collaborateurs.index')->with('success','collaborateur mis a jour avec succes');
     }
 
     /**

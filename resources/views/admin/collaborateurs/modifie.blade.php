@@ -86,6 +86,18 @@
                       'value'=>$collaborateur->lieu_de_naissance,
                       'required'=>true
                     ]) 
+                     @include('partials.form-group',[
+                      'title'=>__("Numero d'Identite"),
+                      'type'=>'text',
+                      'name'=>'numero_identite',
+                      'required'=>true
+                    ])
+                    @include('partials.form-group',[
+                      'title'=>__("Numero CNPS"),
+                      'type'=>'text',
+                      'name'=>'numero_cnps',
+                      'required'=>false
+                    ])
                     @include('partials.form-group',[
                       'title'=>__('Ancienne Fonction'),
                       'type'=>'text',

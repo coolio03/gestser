@@ -3,6 +3,9 @@
     <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
     <input type="hidden" name="id" value=" {{$demande->id}} ">
     <input type="hidden" name="responsable_id" value=" {{ Auth::user()->id }} ">    
+    <div class="card-header">
+        <h3 class="card-title">Formulaire de contrat CDI</h3>
+      </div>
     <div class="card-body">
         <div class="row">
             @include('partials.form-group-d',[
