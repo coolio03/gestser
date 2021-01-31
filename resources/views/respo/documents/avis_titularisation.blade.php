@@ -40,7 +40,7 @@
             @include('partials.form-group',[
                 'title'=>__('Classement'),
                 'type'=>'text',
-                'name'=>'classement',
+                'name'=>'classement_actuel',
                 'required'=>true
             ]) 
              @include('partials.form-group',[
