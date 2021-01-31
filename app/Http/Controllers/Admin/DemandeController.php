@@ -22,7 +22,7 @@ class DemandeController extends Controller
      */
     public function index()
     {
-        $arr['demandes'] = Demande::orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::latest()->paginate(5);
         $arr['ddeTraites'] = Demande::whereNotNull('date_traitement')->get();
         $arr['users'] = User::all();
         return view('admin.demandes.liste')->with($arr);
@@ -31,20 +31,20 @@ class DemandeController extends Controller
 
     public function affecte()
     {
-        $arr['demandes'] = Demande::whereNotNull('responsable_id')->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::whereNotNull('responsable_id')->latest()->paginate(5);
         $arr['users'] = User::all();
         return view('admin.demandes.affecte')->with($arr);
 
     }
     public function complet()
     {
-        $arr['demandes'] = Demande::where('status','=',true)->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::where('status','=',true)->latest()->paginate(5);
         return view('admin.demandes.complet')->with($arr);
 
     }
     public function nonComplet()
     {
-        $arr['demandes'] = Demande::where('status','=',false)->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::where('status','=',false)->latest()->paginate(5);
         return view('admin.demandes.complet')->with($arr);
 
     }
@@ -52,7 +52,7 @@ class DemandeController extends Controller
 
     public function traite()
     {
-        $arr['demandes'] = Demande::whereNotNull('date_traitement')->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::whereNotNull('date_traitement')->latest()->paginate(5);
         $arr['users'] = User::all();
         return view('admin.demandes.traite')->with($arr);
 
@@ -60,7 +60,7 @@ class DemandeController extends Controller
 
     public function nonTraite()
     {
-        $arr['demandes'] = Demande::whereNull('date_traitement')->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::whereNull('date_traitement')->latest()->paginate(5);
         $arr['users'] = User::all();
         return view('admin.demandes.non_traite')->with($arr);
 
@@ -68,38 +68,38 @@ class DemandeController extends Controller
 
     public function cloture()
     {
-        $arr['demandes'] = Demande::whereNotNull('date_cloture')->where('visa',true)->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::whereNotNull('date_cloture')->where('visa',true)->latest()->paginate(5);
         $arr['users'] = User::all();
         return view('admin.demandes.cloture')->with($arr);
     }
 
     public function nonCloture()
     {
-        $arr['demandes'] = Demande::whereNull('date_cloture')->where('visa',true)->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::whereNull('date_cloture')->where('visa',true)->latest()->paginate(5);
         $arr['users'] = User::all();
         return view('admin.demandes.cloture')->with($arr);
     }
 
     public function transmisClient()
     {
-        $arr['demandes'] = Demande::whereNotNull('date_transmission')->where('visa',true)->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::whereNotNull('date_transmission')->where('visa',true)->latest()->paginate(5);
         $arr['users'] = User::all();
         return view('admin.demandes.transmission')->with($arr);
     }
     public function nonTransmisClient()
     {
-        $arr['demandes'] = Demande::whereNull('date_transmission')->where('visa',true)->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::whereNull('date_transmission')->where('visa',true)->latest()->paginate(5);
         return view('admin.demandes.transmission')->with($arr);
     }
     public function saisieHr()
     {
-        $arr['demandes'] = Demande::whereNotNull('date_saisir_hr')->where('visa',true)->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::whereNotNull('date_saisir_hr')->where('visa',true)->latest()->paginate(5);
         $arr['users'] = User::all();
         return view('admin.demandes.saisieHr')->with($arr);
     }
     public function nonSaisieHr()
     {
-        $arr['demandes'] = Demande::whereNull('date_saisir_hr')->where('visa',true)->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::whereNull('date_saisir_hr')->where('visa',true)->latest()->paginate(5);
         $arr['users'] = User::all();
         return view('admin.demandes.saisieHr')->with($arr);
     }
@@ -107,26 +107,26 @@ class DemandeController extends Controller
 
     public function nonAffecte()
     {
-        $arr['demandes'] = Demande::whereNull('responsable_id')->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::whereNull('responsable_id')->latest()->paginate(5);
         $arr['users'] = User::all();
         return view('admin.demandes.non_affecte')->with($arr);
     }
 
     public function visa()
     {
-        $arr['demandes'] = Demande::where('visa',False)->whereNotNull('date_traitement')->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::where('visa',False)->whereNotNull('date_traitement')->latest()->paginate(5);
         return view('admin.demandes.visa')->with($arr);
 
     }
     public function signe()
     {
-        $arr['demandes'] = Demande::where('visa',True)->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::where('visa',True)->latest()->paginate(5);
         return view('admin.demandes.visa')->with($arr);
 
     }
     public function nonArchive()
     {
-        $arr['demandes'] = Demande::whereNull('date_archive')->where('visa',true)->orderBy('created_at','asc')->paginate(5);
+        $arr['demandes'] = Demande::whereNull('date_archive')->where('visa',true)->latest()->paginate(5);
         return view('admin.demandes.archive')->with($arr);
 
     }
