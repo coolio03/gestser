@@ -82,7 +82,11 @@
                     'required'=>false
                 ])            
         @endif
-                   
+        <div class="form-group">
+            <label>Textarea</label>
+            <textarea name="observation" class="form-control" rows="3" placeholder="Observation ..."></textarea>
+          </div>
+        </div> 
        
     </div>
   
