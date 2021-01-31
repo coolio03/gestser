@@ -20,10 +20,22 @@
                 'required'=>true
             ]) 
             @include('partials.form-group',[
-                'title'=>__('Direction S/C'),
+                'title'=>__('Destinataire'),
                 'type'=>'text',
-                'name'=>'direction_sc',
+                'name'=>'destinataire',
                 'required'=>true
+            ]) 
+            @include('partials.form-group',[
+                'title'=>__('Personnes en copie'),
+                'type'=>'text',
+                'name'=>'copie',
+                'required'=>true
+            ]) 
+            @include('partials.form-group',[
+            'title'=>__('Poste'),
+            'type'=>'text',
+            'name'=>'poste',
+            'required'=>true
             ])            
         </div> 
     </div>            
