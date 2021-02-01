@@ -243,6 +243,8 @@ class DemandeController extends Controller
         $demande->type = $request->type;
         $demande->motif_demande = $request->motif_demande;
         $demande->direction = $request->direction;
+        $demande->numero_identite = $request->numero_identite;
+        $demande->numero_cnps = $request->numero_cnps;
         $demande->date_debut = $request->date_debut;
         $demande->date_fin = $request->date_fin;
         $demande->date_reception = $request->date_reception;
@@ -323,6 +325,8 @@ class DemandeController extends Controller
             $demande->type = $request->type;
             $demande->motif_demande = $request->motif_demande;
             $demande->date_debut = $request->date_debut;
+            $demande->numero_identite = $request->numero_identite;
+            $demande->numero_cnps = $request->numero_cnps;
             $demande->date_fin = $request->date_fin;
             $demande->direction = $request->direction;
             $demande->date_reception = $request->date_reception;
