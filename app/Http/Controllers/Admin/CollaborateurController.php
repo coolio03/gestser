@@ -21,7 +21,7 @@ class CollaborateurController extends Controller
      */
     public function index()
     {
-        $arr['collaborateurs'] = Collaborateur::orderBy('created_at','asc')->paginate(5);
+        $arr['collaborateurs'] = Collaborateur::latest()->paginate(5);
         return view('admin.collaborateurs.liste')->with($arr);
     }
 

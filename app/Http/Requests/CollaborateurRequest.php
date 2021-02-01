@@ -30,6 +30,7 @@ class CollaborateurRequest extends FormRequest
             'date_de_naissance' => 'bail|required',
             'lieu_de_naissance' => 'bail|required|between:5,25|string',
             'ancienne_fonction' =>'required',
+            'numero_identite' =>'required',
             'nouvelle_fonction' =>'required',
             'categorie' => 'required',
             'contact' => 'required',
@@ -41,6 +42,7 @@ class CollaborateurRequest extends FormRequest
             'matricule.unique' => 'Ce matricule existe deja dans la base de donnees',
             'date_de_naiss.required' => 'le champ date de naissance est obligatoire',
             'lieu_de_naiss.required' => 'le champ lieu de naissance est obligatoire',
+            'numero_identite.required' => 'le champ lieu de naissance est obligatoire',
         ];
     }
 }
