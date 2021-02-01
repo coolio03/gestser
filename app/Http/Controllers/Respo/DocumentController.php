@@ -98,7 +98,7 @@ class DocumentController extends Controller
     }
     public function redige(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fra_fra');
+        setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);   
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
@@ -126,7 +126,7 @@ class DocumentController extends Controller
     }
     public function redigeNote(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fra_fra');
+        setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/Note_de_STAGE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
@@ -160,7 +160,7 @@ class DocumentController extends Controller
 
     public function redigeNoteEmbauche(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fra_fra');
+        setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/NOTE_EMBAUCHE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
@@ -190,7 +190,7 @@ class DocumentController extends Controller
 
     public function redigeReglementInterieur(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fra_fra');
+        setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/FICHE_ATTRIBUTION_Attribution_Règlement_Intérieur.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
@@ -217,7 +217,7 @@ class DocumentController extends Controller
 
     public function redigeRenouvellementEmbEssai(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fra_fra');
+        setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/LETTRE_DE_RENOUVELLEMENT_PERIODE_ESSAI.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
@@ -249,7 +249,8 @@ class DocumentController extends Controller
 
     public function redigeContratEmbauche(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fra_fra');
+ 
+        setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/CONTRAT_EMBAUCHE_A_ESSAI.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
@@ -286,7 +287,8 @@ class DocumentController extends Controller
 
     public function redigeContratCDI(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fra_fra');
+        
+        setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/Contrat_CDI.docx"));
         $my_template->setValue('date_redaction',date('d/m/Y'));
@@ -331,7 +333,8 @@ class DocumentController extends Controller
 
     public function redigeContratCDD(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fra_fra');
+        
+        setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/CONTRAT_CDD.docx"));
         $my_template->setValue('date_redaction',date('d/m/Y'));
@@ -375,7 +378,7 @@ class DocumentController extends Controller
 
     public function redigeTitularisation(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fra_fra');
+        setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/TITULARISATION.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
@@ -404,7 +407,7 @@ class DocumentController extends Controller
 
     public function redigeFinContratCDD(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fra_fra');
+        setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/LETTRE_DE_FIN_DE_CDD.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
@@ -436,7 +439,7 @@ class DocumentController extends Controller
 
     public function redigeAvisTitularisation(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fra_fra');
+        setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/AVIS_TITULARISATION.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
