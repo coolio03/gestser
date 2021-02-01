@@ -3,9 +3,7 @@
     {{csrf_field()}}
     <div class="modal-header">
         <h4 class="modal-title" >Mise a jour du suivie de la demande de <em  style="color: blue" >{{$demande->type}}  </em> de <em  style="color: blue">{{$demande->collaborateur->nom.' '.$demande->collaborateur->prenoms }}  </em> </h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidemanden="true">&times;</span>
-        </button>
+        
     </div>
     <div class="modal-body">
         <input type="hidden" name="id" value=" {{$demande->id}} ">

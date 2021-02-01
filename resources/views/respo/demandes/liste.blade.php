@@ -45,7 +45,7 @@
                             <td> {{$dde->collaborateur->nom}} </td>
                             <td>{{$dde->collaborateur->prenoms}} </td>
                             <td> {{$dde->type}} </td>
-                            <td> {{date('d/m/Y',strtotime($dde->date_remise°ra))}} </td>
+                            <td> {{date('d/m/Y',strtotime($dde->date_remise_ra))}} </td>
                             <td>
                                 @if (!$dde->date_traitement == null)
                                     {{date('d/m/Y',strtotime($dde->date_traitement))}} 
