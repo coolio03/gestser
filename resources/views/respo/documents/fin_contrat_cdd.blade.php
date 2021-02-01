@@ -39,12 +39,6 @@
                 'type'=>'text',
                 'name'=>'copie',
                 'required'=>true
-            ]) 
-             @include('partials.form-group',[
-                'title'=>__('Date fin essai'),
-                'type'=>'date',
-                'name'=>'date_fin_essai',
-                'required'=>true
             ])     
                   
         </div> 
