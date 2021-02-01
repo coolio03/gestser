@@ -92,9 +92,7 @@
                       <div>
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_archive')}} ">Demandes Non Archivées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('date_archive','=',Null)->->where('visa',true))}}</span> 
                       </div>
-                      <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('complet')}} ">Demandes Completes :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('status',true))}}</span> 
-                      </div>
+                      
                       <div>
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_complet')}} ">Demandes Non Completes :</a>&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('status',false))}}</span> 
                       </div>
