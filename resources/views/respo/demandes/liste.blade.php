@@ -75,7 +75,7 @@
     
                             <td>
                                
-                                <button class="btn btn-success" data-mydatereception="{{$dde->date_reception}}" data-mydateremise="{{$dde->date_remise_ra}}" data-mydatetraitement="{{$dde->date_traitement}}" 
+                                <button class="btn btn-success" data-mydatereception="{{$dde->date_reception}}" data-mydateremise="{{$dde->date_remise_ra}}" data-mydatetraitement="{{$dde->date_traitement}}" data-mydatesaisie="{{$dde->date_saisir_hr}}"
                                     data-ddeid={{$dde->id}} data-mytype=" {{$dde->type}} "  data-mynom= " {{$dde->collaborateur->nom}} " data-myprenom= " {{$dde->collaborateur->prenoms}} " data-toggle="modal" data-target="#traite" >
                                     <i title="Voir Detail de la demande de {{$dde->collaborateur->nom.' '. $dde->collaborateur->prenoms}}" class="nav-icon fas fa-eye"></i>
                                 </button>
@@ -211,6 +211,7 @@
         var date_reception = button.data('mydatereception') 
         var date_remise = button.data('mydateremise') 
         var date_traitement = button.data('mydatetraitement') 
+        var date_saisie = button.data('mydatesaisie') 
         var date_visa_ce = button.data('mydatevisace');
         var date_visa_cser = button.data('mydatevisacser')
         var date_vsa_sdap = button.data('mydatevisasdap')
@@ -230,6 +231,7 @@
         modal.find('.modal-body #date_reception').val(date_reception);
         modal.find('.modal-body #date_remise_ra').val(date_remise);
         modal.find('.modal-body #date_traitement').val(date_traitement);
+        modal.find('.modal-body #date_saisir_hr').val(date_saisie);
         modal.find('.modal-body #date_visa_ce').val(date_visa_ce);
         modal.find('.modal-body #date_visa_cser').val(date_visa_cser);
         modal.find('.modal-body #date_visa_sdap').val(date_visa_sdap);
