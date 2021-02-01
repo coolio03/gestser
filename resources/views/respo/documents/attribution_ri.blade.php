@@ -23,11 +23,23 @@
                 'required'=>true
             ]) 
             @include('partials.form-group',[
+                'title'=>__('Matricule'),
+                'type'=>'text',
+                'name'=>'matricule',
+                'required'=>true
+            ])
+            @include('partials.form-group',[
                 'title'=>__('Direction S/C'),
                 'type'=>'text',
                 'name'=>'direction_sc',
                 'required'=>true
-            ])            
+            ]) 
+            @include('partials.form-group',[
+                'title'=>__('Date de Debut'),
+                'type'=>'date',
+                'name'=>'date_debut',
+                'required'=>true
+                ])              
         </div> 
     </div>            
       

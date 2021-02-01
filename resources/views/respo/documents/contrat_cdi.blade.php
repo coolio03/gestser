@@ -23,6 +23,12 @@
                 'required'=>true
             ]) 
             @include('partials.form-group',[
+                'title'=>__('Matricule'),
+                'type'=>'text',
+                'name'=>'matricule',
+                'required'=>true
+            ])
+            @include('partials.form-group',[
                 'title'=>__('Nom et Prenoms du Père'),
                 'type'=>'text',
                 'name'=>'nom_pere',
@@ -40,8 +46,11 @@
                     <label for="" >Situation Familiale</label>
                     <select name="situation_familiale" id="" class="form-control">
                         <option value="">Choisir Situation</option>
-                        <option value="célibataire">Célibataire</option>
-                        <option value="marié(e)">Marié(e)</option>                                                      
+                        <option value="Célibataire">Célibataire</option>
+                        <option value="Marié(e)">Marié(e)</option>                                                      
+                        <option value="Veuve">Veuve</option>                                                      
+                        <option value="Divorcé(e)">Divorcé(e)</option>                                                      
+                                                                         
                     </select>
                 </div>
                 <div class="clearfix"></div>
@@ -107,6 +116,13 @@
                 'name'=>'ind_tranche_grat',
                 'required'=>true
             ])  
+            @include('partials.form-group',[
+                'title'=>__('Date de debut'),
+                'type'=>'date',
+                'name'=>'date_debut',
+                'required'=>true
+            ]) 
+            
         </div> 
     </div>            
       

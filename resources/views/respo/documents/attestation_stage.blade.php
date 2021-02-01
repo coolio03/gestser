@@ -8,6 +8,7 @@
       </div>
     <div class="card-body">
         <div class="row">
+            
             @include('partials.form-group-d',[
                 'title'=>__('Nom'),
                 'type'=>'text',

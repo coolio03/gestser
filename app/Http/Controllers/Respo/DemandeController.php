@@ -122,6 +122,7 @@ class DemandeController extends Controller
 
     public function redige(Request $request,Demande $demande, $downloadName = null)
     {
+        
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(storage_path("app/public/STAGE/ATTESTATION STAGE.docx"));

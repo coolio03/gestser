@@ -92,7 +92,7 @@
 <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-8">
     <!-- Brand Logo -->
     <a href=" {{ route('admin') }} " class="brand-link">
       <img src="{{asset('dist/img/cie.jpg')}}" alt="cie Logo" class="brand-image  elevation-3"

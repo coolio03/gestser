@@ -171,11 +171,10 @@ class DocumentController extends Controller
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
         $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
-        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('matricule', $request->matricule);
         $my_template->setValue('copie', $request->copie);
         $my_template->setValue('poste', $request->poste);
-        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
-        $my_template->setValue('objet',$request->objet);
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
         $filename = "DCRH IS 71 25 01 NOTE D'INFO EMBAUCHE EO M".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
@@ -200,9 +199,9 @@ class DocumentController extends Controller
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
         $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
-        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('matricule', $request->matricule);
         $my_template->setValue('direction_sc', $request->direction_sc);
-        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
         $filename = "DCRH IS 71 22 01 FICHE D'ATTRIBUTION RI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
@@ -227,14 +226,14 @@ class DocumentController extends Controller
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
         $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
-        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('matricule', $request->matricule);
         $my_template->setValue('direction_sc', $request->direction_sc);
         $my_template->setValue('copie', $request->copie);
         $my_template->setValue('poste', $request->poste);
         $my_template->setValue('delai', $request->delai);
         $my_template->setValue('unite', $request->unite);
-        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
-        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
+        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_fin)));
         $filename = "DCRH IS 71 21 01 LETTRE DE RENOUVELLEMENT PERIODE D'ESSAI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
@@ -261,11 +260,11 @@ class DocumentController extends Controller
         $my_template->setValue('direction_sc', strtoupper($request->direction_sc));
         $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
-        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('matricule', $request->matricule);
         $my_template->setValue('delai', $request->delai);
         $my_template->setValue('unite', $request->unite);
-        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
-        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
+        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_fin)));
         $my_template->setValue('direction_acceuil',$request->direction_acceuil);
         $my_template->setValue('service_acceuil',$request->service_acceuil);
         $my_template->setValue('fonction',$request->fonction);
@@ -289,7 +288,8 @@ class DocumentController extends Controller
     public function redigeContratCDI(Request $request,Demande $demande,$downloadName = null)
     {
         
-        setlocale(LC_ALL, "fr_FR.UTF-8");
+        date_default_timezone_set('Africa/Abidjan');
+        setlocale(LC_TIME, 'fr_FR.utf8','fra');
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/Contrat_CDI.docx"));
         $my_template->setValue('date_redaction',date('d/m/Y'));
@@ -306,7 +306,7 @@ class DocumentController extends Controller
         $my_template->setValue('situation_familiale', $request->situation_familiale);
         $my_template->setValue('adresse_actuelle', strtoupper($request->lieu_habitation));
         $my_template->setValue('profession', strtoupper($request->profession));
-        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('matricule', $request->matricule);
         $my_template->setValue('fonction', $request->fonction);
         $my_template->setValue('direction_acceuil',$request->direction_acceuil);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
@@ -322,6 +322,7 @@ class DocumentController extends Controller
         $filename = "DCRH IS 71 01 02 Contrat CDI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
+            
         }catch (Exception $e){
            dd($e);
         }
@@ -352,12 +353,12 @@ class DocumentController extends Controller
         $my_template->setValue('situation_matrimoniale', $request->situation_familiale);
         $my_template->setValue('lieu_habitation', strtoupper($request->lieu_habitation));
         $my_template->setValue('profession', strtoupper($request->profession));
-        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('matricule', $request->matricule);
         $my_template->setValue('fonction', $request->fonction);
         $my_template->setValue('direction_acceuil',$request->direction_acceuil);
         $my_template->setValue('chef_service',$request->chef_service);
-        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
-        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
+        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_fin)));
         $my_template->setValue('fonction',$request->fonction);
         $my_template->setValue('nationnalite',$request->nationnalite);
         $my_template->setValue('categorie',$desc->collaborateur->categorie);
@@ -388,11 +389,11 @@ class DocumentController extends Controller
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
         $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
-        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('matricule', $request->matricule);
         $my_template->setValue('direction_sc', $request->direction_sc);
         $my_template->setValue('copie', $request->copie);
         $my_template->setValue('poste', $request->poste);
-        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
         $filename = "DCRH IS 71 06 01 TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
@@ -417,14 +418,14 @@ class DocumentController extends Controller
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
         $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
-        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('matricule', $request->matricule);
         $my_template->setValue('direction_sc', $request->direction_sc);
         $my_template->setValue('destinataire', $request->destinataire);
         $my_template->setValue('fonction', $request->fonction);
         $my_template->setValue('direction_acceuil', $request->direction_acceuil);
         $my_template->setValue('copie', $request->copie);
-        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
-        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
+        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_fin)));
         $filename = "DCRH IS 71 10 01 LETTRE DE FIN DE CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
@@ -449,14 +450,14 @@ class DocumentController extends Controller
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
         $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
-        $my_template->setValue('matricule', $desc->collaborateur->matricule);
+        $my_template->setValue('matricule', $request->matricule);
         $my_template->setValue('direction', $request->direction);
         $my_template->setValue('destinataire', $request->destinataire);
         $my_template->setValue('copie', $request->copie);
         $my_template->setValue('classement_actuel', $request->classement_actuel);
         $my_template->setValue('fonction', $request->fonction);
         $my_template->setValue('code_expl', $request->code_expl);
-        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
         $my_template->setValue('date_fin_essai',strftime('%d %B %Y',strtotime($request->date_fin_essaie)));
         $filename = "DCRH IS 71 05 01 AVIS DE TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{

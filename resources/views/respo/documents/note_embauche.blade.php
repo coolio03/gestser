@@ -23,6 +23,12 @@
                 'required'=>true
             ]) 
             @include('partials.form-group',[
+                'title'=>__('Matricule'),
+                'type'=>'text',
+                'name'=>'matricule',
+                'required'=>true
+            ])
+            @include('partials.form-group',[
                 'title'=>__('Destinataire'),
                 'type'=>'text',
                 'name'=>'destinataire',
@@ -39,7 +45,13 @@
             'type'=>'text',
             'name'=>'poste',
             'required'=>true
-            ])            
+            ])    
+            @include('partials.form-group',[
+                'title'=>__('Date de Debut'),
+                'type'=>'date',
+                'name'=>'date_debut',
+                'required'=>true
+                ])          
             
 
         </div> 

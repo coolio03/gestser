@@ -23,6 +23,12 @@
                 'required'=>true
             ]) 
             @include('partials.form-group',[
+                'title'=>__('Matricule'),
+                'type'=>'text',
+                'name'=>'matricule',
+                'required'=>true
+            ])
+            @include('partials.form-group',[
                 'title'=>__('Direction S/C'),
                 'type'=>'text',
                 'name'=>'direction_sc',
@@ -86,6 +92,18 @@
                 'title'=>__('Ind. Entretient Bleu'),
                 'type'=>'text',
                 'name'=>'prime_entretien',
+                'required'=>true
+            ]) 
+            @include('partials.form-group',[
+                'title'=>__('Date de debut'),
+                'type'=>'date',
+                'name'=>'date_debut',
+                'required'=>true
+            ]) 
+            @include('partials.form-group',[
+                'title'=>__('Date de fin'),
+                'type'=>'date',
+                'name'=>'date_fin',
                 'required'=>true
             ]) 
         </div> 

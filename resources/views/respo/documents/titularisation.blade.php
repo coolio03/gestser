@@ -33,7 +33,14 @@
                 'type'=>'text',
                 'name'=>'poste',
                 'required'=>true
-            ])            
+            ])  
+            @include('partials.form-group',[
+                'title'=>__('Date de debut'),
+                'type'=>'date',
+                'name'=>'date_debut',
+                'required'=>true
+            ]) 
+                   
         </div> 
     </div>            
       

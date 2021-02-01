@@ -23,6 +23,12 @@
                 'required'=>true
             ]) 
             @include('partials.form-group',[
+                'title'=>__('Matricule'),
+                'type'=>'text',
+                'name'=>'matricule',
+                'required'=>true
+            ])
+            @include('partials.form-group',[
                 'title'=>__('Destinataire'),
                 'type'=>'text',
                 'name'=>'destinataire',
@@ -64,6 +70,18 @@
                 'name'=>'code_expl',
                 'required'=>true
             ])        
+            @include('partials.form-group',[
+                'title'=>__('Date de debut'),
+                'type'=>'date',
+                'name'=>'date_debut',
+                'required'=>true
+            ]) 
+            @include('partials.form-group',[
+                'title'=>__('Date de fin Essaie'),
+                'type'=>'date',
+                'name'=>'date_fin_essaie',
+                'required'=>true
+            ]) 
         </div> 
     </div>            
       
