@@ -27,7 +27,20 @@
                 'type'=>'text',
                 'name'=>'direction_sc',
                 'required'=>true
-            ])  
+            ]) 
+            
+            @include('partials.form-group',[
+                'title'=>__('Direction Acceuil'),
+                'type'=>'text',
+                'name'=>'direction_acceuil',
+                'required'=>true
+            ])
+            @include('partials.form-group',[
+                'title'=>__('Fonction '),
+                'type'=>'text',
+                'name'=>'fonction',
+                'required'=>true
+            ])
             @include('partials.form-group',[
                 'title'=>__('Destinataire'),
                 'type'=>'text',

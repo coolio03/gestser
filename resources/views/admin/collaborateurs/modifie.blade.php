@@ -90,12 +90,14 @@
                       'title'=>__("Numero d'Identite"),
                       'type'=>'text',
                       'name'=>'numero_identite',
+                      'value'=>$collaborateur->numero_identite,
                       'required'=>true
                     ])
                     @include('partials.form-group',[
                       'title'=>__("Numero CNPS"),
                       'type'=>'text',
                       'name'=>'numero_cnps',
+                      'value'=>$collaborateur->numero_cnps,
                       'required'=>false
                     ])
                     @include('partials.form-group',[
