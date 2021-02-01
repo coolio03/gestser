@@ -54,7 +54,7 @@
                                 @endif 
                             </td>
                             <td>
-                                {{$delai = Carbon\Carbon::parse($date_remise_ra)->diffForHumans(Carbon\Carbon::parse($date_traitement)}}
+                                {{$delai = Carbon\Carbon::parse($date_remise_ra)->diffForHumans(Carbon\Carbon::parse($date_traitement))}}
                             </td>
                             <td  @if ($dde->date_traitement == null))
                                 style="background-color: silver"
