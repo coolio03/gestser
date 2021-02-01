@@ -143,18 +143,18 @@ class AdminController extends Controller
     }*/
     $traitement = Charts::create('pie', 'highcharts')
         ->title('Traitement des demandes')
-        ->labels(['Non Traitées', 'Traitées'])
-        ->values([Demande::whereNull('date_traitement')->count(),Demande::whereNotNull('date_traitement')->count() ])
+        ->labels(['Traitées','Non Traitées'])
+        ->values([Demande::whereNotNull('date_traitement')->count(), Demande::whereNull('date_traitement')->count()])
         ->responsive(true);
     $signature = Charts::create('pie', 'highcharts')
         ->title('Signature des demandes')
-        ->labels(['En visa', 'Signe'])
-        ->values( [Demande::where('visa',false)->whereNotNull('date_traitement')->count(), Demande::where('visa', true)->whereNotNull('date_traitement')->count()])
+        ->labels(['Signe','En visa'])
+        ->values( [Demande::where('visa', true)->whereNotNull('date_traitement')->count(), Demande::where('visa',false)->whereNotNull('date_traitement')->count()])
         ->responsive(true);
     $cloture = Charts::create('pie', 'highcharts')
         ->title('Cloture des demandes')
-        ->labels(['Non cloture', 'Cloture'])
-        ->values([Demande::whereNull('date_cloture')->where('visa',true)->count(), Demande::whereNotNull('date_cloture')->where('visa',true)->count()])
+        ->labels(['Cloture','Non cloture'])
+        ->values([Demande::whereNotNull('date_cloture')->where('visa',true)->count(), Demande::whereNull('date_cloture')->where('visa',true)->count()])
         ->responsive(true);
      $transmission = Charts::create('pie', 'highcharts')
         ->title('Transmission des demandes')
@@ -163,18 +163,18 @@ class AdminController extends Controller
         ->responsive(true);
     $saisie = Charts::create('pie', 'highcharts')
         ->title('Saisie des demandes')
-        ->labels(['Non Saisie', 'Saisie'])
-        ->values([Demande::whereNull('date_saisir_hr')->whereNotNull('date_cloture')->count(), Demande::whereNotNull('date_saisir_hr')->whereNotNull('date_cloture')->count()])
+        ->labels(['Saisie','Non Saisie'])
+        ->values([Demande::whereNotNull('date_saisir_hr')->whereNotNull('date_cloture')->count(), Demande::whereNull('date_saisir_hr')->whereNotNull('date_cloture')->count()])
         ->responsive(true);   
     $archive = Charts::create('pie', 'highcharts')
         ->title('Archivage des demandes')
-        ->labels(['Non Archives', 'Archives'])
-        ->values([Demande::whereNull('date_archive')->whereNotNull('date_cloture')->count(), Demande::whereNotNull('date_archive')->whereNotNull('date_cloture')->count()])
+        ->labels(['Archives', 'Non Archives'])
+        ->values([Demande::whereNotNull('date_archive')->whereNotNull('date_cloture')->count(), Demande::whereNull('date_archive')->whereNotNull('date_cloture')->count()])
         ->responsive(true);
     $complet = Charts::create('pie', 'highcharts')
         ->title('Completude des demandes')
-        ->labels(['Non Complet', 'Complet'])
-        ->values([Demande::where('status',false)->count(), Demande::where('status',true)->count()])
+        ->labels(['Complet','Non Complet'])
+        ->values([Demande::where('status',true)->count(), Demande::where('status',false)->count()])
         ->responsive(true);
     $ddeRa = Charts::create('bar', 'highcharts')
         ->title('Demandes par responsables')
