@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Blade;
 use Illuminate\Pagination\Paginator;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
     
-       
+       Carbon::setLocale(config('app.locale'));
         Schema::defaultStringLength(191);
     }
 
