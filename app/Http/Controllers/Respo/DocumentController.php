@@ -98,7 +98,7 @@ class DocumentController extends Controller
     }
     public function redige(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_ALL, "fr_FR.UTF-8");
+        setlocale(LC_TIME, 'French');
         $desc = Demande::find($demande->id);   
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
