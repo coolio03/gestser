@@ -159,17 +159,17 @@ class AdminController extends Controller
      $transmission = Charts::create('pie', 'highcharts')
         ->title('Transmission des demandes')
         ->labels(['Non Transmis', 'Transmis'])
-        ->values([Demande::whereNull('date_transmission')->whereNotNull('date_cloture')->count(), Demande::whereNotNull('date_transmission')->whereNotNull('date_cloture')->count()])
+        ->values([Demande::whereNull('date_transmission')->where('visa',true)->count(), Demande::whereNotNull('date_transmission')->where('visa',true)->count()])
         ->responsive(true);
     $saisie = Charts::create('pie', 'highcharts')
         ->title('Saisie des demandes')
         ->labels(['Non Saisie', 'Saisie'])
-        ->values([Demande::whereNull('date_saisir_hr')->whereNotNull('date_cloture')->count(), Demande::whereNotNull('date_saisir_hr')->whereNotNull('date_cloture')->count()])
+        ->values([Demande::whereNull('date_saisir_hr')->where('visa',true)->count(), Demande::whereNotNull('date_saisir_hr')->where('visa',true)->count()])
         ->responsive(true);   
     $archive = Charts::create('pie', 'highcharts')
         ->title('Archivage des demandes')
         ->labels(['Non Archives', 'Archives'])
-        ->values([Demande::whereNull('date_archive')->whereNotNull('date_cloture')->count(), Demande::whereNotNull('date_archive')->whereNotNull('date_cloture')->count()])
+        ->values([Demande::whereNull('date_archive')->where('visa',true)->count(), Demande::whereNotNull('date_archive')->where('visa',true)->count()])
         ->responsive(true);
     $complet = Charts::create('pie', 'highcharts')
         ->title('Completude des demandes')
