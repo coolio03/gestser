@@ -114,7 +114,8 @@
                                     <a href="  {{route('affectation', $dde->id)}} "  class="btn btn-success" title="Affectation de la demande de {{$dde->collaborateur->nom.' '. $dde->collaborateur->prenoms}}"> <i class="nav-icon fas fa-angle-right"></i></a>     
                                 @endif
                                 &nbsp; <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-danger"  title="Supprimer la demande de {{$dde->type}}"><i class="nav-icon fas fa-trash"></i></a>
-                                <form action="{{route('admin.demandes.destroy', $dde->id)}}" method="POST">
+                                <form action="{{route('admin.
+                                s.destroy', $dde->id)}}" method="POST">
                                     @method('DELETE')
                                     <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
                                 </form>
@@ -148,7 +149,7 @@
                                                         'title'=>__('Date reception'),
                                                         'type'=>'date',
                                                         'name'=>'date_reception',
-                                                        'value'=>$demande->date_reception,
+                                                        'value'=>$dde->date_reception,
                                                         'required'=>false
                                                     ])
                                                 @endif
