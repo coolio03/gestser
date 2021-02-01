@@ -445,9 +445,11 @@ class DocumentController extends Controller
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
         $my_template->setValue('matricule', $desc->collaborateur->matricule);
         $my_template->setValue('direction', $request->direction);
+        $my_template->setValue('destinataire', $request->destinataire);
         $my_template->setValue('copie', $request->copie);
         $my_template->setValue('classement_actuel', $request->classement_actuel);
-        $my_template->setValue('fonction', $request->classement);
+        $my_template->setValue('fonction', $request->fonction);
+        $my_template->setValue('code_expl', $request->code_expl);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $my_template->setValue('date_fin_essai',strftime('%d %B %Y',strtotime($request->date_fin_essaie)));
         $filename = "DCRH IS 71 05 01 AVIS DE TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
