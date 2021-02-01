@@ -49,6 +49,11 @@ class DemandeController extends Controller
         $arr['demandes'] = Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_traitement')->whereNotNull('date_remise_ra')->whereNull('date_saisir_hr')->latest()->paginate(5);
         return view('respo.demandes.liste')->with($arr);
     }
+    public function signalTraiter(Demande $demande)
+    {
+        $arr['demande'] = Demande::findOrFail($demande->id);
+        return view('respo.demandes.signal_traiter')->with($arr);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -59,6 +64,8 @@ class DemandeController extends Controller
     {
         //
     }
+    
+   
 
     public function traiter(Request $request, Demande $demande)
     {
@@ -67,11 +74,6 @@ class DemandeController extends Controller
        return back();
     }
 
-    public function signalTraiter(Demande $demande)
-    {
-        $arr['demande'] = Demande::findOrFail($demande->id);
-        return view('respo.demandes.signal_traiter')->with($arr);
-    }
 
     public function suivieSaisie(Request $request, Demande $demande)
     {
