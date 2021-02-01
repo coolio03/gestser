@@ -12,7 +12,6 @@ use App\Models\Demande;
 use app\Models\Cadre;
 use app\Models\Document;
 use Auth;
-use Carbon\Carbon;
 
 class DocumentController extends Controller
 {
@@ -99,10 +98,11 @@ class DocumentController extends Controller
     }
     public function redige(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fr_FR');
+        date_default_timezone_set('Africa/Abidjan');
+        setlocale(LC_TIME, 'fr_FR.utf8','fra');
         $desc = Demande::find($demande->id);   
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
-        $my_template->setValue('date_redaction',now()->formatLocalized('%d %F %Y'));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
