@@ -54,7 +54,7 @@
                                 @endif 
                             </td>
                             <td>
-                                {{$delai = (new DateTime($dde->date_remise_ra))->diff(new DateTime($dde->date_traitement))}}
+                                {{$delai = Carbon\Carbon::parse($dde->date_remise_ra)->diffInDays(Carbon\Carbon::parse($ddate_traitement))}}
                             </td>
                             <td  @if ($dde->date_traitement == null))
                                 style="background-color: silver"
