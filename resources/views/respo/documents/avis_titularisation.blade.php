@@ -36,7 +36,7 @@
             ])
             @include('partials.form-group',[
                 'title'=>__('Date fin Essaie'),
-                'type'=>'text',
+                'type'=>'date',
                 'name'=>'date_fin_essai',
                 'required'=>true
             ])   

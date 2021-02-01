@@ -62,7 +62,7 @@ class DemandeController extends Controller
     {
         $arr['demandes'] = Demande::whereNull('date_traitement')->latest()->paginate(5);
         $arr['users'] = User::all();
-        return view('admin.demandes.non_traite')->with($arr);
+        return view('admin.demandes.traite')->with($arr);
 
     }
 

@@ -110,7 +110,7 @@
     ])
     <div class="form-group">
         <label>Textarea</label>
-        <textarea name="observation" class="form-control" rows="3"  disabled></textarea>
+        <textarea name="observation" class="form-control col-6" rows="3"  disabled></textarea>
       </div>
     </div>
     </div>

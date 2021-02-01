@@ -78,7 +78,7 @@
                 'required'=>true
             ]) 
             @include('partials.form-group',[
-                'title'=>__("Chef acceude Service"),
+                'title'=>__("Chef de Service"),
                 'type'=>'text',
                 'name'=>'chef_service',
                 'required'=>true

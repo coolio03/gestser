@@ -416,6 +416,8 @@ class DocumentController extends Controller
         $my_template->setValue('matricule', $desc->collaborateur->matricule);
         $my_template->setValue('direction_sc', $request->direction_sc);
         $my_template->setValue('destinataire', $request->destinataire);
+        $my_template->setValue('fonction', $request->fonction);
+        $my_template->setValue('direction_acceuil', $request->direction_acceuil);
         $my_template->setValue('copie', $request->copie);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
