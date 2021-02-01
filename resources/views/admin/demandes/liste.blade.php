@@ -82,12 +82,12 @@
                                     {{$dde->user->name}}
                                 @endif
                             </td>
-                            <td @if ($dde->statut == false)
+                            <td @if ($dde->status == false)
                                 style="background-color: silver"
                             @else
                                 style="background-color: lime"
                             @endif> 
-                                @if ($dde->statut == false)
+                                @if ($dde->status == false)
                                     En Cours
                                 @else 
                                     Validé

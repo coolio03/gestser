@@ -65,13 +65,16 @@
                         ])
                     @endif
                     @if ($demande->type != "STAGE IMMERSION" and $demande->type != "STAGE QUALIFICATION")
-                        @include('partials.form-group',[
+                        @if (!isset($demande->date_visa_dcrh))
+                            @include('partials.form-group',[
                             'title'=>__('Date de Visa DCRH'),
                             'type'=>'date',
                             'name'=>'date_visa_dcrh',
                             'value' => $demande->date_visa_dcrh,
                             'required'=>true
                         ])
+                        @endif
+                        @if (!isset($demande->date_visa_sg))
                         @include('partials.form-group',[
                             'title'=>__('Date de Visa SG'),
                             'type'=>'date',
@@ -79,7 +82,10 @@
                             'value' => $demande->date_visa_sg,
                             'required'=>true
                         ])
+                        @endif
+                        
                         @if ($demande->type != "PROROGATION")
+                            @if (!isset($demande->date_visa_dg))
                             @include('partials.form-group',[
                                 'title'=>__('Date de Visa DG'),
                                 'type'=>'date',
@@ -87,6 +93,7 @@
                                 'value' => $demande->date_visa_dg,
                                 'required'=>true
                             ])
+                            @endif
                         @endif
                        
                     @endif
