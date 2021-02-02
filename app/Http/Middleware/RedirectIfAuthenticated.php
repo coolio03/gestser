@@ -26,7 +26,7 @@ class RedirectIfAuthenticated
 
 
 
-        if (Auth::guard($guard)->check()) {
+        if (Auth::guard($guard)->check() && Auth::user()->role == 1) {
             return redirect()->route('home');
         }
 
