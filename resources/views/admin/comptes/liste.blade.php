@@ -47,7 +47,7 @@
         
         <div class="card-body"> 
             <p>
-                <a href=" {{route('admin.demandes.create')}} " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter une demande</a>
+                <a href=" {{route('admin.comptes.create')}} " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter un compte</a>
             </p>
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -77,7 +77,37 @@
                 <tr><td colspan="12"> Pas de comptes trouves</td></tr>
                 @endif
             </table>
-            {{$demandes->render("pagination::bootstrap-4")}}
+            {{$users->render("pagination::bootstrap-4")}}
+
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <h2>Liste des Comptes de Cadre Emploi</h2>
+                </thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom et prenoms</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr {{$i=1}}>
+                @if (count($cadres) )
+                    @foreach ($cadres as $cadre)
+                       
+                        <tr>              
+                            <td> {{$i++}} </td>
+                            <td> {{$cadre->name}} </td>
+                            <td> {{$cadre->email}}</td>
+                            <td>
+                               
+                            </td>
+                           
+                        </tr>
+                    
+                    @endforeach 
+                @else
+                <tr><td colspan="12"> Pas de comptes trouves</td></tr>
+                @endif
+            </table>
+            {{$cadres->render("pagination::bootstrap-4")}}
 
         </div>
         </div> 

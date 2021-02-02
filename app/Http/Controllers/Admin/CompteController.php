@@ -8,6 +8,7 @@ use App\Models\Demande;
 use App\Models\Collaborateur;
 use App\Models\Admin;
 use App\Models\User;
+use App\Models\Cadre;
 
 class CompteController extends Controller
 {
@@ -20,6 +21,7 @@ class CompteController extends Controller
     {
         $arr['admins'] = Admin::all();
         $arr['users'] = User::all();
+        $arr['cadres'] = Cadre::all();
         return view('admin.comptes.liste')->with($arr);
     }
 
