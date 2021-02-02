@@ -77,7 +77,6 @@
                 <tr><td colspan="12"> Pas de comptes trouves</td></tr>
                 @endif
             </table>
-            {{$users->render("pagination::bootstrap-4")}}
 
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -107,7 +106,7 @@
                 <tr><td colspan="12"> Pas de comptes trouves</td></tr>
                 @endif
             </table>
-            {{$cadres->render("pagination::bootstrap-4")}}
+            
 
         </div>
         </div> 
