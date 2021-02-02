@@ -20,7 +20,7 @@ Route::get('/register/cadre', 'Auth\RegisterController@showCadreRegisterForm')->
 //LoginController
 Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin_login');
 Route::post('/login/cadre', 'Auth\LoginController@cadreLogin')->name('cadre_login');
-Route::post('/login/cadre', 'Auth\LoginController@cadreLogin')->name('cadre_login');
+
 
 //RegisterController
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin')->name('admin_register');
