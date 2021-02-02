@@ -12,22 +12,19 @@ Auth::routes();
 //LoginController
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('admin_login');
 Route::get('/login/cadre', 'Auth\LoginController@showCadreLoginForm')->name('cadre_login');
-Route::get('/login', 'Auth\LoginController@showUserLoginForm')->name('user_login');
 
 //RegisterController
 Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm')->name('admin_register');
 Route::get('/register/cadre', 'Auth\RegisterController@showCadreRegisterForm')->name('cadre_register');
-Route::get('/register/user', 'Auth\RegisterController@showCadreRegisterForm')->name('user_register');
 
 //LoginController
 Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin_login');
 Route::post('/login/cadre', 'Auth\LoginController@cadreLogin')->name('cadre_login');
-Route::post('/login', 'Auth\LoginController@userLogin')->name('user_login');
+Route::post('/login/cadre', 'Auth\LoginController@cadreLogin')->name('cadre_login');
 
 //RegisterController
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin')->name('admin_register');
 Route::post('/register/cadre', 'Auth\RegisterController@createCadre')->name('cadre_register');
-Route::post('/register', 'Auth\RegisterController@createUser')->name('user_register');
 
 //**********************FIN AUTENTIFICATION**************************** */
 

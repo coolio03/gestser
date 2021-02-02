@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = '/home';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -41,28 +41,11 @@ class LoginController extends Controller
         $this->middleware('guest:admin')->except('logout');
         $this->middleware('guest:cadre')->except('logout');
     }
-//User
-    public function showuUserLoginForm()
-    {
-        return view('auth.login');
-    }
-    public function userLogin(Request $request)
-    {
-        $this->validate($request,[
-            'email' => 'required|email',
-            'password' => 'required|min:6'
-        ]);
-        if(Auth::guard()->attempt(['email' => $request->email, 'password' => $request->password,'role'=>1], $request->get('remember'))){
-            return redirect()->intended('/');
-        }
-        return back()->withInput($request->only('email','remember'));
-    }
 // Admin
     public function showAdminLoginForm()
     {
         return view('auth.login', ['url'=>'admin']);
     }
-   
     public function adminLogin(Request $request)
     {
         $this->validate($request,[

@@ -74,7 +74,7 @@
              <div class="top-right links">
                 <a href="{{route('admin_login')}}">Chef de Service</a>
                 <a href="{{route('cadre_login')}}">Cadre Emploi</a>
-                <a href="{{route('user_login')}}">Responsable Adm</a>
+                <a href="{{route('login')}}">Responsable Adm</a>
             </div>
 
             @endauth
