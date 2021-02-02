@@ -67,8 +67,7 @@
                             <td> {{$user->name}} </td>
                             <td> {{$user->email}}</td>
                             <td>
-                                      
-                                      <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                                
                             </td>
                            
                         </tr>
@@ -97,7 +96,8 @@
                             <td> {{$cadre->name}} </td>
                             <td> {{$cadre->email}}</td>
                             <td>
-                                <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                                <input data-id="{{$cadre->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
+                                data-toggle="toggle" data-on="Active" data-off="InActive" {{ $cadre->role == true ? 'checked' : '' }}>    
                             </td>
                            
                         </tr>
@@ -120,11 +120,23 @@
 @push('scripts')
 <script src="{{asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
 <script>
-    $(function () {
-        $("input[data-bootstrap-switch]").each(function(){
-            $(this).bootstrapSwitch('state', $(this).prop('checked'));
-        });
-    }
-</script>
+    $(function() {
+      $('.toggle-class').change(function() {
+          var role = $(this).prop('checked') == true ? 1 : 0; 
+          var cadre_id = $(this).data('id'); 
+           
+          $.ajax({
+              type: "GET",
+              dataType: "json",
+              url: '/updateStatus',
+              data: {'role': role, 'id': cadre_id},
+              success: function(data){
+                console.log(data.success)
+              }
+          });
+      })
+    })
+  </script>
+  
 
 @endpush
