@@ -42,6 +42,12 @@ class HomeController extends Controller
         ->values([Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_saisir_hr')->count() ,Demande::where('responsable_id',Auth::user()->id)->whereNull('date_saisir_hr')->count()])
         ->responsive(true);
 
-        return view('respo.index',['traitement'=>$traitement, 'saisie'=>$saisie]);
+        $archive = Charts::create('pie', 'highcharts')
+        ->title('Saisie des demandes dans Hr')
+        ->labels([ 'Archive','Non Archive'])
+        ->values([Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_archive')->count() ,Demande::where('responsable_id',Auth::user()->id)->whereNull('date_archive')->count()])
+        ->responsive(true);
+
+        return view('respo.index',['traitement'=>$traitement, 'saisie'=>$saisie, 'archive'=>$archive]);
     }
 }

@@ -34,10 +34,18 @@
                     </div>
                 </div>
               </div>
+              <div class="col-6">
+                <div class="card rounded">
+                    <div class="card-body py-6 px-6">
+                      {!! $archive->html() !!} 
+                    </div>
+                </div>
+              </div>
         </div>
     </div>
 </section>
 {!! Charts::scripts() !!}
 {!! $traitement->script() !!}
 {!! $saisie->script() !!}
+{!! $archive->script() !!}
 @endsection
