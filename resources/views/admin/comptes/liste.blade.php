@@ -67,7 +67,7 @@
                             <td> {{$user->name}} </td>
                             <td> {{$user->email}}</td>
                             <td>
-                               
+                                <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
                             </td>
                            
                         </tr>
@@ -96,7 +96,7 @@
                             <td> {{$cadre->name}} </td>
                             <td> {{$cadre->email}}</td>
                             <td>
-                               
+                                <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
                             </td>
                            
                         </tr>
