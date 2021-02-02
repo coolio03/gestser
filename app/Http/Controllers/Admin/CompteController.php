@@ -83,7 +83,7 @@ class CompteController extends Controller
     public function updateStatusUser(Request $request)
     {
         $user = User::find($request->id);
-        $member->status = $request->status;
+        $user->status = $request->status;
         $member->save();
   
         return response()->json(['success'=>'Status change successfully.']);
