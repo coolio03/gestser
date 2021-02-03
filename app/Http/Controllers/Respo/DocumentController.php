@@ -338,6 +338,7 @@ class DocumentController extends Controller
         
         setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/CONTRAT_CDD.docx"));
         $my_template->setValue('date_redaction',date('d/m/Y'));
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
@@ -366,7 +367,9 @@ class DocumentController extends Controller
         $my_template->setValue('salaire_mensuelle',$request->salaire_mensuelle);
         $my_template->setValue('prime_transport',$request->prime_transport);
         $filename = "DCRH IS 71 09 02 CONTRAT CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $collaborateur->matricule = $request->matricule;
         try{
+            $collaborateur->update();
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
@@ -439,7 +442,7 @@ class DocumentController extends Controller
         
     }
 
-    public function redigeAvisTitularisation(Request $request,Demande $demande,$downloadName = null)
+    public function redigeAvisTitularisation(Request $request,Demande $demande,Collaborateur $collaborateur,$downloadName = null)
     {
         setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
@@ -462,6 +465,7 @@ class DocumentController extends Controller
         $filename = "DCRH IS 71 05 01 AVIS DE TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
+           
         }catch (Exception $e){
            dd($e);
         }
