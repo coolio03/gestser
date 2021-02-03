@@ -176,13 +176,16 @@ class AdminController extends Controller
         ->labels(['Complet','Non Complet'])
         ->values([Demande::where('status',true)->count(), Demande::where('status',false)->count()])
         ->responsive(true);
-    $ddeRa = Charts::create('bar', 'highcharts')
+    $ddeRa = Charts::multi('bar', 'highcharts')
         ->title('Demandes par responsables')
         ->labels(['Attoh Solange','kouakou Assawa','Kone Belle','Kone Erica','Bah Lucas'])
-        ->values([Demande::where('responsable_id',1)->where('date_traitement','!=',null)->count(),Demande::where('responsable_id',2)->where('date_traitement','!=',null)->count(),Demande::where('responsable_id',3)->where('date_traitement','!=',null)->count(),
+        ->dataset('Dossiers Remis',[Demande::where('responsable_id',1)->where('date_remise_ra','!=',null)->count(),Demande::where('responsable_id',2)->where('date_remise_ra','!=',null)->count(),Demande::where('responsable_id',3)->where('date_remise_ra','!=',null)->count(),
+        Demande::where('responsable_id',4)->where('date_remise_ra','!=',null)->count(),Demande::where('responsable_id',5)->where('date_remise_ra','!=',null)->count()])
+        ->dataset('Dossiers Traites',[Demande::where('responsable_id',1)->where('date_traitement','!=',null)->count(),Demande::where('responsable_id',2)->where('date_traitement','!=',null)->count(),Demande::where('responsable_id',3)->where('date_traitement','!=',null)->count(),
         Demande::where('responsable_id',4)->where('date_traitement','!=',null)->count(),Demande::where('responsable_id',5)->where('date_traitement','!=',null)->count()])
+        ->dataset('Dossiers Saisie',[Demande::where('responsable_id',1)->where('date_saisir_hr','!=',null)->count(),Demande::where('responsable_id',2)->where('date_saisir_hr','!=',null)->count(),Demande::where('responsable_id',3)->where('date_saisir_hr','!=',null)->count(),
+        Demande::where('responsable_id',4)->where('date_saisir_hr','!=',null)->count(),Demande::where('responsable_id',5)->where('date_saisir_hr','!=',null)->count()])
         ->dimensions(1000,500)
-        ->elementLabel('Nombre de dossiers')
         ->responsive(true);
     $arr['demandes'] = Demande::all();
     $arr['collaborateurs'] = Collaborateur::all();
