@@ -75,7 +75,7 @@ class DocumentController extends Controller
         $arr['demande'] = Demande::findOrFail($demande->id);
         return view('respo.documents.avis_titularisation')->with($arr);
     }
-    public function contratCDD(Demande $demande,Collaborateur $collaborateur)
+    public function contratCDD(Demande $demande)
     {
         $arr['demande'] = Demande::findOrFail($demande->id);
         $arr['collaborateur'] = Collaborateur::where('id',$demande->collaborateur_id)->get();
