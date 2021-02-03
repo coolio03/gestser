@@ -202,7 +202,7 @@ class DocumentController extends Controller
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
         $my_template->setValue('matricule', $request->matricule);
         $my_template->setValue('direction_sc', $request->direction_sc);
-        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
+        $my_template->setValue('date_debut',strftime('%d %B %Y',$request->date_debut));
         $filename = "DCRH IS 71 22 01 FICHE D'ATTRIBUTION RI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
