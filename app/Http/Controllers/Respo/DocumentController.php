@@ -102,7 +102,7 @@ class DocumentController extends Controller
         setlocale(LC_TIME, config('app.locale'));
         $desc = Demande::find($demande->id);   
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
-        $my_template->setValue('date_redaction',Carbon::setLocale('fr')->now()->format('j F Y'));
+        $my_template->setValue('date_redaction',Carbon\Carbon::setLocale('fr')->now()->format('j F Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
