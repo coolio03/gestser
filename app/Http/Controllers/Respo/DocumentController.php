@@ -369,14 +369,13 @@ class DocumentController extends Controller
         $filename = "DCRH IS 71 09 02 CONTRAT CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         $collaborateur->matricule = $request->matricule;
         try{
-            $collaborateur->update();
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
         }
         $downloadName = $downloadName??$filename;
-       
-       
+
+        $collaborateur->update();
         return response()->download(public_path("$filename.docx"));
         
     }
