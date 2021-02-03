@@ -26,29 +26,29 @@
     <div class="container-fluid">
     
       <div class="row">
-        <div>
+        <div class="col-3">
           <div class="card ">
-              <div class="card-body py-3 px-3">
+              <div class="card-body py-6 px-6">
                 {!! $traitement->html() !!}
               </div>
           </div>
         </div>
-        <div>
+        <div class="col-3">
           <div class="card rounded">
-              <div class="card-body py-3 px-3">
+              <div class="card-body py-6 px-6">
                 {!! $signature->html() !!}
               </div>
           </div>
         </div>
-        <div>
+        <div class="col-3">
           <div class="card rounded">
-              <div class="card-body py-3 px-3">
+              <div class="card-body py-6 px-6">
                 {!! $cloture->html() !!}
               </div>
           </div>
         </div>
         
-        <div >
+        <div class="col-3" >
           <div class="card rounded">
               <div class="card-header">
                 <h3 style="text-align: center">Bilan Du Suivies</h2>
@@ -56,7 +56,7 @@
               <div class="card-body py-3 px-3">
                     <div></div>
                     <div> <h6>Traitements</h6></div>
-                    <div >
+                    <div style="margin-left: 5%">
                       <div>
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Demandes Enregistrées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes)}}</span>
                       </div>
@@ -68,7 +68,7 @@
                       </div>
                     </div>
                     <div> <h6>Circuit de signature</h6></div>
-                    <div >
+                    <div style="margin-left: 5%">
                       <div>
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('visa')}}">Demandes En visa :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<span>{{count($demandes->where('visa',false)->where('date_traitement','<>',Null))}}</span>
                       </div>
@@ -77,7 +77,7 @@
                       </div>
                     </div>
                     <div> <h6>Validation de demandes</h6></div>
-                    <div >
+                    <div style="margin-left: 5%">
                       
                       <div>
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_cloture')}} ">Demandes non Cloturées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('visa',True)->where('date_cloture','=',Null))}}</span> 
@@ -105,30 +105,30 @@
       </div>
       <!-- /.row (main row) -->
       <div class="row">
-        <div>
+        <div class="col-3">
           <div class="card rounded">
-              <div class="card-body py-3 px-3">
+              <div class="card-body py-6 px-6">
                 {!! $transmission->html() !!}
               </div>
           </div>
         </div>
-        <div>
+        <div class="col-3">
           <div class="card rounded">
-              <div class="card-body py-3 px-3">
+              <div class="card-body py-6 px-6">
                 {!! $saisie->html() !!} 
               </div>
           </div>
         </div>
-        <div>
+        <div class="col-3">
           <div class="card rounded">
-              <div class="card-body py-3 px-3" >
+              <div class="card-body py-6 px-6" >
                 {!! $archive->html() !!}
               </div>
           </div>
         </div>
-        <div>
+        <div class="col-3">
           <div class="card rounded">
-              <div class="card-body py-3 px-3">
+              <div class="card-body py-6 px-6">
                 {!! $complet->html() !!}
               </div>
           </div>
@@ -137,7 +137,7 @@
       <div class="row">
         <div class="col-12">
           <div class="card rounded">
-              <div class="card-body py-3 px-3">
+              <div class="card-body py-6 px-6">
                 {!! $ddeRa->html() !!}
               </div>
           </div>
