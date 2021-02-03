@@ -51,11 +51,11 @@
         <div class="col-3" >
           <div class="card rounded">
               <div class="card-header">
-                <h3 style="text-align: center">Bilan Du Suivies</h2>
+                <h4 style="text-align: center">Bilan Du Suivies</h4>
               </div>
               <div class="card-body py-3 px-3">
                     <div></div>
-                    <div> <h6>Traitements</h6></div>
+                    <div> <h6>Traitements</h6></div> 
                     <div style="margin-left: 5%">
                       <div>
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Enregistrées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes)}}</span>
@@ -93,10 +93,10 @@
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_archive')}} ">Non Archivées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('date_archive','=',Null)->where('visa',true))}}</span> 
                       </div>
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('complet')}} ">Complets :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('status',true))}}</span> 
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('complet')}} ">Complets :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('status',true))}}</span> 
                       </div>
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_complet')}} ">Non Complets :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('status',false))}}</span> 
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_complet')}} ">Non Complets :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('status',false))}}</span> 
                       </div>
                     </div>
               </div>

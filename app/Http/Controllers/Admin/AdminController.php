@@ -186,7 +186,8 @@ class AdminController extends Controller
         ->dataset('Dossiers Saisie',[Demande::where('responsable_id',1)->where('date_saisir_hr','!=',null)->count(),Demande::where('responsable_id',2)->where('date_saisir_hr','!=',null)->count(),Demande::where('responsable_id',3)->where('date_saisir_hr','!=',null)->count(),
         Demande::where('responsable_id',4)->where('date_saisir_hr','!=',null)->count(),Demande::where('responsable_id',5)->where('date_saisir_hr','!=',null)->count()])
         ->dimensions(1000,500)
-        ->responsive(true);
+        ->responsive(true)
+        ->elementLabel('Nombre de dossiers');
     $arr['demandes'] = Demande::all();
     $arr['collaborateurs'] = Collaborateur::all();
     return view('admin.index',['traitement'=>$traitement,'signature'=>$signature,'cloture'=>$cloture,'transmission'=>$transmission,'saisie'=>$saisie,
