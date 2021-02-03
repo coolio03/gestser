@@ -333,7 +333,7 @@ class DocumentController extends Controller
         
     }
 
-    public function redigeContratCDD(Request $request,Demande $demande,$downloadName = null)
+    public function redigeContratCDD(Request $request,Demande $demande,Collaborateur $collaborateur,$downloadName = null)
     {
         
         setlocale(LC_ALL, "fr_FR.UTF-8");
