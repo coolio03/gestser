@@ -191,7 +191,7 @@ class DocumentController extends Controller
 
     public function redigeReglementInterieur(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_ALL, "fr_FR");
+        setlocale(LC_ALL, config('app.locale'));
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/FICHE_ATTRIBUTION_Attribution_Règlement_Intérieur.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
