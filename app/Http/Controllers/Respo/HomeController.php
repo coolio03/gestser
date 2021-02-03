@@ -43,7 +43,7 @@ class HomeController extends Controller
         ->responsive(true);
 
         $archive = Charts::create('pie', 'highcharts')
-        ->title('Saisie des demandes dans Hr')
+        ->title('ARchivage des demandes')
         ->labels([ 'Archive','Non Archive'])
         ->values([Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_archive')->count() ,Demande::where('responsable_id',Auth::user()->id)->whereNull('date_archive')->count()])
         ->responsive(true);
