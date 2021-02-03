@@ -26,21 +26,21 @@
     <div class="container-fluid">
     
       <div class="row">
-        <div class="col-sm-3">
+        <div>
           <div class="card ">
               <div class="card-body py-3 px-3">
                 {!! $traitement->html() !!}
               </div>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div>
           <div class="card rounded">
               <div class="card-body py-3 px-3">
                 {!! $signature->html() !!}
               </div>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div>
           <div class="card rounded">
               <div class="card-body py-3 px-3">
                 {!! $cloture->html() !!}
@@ -48,7 +48,7 @@
           </div>
         </div>
         
-        <div class="col-sm-3" >
+        <div >
           <div class="card rounded">
               <div class="card-header">
                 <h3 style="text-align: center">Bilan Du Suivies</h2>
@@ -56,7 +56,7 @@
               <div class="card-body py-3 px-3">
                     <div></div>
                     <div> <h6>Traitements</h6></div>
-                    <div style="margin-left: 5%">
+                    <div>
                       <div>
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Demandes Enregistrées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes)}}</span>
                       </div>
@@ -105,28 +105,28 @@
       </div>
       <!-- /.row (main row) -->
       <div class="row">
-        <div class="col-sm-3">
+        <div>
           <div class="card rounded">
               <div class="card-body py-3 px-3">
                 {!! $transmission->html() !!}
               </div>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div>
           <div class="card rounded">
               <div class="card-body py-3 px-3">
                 {!! $saisie->html() !!} 
               </div>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div>
           <div class="card rounded">
               <div class="card-body py-3 px-3" >
                 {!! $archive->html() !!}
               </div>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div>
           <div class="card rounded">
               <div class="card-body py-3 px-3">
                 {!! $complet->html() !!}
