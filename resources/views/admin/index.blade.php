@@ -56,7 +56,7 @@
               <div class="card-body py-3 px-3">
                     <div></div>
                     <div> <h6>Traitements</h6></div>
-                    <div>
+                    <div >
                       <div>
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Demandes Enregistrées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes)}}</span>
                       </div>
@@ -68,7 +68,7 @@
                       </div>
                     </div>
                     <div> <h6>Circuit de signature</h6></div>
-                    <div style="margin-left: 5%">
+                    <div >
                       <div>
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('visa')}}">Demandes En visa :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<span>{{count($demandes->where('visa',false)->where('date_traitement','<>',Null))}}</span>
                       </div>
@@ -77,7 +77,7 @@
                       </div>
                     </div>
                     <div> <h6>Validation de demandes</h6></div>
-                    <div style="margin-left: 5%">
+                    <div >
                       
                       <div>
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_cloture')}} ">Demandes non Cloturées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('visa',True)->where('date_cloture','=',Null))}}</span> 
