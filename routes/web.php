@@ -102,7 +102,7 @@ Route::namespace('Respo')->prefix('home')->middleware('auth')->group(function(){
     Route::get('/documents/rediger/{demande}/reglementInterieur','DocumentController@reglementInterieur',['as'=>'home'])->name('reglementInterieur');
     Route::get('/documents/rediger/{demande}/contratEmbauche','DocumentController@contratEmbauche',['as'=>'home'])->name('contratEmbauche');
     Route::get('/documents/rediger/{demande}/contratCDI','DocumentController@contratCDI',['as'=>'home'])->name('contratCDI');
-    Route::get('/documents/rediger/{demande}/contratCDD','DocumentController@contratCDD',['as'=>'home'])->name('contratCDD');
+    Route::get('/documents/rediger/{demande}/{collaborateur}/contratCDD','DocumentController@contratCDD',['as'=>'home'])->name('contratCDD');
     Route::get('/documents/rediger/{demande}/titularisation','DocumentController@titularisation',['as'=>'home'])->name('titularisation');
     Route::get('/documents/rediger/{demande}/avisTitularisation','DocumentController@avisTitularisation',['as'=>'home'])->name('avisTitularisation');
     Route::get('/documents/rediger/{demande}/finContratCDD','DocumentController@finContratCDD',['as'=>'home'])->name('finContratCDD');
