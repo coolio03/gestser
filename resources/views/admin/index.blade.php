@@ -35,14 +35,14 @@
         </div>
         <div class="col-3">
           <div class="card rounded">
-              <div class="card-body py-3 px-3>
+              <div class="card-body py-3 px-3">
                 {!! $signature->html() !!}
               </div>
           </div>
         </div>
         <div class="col-3">
           <div class="card rounded">
-              <div class="card-body py-3 px-3>
+              <div class="card-body py-3 px-3">
                 {!! $cloture->html() !!}
               </div>
           </div>
