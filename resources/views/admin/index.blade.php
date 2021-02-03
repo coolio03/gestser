@@ -87,16 +87,16 @@
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_transmisClient')}} ">Non Transmises :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('visa',true)->where('date_transmission','=',Null))}}</span> 
                       </div>
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_saisieHr')}} ">Non Saisies :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('visa',true)->where('date_saisir_hr','=',Null))}}</span> 
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_saisieHr')}} ">Non Saisies :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('visa',true)->where('date_saisir_hr','=',Null))}}</span> 
                       </div>
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_archive')}} ">Non Archivées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('date_archive','=',Null)->where('visa',true))}}</span> 
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_archive')}} ">Non Archivées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('date_archive','=',Null)->where('visa',true))}}</span> 
                       </div>
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('complet')}} ">Complets :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('status',true))}}</span> 
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('complet')}} ">Complets :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('status',true))}}</span> 
                       </div>
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_complet')}} ">Non Complets :</a>&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('status',false))}}</span> 
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href=" {{route('non_complet')}} ">Non Complets :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('status',false))}}</span> 
                       </div>
                     </div>
               </div>
