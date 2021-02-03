@@ -92,7 +92,7 @@
 <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-8">
+  <aside class="main-sidebar sidebar-dark-primary elevation-32">
     <!-- Brand Logo -->
     <a href=" {{ route('admin') }} " class="brand-link">
       <img src="{{asset('dist/img/cie.jpg')}}" alt="cie Logo" class="brand-image  elevation-3"
@@ -256,7 +256,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper col-sm-12">
+  <div class="content-wrapper col-sm-6">
     @yield('content')
     <!-- /.content -->
   </div>
