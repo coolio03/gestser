@@ -338,7 +338,7 @@ class DocumentController extends Controller
         
         setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
-        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->get();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/CONTRAT_CDD.docx"));
         $my_template->setValue('date_redaction',date('d/m/Y'));
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
