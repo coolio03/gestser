@@ -246,6 +246,7 @@ class DemandeController extends Controller
         $demande->date_debut = $request->date_debut;
         $demande->date_fin = $request->date_fin;
         $demande->date_reception = $request->date_reception;
+        $demande->observation = $request->observation;
         $demande->save();
         return redirect()->route('admin.demandes.index')->with('success','Demande creer avec succes!!!!');
         
@@ -275,30 +276,7 @@ class DemandeController extends Controller
         $arr['users'] = User::all();
         return view('admin.demandes.modifie')->with($arr);
     }
-    public function redige(Demande $demande, $downloadName = null)
-    {
-        setlocale(LC_TIME, 'fra_fra');
-        $desc = Demande::find($demande->id);
-        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(storage_path('app/public/STAGE/ATTESTATION STAGE.docx'));
-        $my_template->setValue('emetteur',strtoupper($desc->user->name) );
-        $my_template->setValue('civilite', 'Monsieur');
-        $my_template->setValue('date_redige', strftime('%d %B %Y'));
-        $my_template->setValue('nom', $desc->collaborateur->nom.' '.$desc->collaborateur->prenom);
-        $my_template->setValue('niveau', 'MASTER 2');
-        $my_template->setValue('option', 'GENIE INFORMATIQUE');
-        $my_template->setValue('ecole', 'UNIVERSITE NANGUI ABROGOUA');
-        $my_template->setValue('date_debut', strftime('%d %B %Y'));
-        $my_template->setValue('date_fin', strftime('%d %B %Y'));
-        $filename = "Attestation_Stage". $desc->collaborateur->nom;
-        try{
-            $my_template->saveAs(storage_path("$filename.docx"));
-        }catch (Exception $e){
-           dd($e);
-        }
-        $downloadName = $downloadName??$filename;
     
-        return response()->download(storage_path("$filename.docx"));
-    }
 
     /**
      * Update the specified resource in storage.
@@ -327,6 +305,7 @@ class DemandeController extends Controller
             $demande->date_fin = $request->date_fin;
             $demande->direction = $request->direction;
             $demande->date_reception = $request->date_reception;
+            $demande->observation = $request->observation;
         
             $demande->update();
             return redirect()->route('admin.demandes.index')->with('success','Demande mise a jour avec succes!!!!');

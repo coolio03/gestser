@@ -136,8 +136,9 @@
                     @endif
                     <div class="form-group col-6">
                         <label>Observation</label>
-                        <textarea name="observation" class="form-control" rows="3" placeholder="Observation ..."></textarea>
-                      </div>
+                        <textarea name="observation" class="form-control" rows="3" placeholder="Observation ..." >
+                            {{$demande->observation}} 
+                        </textarea>
                     </div>
                 
         </div>

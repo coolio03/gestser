@@ -108,9 +108,11 @@
         'value' => $demande->date_archive,
         'required'=>true
     ])
-    <div class="form-group">
-        <label>Textarea</label>
-        <textarea name="observation" class="form-control col-6" rows="3"  disabled></textarea>
+    <div class="form-group col-6">
+        <label>Observation</label>
+        <textarea name="observation" class="form-control" rows="3" placeholder="Observation ..." disabled>
+            {{$demande->observation}} 
+        </textarea>
       </div>
     </div>
     </div>

@@ -77,7 +77,7 @@
                                     
                                 </td>
                                 
-                                <td @if (!empty($dde->date_archive))
+                                <td @if ($dde->date_archive== null)
                                     style="background-color: silver"
                                     @else
                                         style="background-color: lime"
