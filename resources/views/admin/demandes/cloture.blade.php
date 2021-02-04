@@ -57,7 +57,7 @@
                     <th>Type de demande</th>
                     <th>Date de demande</th>
                     <th>Date de cloture</th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statut&nbsp;&nbsp;&nbsp;&nbsp;</th>
                     
                 </tr {{$i=1}}>
                 @if (count($demandes))

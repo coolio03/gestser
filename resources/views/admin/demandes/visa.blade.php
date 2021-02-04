@@ -48,8 +48,8 @@
                             <th>Date reception</th>
                             <th>Date de remise RA</th>
                             <th>Date de traitement</th>
-                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;Statut&nbsp;&nbsp;&nbsp;</th>
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                         </tr {{$i=1}}>
                         @if (count($demandes))
                             @foreach ($demandes as $dde)
@@ -101,11 +101,11 @@
 
                                 <td>             
                                     <a class="btn btn-success" data-toggle="modal" id="consulterButton"  class="btn btn-success" data-target="#consulterModal" data-attr="{{ route('detailVisa', $dde->id) }}" title="Voir les details">
-                                        <i class="nav-icon fas fa-eye"></i>&nbsp;Voir
+                                        <i class="nav-icon fas fa-eye"></i>
                                     </a>
                                     &nbsp;
                                     <a class="btn btn-success" data-toggle="modal" id="signeButton"  class="btn btn-success" data-target="#signeModal" data-attr="{{ route('suivreSigne', $dde->id) }}" title="Continuer le suivie ">
-                                        <i class="nav-icon fas fa-chart-pie"></i>&nbsp;Suivre
+                                        <i class="nav-icon fas fa-chart-pie"></i>
                                     </a>  
                                     &nbsp;
                                     

@@ -47,7 +47,7 @@
                             <th>Date de demande</th>
                             <th>Responsable Traitement</th>
                             <th>Statut</th>
-                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 
                         </tr {{$i=1}}>
                         @if (count($demandes))

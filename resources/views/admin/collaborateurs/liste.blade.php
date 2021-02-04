@@ -53,14 +53,13 @@
                             <tr>
                                 <th>#</th>
                                 <th>Matricule</th>
-                                <th>Civilité</th>
                                 <th>Nom</th>
                                 <th>Prénoms</th>
                                 <th>Lieu de naissance</th>
                                 <th>Ancienne Fonction</th>
                                 <th>Nouvelle Fonction</th>
                                 <th>Catégories</th>
-                                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                <th>&nbsp;&nbsp;&nbsp;&nbsp;Actions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -70,7 +69,6 @@
                                 <tr>              
                                     <td> {{$loop->index+1}} </td>
                                     <td> {{$collabo->matricule}} </td>
-                                    <td> {{$collabo->civilite}} </td>
                                     <td> {{$collabo->nom}} </td>
                                     <td> {{$collabo->prenoms}} </td>
                                     <td> {{$collabo->lieu_de_naissance}} </td>
