@@ -102,7 +102,7 @@ class DocumentController extends Controller
     {
         setlocale(LC_TIME, 'fra_fra');;
         $desc = Demande::find($demande->id);   
-        $collaborateur = Collaborateur::where('id',$demande->collaborateur_id)->get();
+        $collaborateur = Collaborateur::where('id',$demande->collaborateur_id)->first();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
