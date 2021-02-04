@@ -178,6 +178,9 @@ class DocumentController extends Controller
         $my_template->setValue('poste', $request->poste);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
         $collaborateur->matricule = $request->matricule;
+        $collaborateur->nom = $request->nom;
+        $collaborateur->prenoms = $request->prenoms;
+        $desc->date_debut = $request->date_debut;
         $filename = "DCRH IS 71 25 01 NOTE D'INFO EMBAUCHE EO M".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         
         try{
