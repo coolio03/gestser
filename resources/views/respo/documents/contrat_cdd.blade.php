@@ -60,7 +60,7 @@
                 'required'=>true
             ]) 
              @include('partials.form-group',[
-                'title'=>__("Nationnalité"),
+                'title'=>__("Nationalité"),
                 'type'=>'text',
                 'name'=>'nationnalite',
                 'required'=>true
@@ -90,7 +90,7 @@
                 'required'=>true
             ]) 
             @include('partials.form-group',[
-                'title'=>__("Echellon"),
+                'title'=>__("Echelon"),
                 'type'=>'text',
                 'name'=>'echellon',
                 'required'=>true
