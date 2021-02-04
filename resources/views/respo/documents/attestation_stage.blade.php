@@ -9,14 +9,14 @@
     <div class="card-body">
         <div class="row">
             
-            @include('partials.form-group-d',[
+            @include('partials.form-group',[
                 'title'=>__('Nom'),
                 'type'=>'text',
                 'name'=>'nom',
                 'value'=>$demande->collaborateur->nom,
                 'required'=>true
             ])
-            @include('partials.form-group-d',[
+            @include('partials.form-group',[
                 'title'=>__('Prenoms'),
                 'type'=>'text',
                 'name'=>'prenoms',
@@ -41,7 +41,18 @@
             'name'=>'ecole',
             'required'=>true
             ]) 
-            
+            @include('partials.form-group',[
+                'title'=>__('Date de debut'),
+                'type'=>'date',
+                'name'=>'date_debut',
+                'required'=>true
+            ])
+            @include('partials.form-group',[
+                'title'=>__('Date de fin'),
+                'type'=>'date',
+                'name'=>'date_fin',
+                'required'=>true
+            ])
         </div> 
     </div>            
       

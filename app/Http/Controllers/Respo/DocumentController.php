@@ -100,10 +100,10 @@ class DocumentController extends Controller
     }
     public function redige(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fra_fra');;
+        setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);   
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
-        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('date_redaction',(strftime('%d %B %Y')));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
@@ -128,7 +128,7 @@ class DocumentController extends Controller
     }
     public function redigeNote(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_ALL, "fr_FR.UTF-8");
+        setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/Note_de_STAGE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
@@ -162,7 +162,7 @@ class DocumentController extends Controller
 
     public function redigeNoteEmbauche(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_ALL, "fr_FR.UTF-8");
+        setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
         $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/NOTE_EMBAUCHE.docx"));
@@ -182,7 +182,6 @@ class DocumentController extends Controller
         $collaborateur->prenoms = $request->prenoms;
         $desc->date_debut = $request->date_debut;
         $filename = "DCRH IS 71 25 01 NOTE D'INFO EMBAUCHE EO M".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
-        
         try{
             $desc->update();
             $collaborateur->update();
@@ -199,8 +198,9 @@ class DocumentController extends Controller
 
     public function redigeReglementInterieur(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_ALL, config('app.locale'));
+        setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/FICHE_ATTRIBUTION_Attribution_Règlement_Intérieur.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
@@ -211,8 +211,14 @@ class DocumentController extends Controller
         $my_template->setValue('matricule', $request->matricule);
         $my_template->setValue('direction_sc', $request->direction_sc);
         $my_template->setValue('date_debut',strftime('%d %B %Y',$request->date_debut));
+        $collaborateur->matricule = $request->matricule;
+        $collaborateur->nom = $request->nom;
+        $collaborateur->prenoms = $request->prenoms;
+        $desc->date_debut = $request->date_debut;
         $filename = "DCRH IS 71 22 01 FICHE D'ATTRIBUTION RI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
+            $desc->update();
+            $collaborateur->update();
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
@@ -226,10 +232,11 @@ class DocumentController extends Controller
 
     public function redigeRenouvellementEmbEssai(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_ALL, "fr_FR.UTF-8");
+        setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/LETTRE_DE_RENOUVELLEMENT_PERIODE_ESSAI.docx"));
-        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('date_redaction',date(strftime('%d %B %Y')));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
@@ -243,8 +250,15 @@ class DocumentController extends Controller
         $my_template->setValue('unite', $request->unite);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
         $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_fin)));
+        $collaborateur->matricule = $request->matricule;
+        $collaborateur->nom = $request->nom;
+        $collaborateur->prenoms = $request->prenoms;
+        $desc->date_debut = $request->date_debut;
+        $desc->date_fin = $request->date_fin;
         $filename = "DCRH IS 71 21 01 LETTRE DE RENOUVELLEMENT PERIODE D'ESSAI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
+            $desc->update();
+            $collaborateur->update();
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
@@ -259,8 +273,9 @@ class DocumentController extends Controller
     public function redigeContratEmbauche(Request $request,Demande $demande,$downloadName = null)
     {
  
-        setlocale(LC_ALL, "fr_FR.UTF-8");
+        setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/CONTRAT_EMBAUCHE_A_ESSAI.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
@@ -280,9 +295,16 @@ class DocumentController extends Controller
         $my_template->setValue('classement',$request->classement);
         $my_template->setValue('salaire_mensuelle',$request->salaire_mensuelle);
         $my_template->setValue('prime_logement',$request->prime_logement);
+        $collaborateur->matricule = $request->matricule;
+        $collaborateur->nom = $request->nom;
+        $collaborateur->prenoms = $request->prenoms;
+        $desc->date_debut = $request->date_debut;
+        $desc->date_fin = $request->date_fin;
         $my_template->setValue('prime_entretien',$request->prime_entretien);
         $filename = "DCRH IS 71 04 01 EMBAUCHE A ESSAI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
+            $desc->update();
+            $collaborateur->update();
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
@@ -297,9 +319,9 @@ class DocumentController extends Controller
     public function redigeContratCDI(Request $request,Demande $demande,$downloadName = null)
     {
         
-        date_default_timezone_set('Africa/Abidjan');
-        setlocale(LC_TIME, 'fr_FR.utf8','fra');
+        setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/Contrat_CDI.docx"));
         $my_template->setValue('date_redaction',date('d/m/Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
@@ -328,8 +350,14 @@ class DocumentController extends Controller
         $my_template->setValue('prime_logement',$request->prime_logement);
         $my_template->setValue('prime_transport',$request->prime_transport);
         $my_template->setValue('ind_tranche_grat',$request->ind_tranche_grat);
+        $collaborateur->matricule = $request->matricule;
+        $collaborateur->nom = $request->nom;
+        $collaborateur->prenoms = $request->prenoms;
+        $desc->date_debut = $request->date_debut;
         $filename = "DCRH IS 71 01 02 Contrat CDI".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
+            $desc->update();
+            $collaborateur->update();
             $my_template->saveAs(public_path("$filename.docx"));
             
         }catch (Exception $e){
@@ -345,7 +373,7 @@ class DocumentController extends Controller
     public function redigeContratCDD(Request $request,Demande $demande,Collaborateur $collaborateur,$downloadName = null)
     {
         
-        setlocale(LC_ALL, "fr_FR.UTF-8");
+        setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
         $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->get();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/CONTRAT_CDD.docx"));
@@ -377,8 +405,13 @@ class DocumentController extends Controller
         $my_template->setValue('prime_transport',$request->prime_transport);
         $filename = "DCRH IS 71 09 02 CONTRAT CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         $collaborateur->matricule = $request->matricule;
-        $collaborateur->update(); 
+        $collaborateur->nom = $request->nom;
+        $collaborateur->prenoms = $request->prenoms;
+        $desc->date_debut = $request->date_debut; 
+        $desc->date_fin = $request->date_fin; 
         try{
+            $desc->update();
+            $collaborateur->update();
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
@@ -391,8 +424,9 @@ class DocumentController extends Controller
 
     public function redigeTitularisation(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_ALL, "fr_FR.UTF-8");
+        setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->get();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/TITULARISATION.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
@@ -406,7 +440,13 @@ class DocumentController extends Controller
         $my_template->setValue('poste', $request->poste);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
         $filename = "DCRH IS 71 06 01 TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $collaborateur->matricule = $request->matricule;
+        $collaborateur->nom = $request->nom;
+        $collaborateur->prenoms = $request->prenoms;
+        $desc->date_debut = $request->date_debut; 
         try{
+            $desc->update();
+            $collaborateur->update();
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
@@ -420,8 +460,9 @@ class DocumentController extends Controller
 
     public function redigeFinContratCDD(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_ALL, "fr_FR.UTF-8");
+        setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->get();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/LETTRE_DE_FIN_DE_CDD.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
@@ -438,7 +479,14 @@ class DocumentController extends Controller
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
         $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_fin)));
         $filename = "DCRH IS 71 10 01 LETTRE DE FIN DE CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $collaborateur->matricule = $request->matricule;
+        $collaborateur->nom = $request->nom;
+        $collaborateur->prenoms = $request->prenoms;
+        $desc->date_debut = $request->date_debut; 
+        $desc->date_fin = $request->date_fin; 
         try{
+            $desc->update();
+            $collaborateur->update();
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
@@ -452,8 +500,9 @@ class DocumentController extends Controller
 
     public function redigeAvisTitularisation(Request $request,Demande $demande,Collaborateur $collaborateur,$downloadName = null)
     {
-        setlocale(LC_ALL, "fr_FR.UTF-8");
+        setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->get();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/AVIS_TITULARISATION.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
@@ -471,9 +520,15 @@ class DocumentController extends Controller
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
         $my_template->setValue('date_fin_essai',strftime('%d %B %Y',strtotime($request->date_fin_essaie)));
         $filename = "DCRH IS 71 05 01 AVIS DE TITULARTISATION".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $collaborateur->matricule = $request->matricule;
+        $collaborateur->nom = $request->nom;
+        $collaborateur->prenoms = $request->prenoms;
+        $desc->date_debut = $request->date_debut; 
+        $desc->date_fin_essai = $request->date_fin_essai;
         try{
+            $desc->update();
+            $collaborateur->update();
             $my_template->saveAs(public_path("$filename.docx"));
-           
         }catch (Exception $e){
            dd($e);
         }

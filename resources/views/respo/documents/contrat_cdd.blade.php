@@ -8,24 +8,25 @@
       </div>    
     <div class="card-body">
         <div class="row">
-            @include('partials.form-group-d',[
+            @include('partials.form-group',[
                 'title'=>__('Nom'),
                 'type'=>'text',
                 'name'=>'nom',
                 'value'=>$demande->collaborateur->nom,
                 'required'=>true
             ])
-            @include('partials.form-group-d',[
+            @include('partials.form-group',[
                 'title'=>__('Prenoms'),
                 'type'=>'text',
                 'name'=>'prenoms',
                 'value'=>$demande->collaborateur->prenoms,
                 'required'=>true
             ]) 
-            @include('partials.form-group',[
+           @include('partials.form-group',[
                 'title'=>__('Matricule'),
                 'type'=>'text',
                 'name'=>'matricule',
+                'value'=>$demande->collaborateur->matricule,
                 'required'=>true
             ])
             @include('partials.form-group',[

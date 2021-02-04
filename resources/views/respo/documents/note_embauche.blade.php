@@ -26,6 +26,7 @@
                 'title'=>__('Matricule'),
                 'type'=>'text',
                 'name'=>'matricule',
+                'value'=>$demande->collaborateur->matricule,
                 'required'=>true
             ])
             @include('partials.form-group',[

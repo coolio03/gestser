@@ -101,7 +101,6 @@
                                         <i class="nav-icon fas fa-eye"></i>
                                     </a>
                                 @endif
-                               &nbsp; 
                                 @if ($dde->responsable_id != null)
                                     <a class="btn btn-success" data-toggle="modal" id="signeButton"  class="btn btn-success" data-target="#signeModal" data-attr="{{ route('suivreSigne', $dde->id) }}" title="Continuer le suivie ">
                                         <i class="nav-icon fas fa-chart-pie"></i> 
@@ -109,7 +108,7 @@
                                 @else 
                                     <a href="  {{route('affectation', $dde->id)}} "  class="btn btn-success" title="Affectation de la demande de {{$dde->collaborateur->nom.' '. $dde->collaborateur->prenoms}}"> <i class="nav-icon fas fa-angle-right"></i></a>     
                                 @endif
-                                &nbsp; <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-danger"  title="Supprimer la demande de {{$dde->type}}"><i class="nav-icon fas fa-trash"></i></a>
+                                <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-danger"  title="Supprimer la demande de {{$dde->type}}"><i class="nav-icon fas fa-trash"></i></a>
                                 <form action="{{route('admin.demandes.destroy', $dde->id)}}" method="POST">
                                     @method('DELETE')
                                     <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
