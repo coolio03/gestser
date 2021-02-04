@@ -100,10 +100,10 @@ class DocumentController extends Controller
     }
     public function redige(Request $request,Demande $demande,$downloadName = null)
     {
-        setlocale(LC_TIME, 'fr','fra','fr_FR');
+        setlocale(LC_TIME, 'fra_fra');;
         $desc = Demande::find($demande->id);   
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
-        $my_template->setValue('date_redaction','%d %B %Y');
+        $my_template->setValue('date_redaction',utf8_encode(strftime('%d %B %Y')));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
@@ -112,8 +112,8 @@ class DocumentController extends Controller
         $my_template->setValue('niveau', $request->niveau);
         $my_template->setValue('option', $request->option);
         $my_template->setValue('ecole', $request->ecole);
-        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
-        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
+        $my_template->setValue('date_debut',utf8_encode(strftime('%d %B %Y',strtotime($desc->date_debut))));
+        $my_template->setValue('date_fin',utf8_encode(strftime('%d %B %Y',strtotime($desc->date_fin))));
         $filename = "DCRH IS 71 18 01 ATTESTATION STAGE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
