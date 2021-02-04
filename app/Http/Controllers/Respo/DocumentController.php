@@ -102,6 +102,7 @@ class DocumentController extends Controller
     {
         setlocale(LC_TIME, 'fra_fra');;
         $desc = Demande::find($demande->id);   
+        $collaborateur = Collaborateur::where('id',$demande->collaborateur_id)->get();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
         $my_template->setValue('date_redaction',utf8_encode(strftime('%d %B %Y')));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
@@ -115,6 +116,7 @@ class DocumentController extends Controller
         $my_template->setValue('date_debut',utf8_encode(strftime('%d %B %Y',strtotime($desc->date_debut))));
         $my_template->setValue('date_fin',utf8_encode(strftime('%d %B %Y',strtotime($desc->date_fin))));
         $filename = "DCRH IS 71 18 01 ATTESTATION STAGE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $collaborateur->update($request->all());
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
