@@ -104,7 +104,7 @@ class DocumentController extends Controller
         $desc = Demande::find($demande->id);   
         $collaborateur = Collaborateur::where('id',$demande->collaborateur_id)->get();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
-        $my_template->setValue('date_redaction',utf8_encode(strftime('%d %B %Y')));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
@@ -113,8 +113,8 @@ class DocumentController extends Controller
         $my_template->setValue('niveau', $request->niveau);
         $my_template->setValue('option', $request->option);
         $my_template->setValue('ecole', $request->ecole);
-        $my_template->setValue('date_debut',utf8_encode(strftime('%d %B %Y',strtotime($desc->date_debut))));
-        $my_template->setValue('date_fin',utf8_encode(strftime('%d %B %Y',strtotime($desc->date_fin))));
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
+        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
         $filename = "DCRH IS 71 18 01 ATTESTATION STAGE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         $collaborateur->update($request->all());
         try{
