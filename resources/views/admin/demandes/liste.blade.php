@@ -53,7 +53,6 @@
                 <tr>
                     <th>#</th>
                     <th>N* Dossier</th>
-                    <th>Matricule</th>
                     <th>Nom</th>
                     <th>Prénoms</th>
                     <th>Type de demande</th>
@@ -69,7 +68,6 @@
                         <tr>              
                             <td> {{$i++}} </td>
                             <td> {{$dde->numero_dossier}} </td>
-                            <td> {{$dde->collaborateur->matricule}}</td>
                             <td> {{$dde->collaborateur->nom}} </td>
                             <td>{{$dde->collaborateur->prenoms}} </td>
                             <td> {{$dde->type}} </td>

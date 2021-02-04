@@ -102,7 +102,6 @@ class DocumentController extends Controller
     {
         setlocale(LC_TIME, 'fra_fra');;
         $desc = Demande::find($demande->id);   
-        $collaborateur = Collaborateur::where('id',$demande->collaborateur_id)->first();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
@@ -116,7 +115,6 @@ class DocumentController extends Controller
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
         $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
         $filename = "DCRH IS 71 18 01 ATTESTATION STAGE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
-        $collaborateur->update($request->all());
         try{
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
@@ -166,6 +164,7 @@ class DocumentController extends Controller
     {
         setlocale(LC_ALL, "fr_FR.UTF-8");
         $desc = Demande::find($demande->id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/NOTE_EMBAUCHE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
@@ -178,8 +177,11 @@ class DocumentController extends Controller
         $my_template->setValue('copie', $request->copie);
         $my_template->setValue('poste', $request->poste);
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
+        $collaborateur->matricule = $request->matricule;
         $filename = "DCRH IS 71 25 01 NOTE D'INFO EMBAUCHE EO M".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        
         try{
+            $collaborateur->update();
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
