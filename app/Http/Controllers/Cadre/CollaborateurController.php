@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Cadre;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CollaborateurRequest;
@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Collaborateur;
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Cadre;
 use App\Models\Demande;
 
 class CollaborateurController extends Controller
@@ -22,13 +23,13 @@ class CollaborateurController extends Controller
     public function index()
     {
         $arr['collaborateurs'] = Collaborateur::latest()->paginate(5);
-        return view('admin.collaborateurs.liste')->with($arr);
+        return view('cadre.collaborateurs.liste')->with($arr);
     }
 
     public function detail($id)
     {
         $arr['demandes'] = Demande::where('collaborateur_id',$id)->first();
-        return view('admin.collaborateurs.detail')->with($arr);
+        return view('cadre.collaborateurs.detail')->with($arr);
     }
 
     
@@ -39,7 +40,7 @@ class CollaborateurController extends Controller
      */
     public function create()
     {
-        return view('admin.collaborateurs.ajoute');
+        return view('cadre.collaborateurs.ajoute');
     }
 
     /**
@@ -97,7 +98,7 @@ class CollaborateurController extends Controller
 
         $collaborateur->save();
         
-        return redirect()->route('admin.collaborateurs.index')->with('success','collaborateur enregistre avec succes');
+        return redirect()->route('cadre.collaborateurs.index')->with('success','collaborateur enregistre avec succes');
 
     }
 
@@ -121,7 +122,7 @@ class CollaborateurController extends Controller
     public function edit(Collaborateur $collaborateur)
     {
         $arr['collaborateur'] = $collaborateur;
-        return view('admin.collaborateurs.modifie')->with($arr);
+        return view('cadre.collaborateurs.modifie')->with($arr);
     }
 
     /**
@@ -144,7 +145,7 @@ class CollaborateurController extends Controller
         $collaborateur->categorie = $request->categorie;
         $collaborateur->contact = $request->contact;*/
         $collaborateur->update($request->all());
-        return redirect()->route('admin.collaborateurs.index')->with('success','collaborateur mis a jour avec succes');
+        return redirect()->route('cadre.collaborateurs.index')->with('success','collaborateur mis a jour avec succes');
     }
 
     /**
@@ -157,12 +158,12 @@ class CollaborateurController extends Controller
     {
         Collaborateur::destroy($id);
         Demande::where('collaborateur_id',$id)->delete();
-        return redirect()->route('admin.collaborateurs.index')->with('success','Collaborateur supprimer avec succes');
+        return redirect()->route('cadre.collaborateurs.index')->with('success','Collaborateur supprimer avec succes');
     }
     public function delete($id)
 {
     $collaborateur = Collaborateur::find($id);
 
-    return view('admin.collaborateurs.delete', compact('collaborateur'));
+    return view('cadre.collaborateurs.delete', compact('collaborateur'));
 }
 }

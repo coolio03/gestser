@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Cadre;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\DemandeRequest;
@@ -25,7 +25,7 @@ class DemandeController extends Controller
         $arr['demandes'] = Demande::latest()->paginate(5);
         $arr['ddeTraites'] = Demande::whereNotNull('date_traitement')->get();
         $arr['users'] = User::all();
-        return view('admin.demandes.liste')->with($arr);
+        return view('cadre.demandes.liste')->with($arr);
 
     }
 
@@ -33,19 +33,19 @@ class DemandeController extends Controller
     {
         $arr['demandes'] = Demande::whereNotNull('responsable_id')->latest()->paginate(5);
         $arr['users'] = User::all();
-        return view('admin.demandes.affecte')->with($arr);
+        return view('cadre.demandes.affecte')->with($arr);
 
     }
     public function complet()
     {
         $arr['demandes'] = Demande::where('status','=',true)->latest()->paginate(5);
-        return view('admin.demandes.complet')->with($arr);
+        return view('cadre.demandes.complet')->with($arr);
 
     }
     public function nonComplet()
     {
         $arr['demandes'] = Demande::where('status','=',false)->latest()->paginate(5);
-        return view('admin.demandes.complet')->with($arr);
+        return view('cadre.demandes.complet')->with($arr);
 
     }
 
@@ -54,7 +54,7 @@ class DemandeController extends Controller
     {
         $arr['demandes'] = Demande::whereNotNull('date_traitement')->latest()->paginate(5);
         $arr['users'] = User::all();
-        return view('admin.demandes.traite')->with($arr);
+        return view('cadre.demandes.traite')->with($arr);
 
     }
 
@@ -62,7 +62,7 @@ class DemandeController extends Controller
     {
         $arr['demandes'] = Demande::whereNull('date_traitement')->latest()->paginate(5);
         $arr['users'] = User::all();
-        return view('admin.demandes.traite')->with($arr);
+        return view('cadre.demandes.traite')->with($arr);
 
     }
 
@@ -70,38 +70,38 @@ class DemandeController extends Controller
     {
         $arr['demandes'] = Demande::whereNotNull('date_cloture')->where('visa',true)->latest()->paginate(5);
         $arr['users'] = User::all();
-        return view('admin.demandes.cloture')->with($arr);
+        return view('cadre.demandes.cloture')->with($arr);
     }
 
     public function nonCloture()
     {
         $arr['demandes'] = Demande::whereNull('date_cloture')->where('visa',true)->latest()->paginate(5);
         $arr['users'] = User::all();
-        return view('admin.demandes.cloture')->with($arr);
+        return view('cadre.demandes.cloture')->with($arr);
     }
 
     public function transmisClient()
     {
         $arr['demandes'] = Demande::whereNotNull('date_transmission')->where('visa',true)->latest()->paginate(5);
         $arr['users'] = User::all();
-        return view('admin.demandes.transmission')->with($arr);
+        return view('cadre.demandes.transmission')->with($arr);
     }
     public function nonTransmisClient()
     {
         $arr['demandes'] = Demande::whereNull('date_transmission')->where('visa',true)->latest()->paginate(5);
-        return view('admin.demandes.transmission')->with($arr);
+        return view('cadre.demandes.transmission')->with($arr);
     }
     public function saisieHr()
     {
         $arr['demandes'] = Demande::whereNotNull('date_saisir_hr')->where('visa',true)->latest()->paginate(5);
         $arr['users'] = User::all();
-        return view('admin.demandes.saisieHr')->with($arr);
+        return view('cadre.demandes.saisieHr')->with($arr);
     }
     public function nonSaisieHr()
     {
         $arr['demandes'] = Demande::whereNull('date_saisir_hr')->where('visa',true)->latest()->paginate(5);
         $arr['users'] = User::all();
-        return view('admin.demandes.saisieHr')->with($arr);
+        return view('cadre.demandes.saisieHr')->with($arr);
     }
 
 
@@ -109,50 +109,50 @@ class DemandeController extends Controller
     {
         $arr['demandes'] = Demande::whereNull('responsable_id')->latest()->paginate(5);
         $arr['users'] = User::all();
-        return view('admin.demandes.non_affecte')->with($arr);
+        return view('cadre.demandes.non_affecte')->with($arr);
     }
 
     public function visa()
     {
         $arr['demandes'] = Demande::where('visa',False)->whereNotNull('date_traitement')->latest()->paginate(5);
-        return view('admin.demandes.visa')->with($arr);
+        return view('cadre.demandes.visa')->with($arr);
 
     }
     public function signe()
     {
         $arr['demandes'] = Demande::where('visa',True)->latest()->paginate(5);
-        return view('admin.demandes.visa')->with($arr);
+        return view('cadre.demandes.visa')->with($arr);
 
     }
     public function nonArchive()
     {
         $arr['demandes'] = Demande::whereNull('date_archive')->where('visa',true)->latest()->paginate(5);
-        return view('admin.demandes.archive')->with($arr);
+        return view('cadre.demandes.archive')->with($arr);
 
     }
 
     public function detail($id)
     {   
         $arr['collabo'] = Collaborateur::with('demande')->findOrFail($id);
-        return view('admin.collaborateurs.detail')->with($arr);
+        return view('cadre.collaborateurs.detail')->with($arr);
     }
 
     public function detailVisa($id)
     {   
         $arr['demande'] = Demande::findOrFail($id);
-        return view('admin.demandes.detail')->with($arr);
+        return view('cadre.demandes.detail')->with($arr);
     }
 
     public function suivreSigne($id)
     {   
         $arr['demande'] = Demande::findOrFail($id);
-        return view('admin.demandes.suivre_signe')->with($arr);
+        return view('cadre.demandes.suivre_signe')->with($arr);
     }
 
     public function detailDemande($id)
     {
         $arr['demande'] = Demande::findOrFail($id);
-        return view('admin.demandes.suivie')->with($arr);
+        return view('cadre.demandes.suivie')->with($arr);
     }
     /**
      * Show the form for creating a new resource.
@@ -163,7 +163,7 @@ class DemandeController extends Controller
     {
         $arr['collaborateurs'] = Collaborateur::all();
         $arr['users'] = User::all();
-        return view('admin.demandes.ajoute')->with($arr)->with('succes','Demandes creer avec succes');
+        return view('cadre.demandes.ajoute')->with($arr)->with('succes','Demandes creer avec succes');
     }
 
 
@@ -172,14 +172,14 @@ class DemandeController extends Controller
         $arr['demande'] = $demande;
         $arr['collaborateurs'] = Collaborateur::all();
         $arr['users']=User::all();
-        return view('admin.demandes.affectation')->with($arr)->with('success','Demande affectee avec succes!!!');
+        return view('cadre.demandes.affectation')->with($arr)->with('success','Demande affectee avec succes!!!');
     }
 
     public function affecter(Request $request, Demande $demande)
     {       
         $demande->responsable_id = $request->responsable_id;       
         $demande->update();
-        return redirect()->route('admin.demandes.index');
+        return redirect()->route('cadre.demandes.index');
     }
 
     //Permet la mise a jour du suivie des demande
@@ -248,7 +248,7 @@ class DemandeController extends Controller
         $demande->date_reception = $request->date_reception;
         $demande->observation = $request->observation;
         $demande->save();
-        return redirect()->route('admin.demandes.index')->with('success','Demande creer avec succes!!!!');
+        return redirect()->route('cadre.demandes.index')->with('success','Demande creer avec succes!!!!');
         
         
     }
@@ -274,7 +274,7 @@ class DemandeController extends Controller
     {
         $arr['demande'] = $demande;
         $arr['users'] = User::all();
-        return view('admin.demandes.modifie')->with($arr);
+        return view('cadre.demandes.modifie')->with($arr);
     }
     
 
@@ -308,7 +308,7 @@ class DemandeController extends Controller
             $demande->observation = $request->observation;
         
             $demande->update();
-            return redirect()->route('admin.demandes.index')->with('success','Demande mise a jour avec succes!!!!');
+            return redirect()->route('cadre.demandes.index')->with('success','Demande mise a jour avec succes!!!!');
     }
 
     /**
@@ -320,6 +320,6 @@ class DemandeController extends Controller
     public function destroy($id)
     {
         Demande::destroy($id);
-        return redirect()->route('admin.demandes.index')->with('success','Demande Supprimer avec succes!!!!');
+        return redirect()->route('cadre.demandes.index')->with('success','Demande Supprimer avec succes!!!!');
     }
 }
