@@ -78,6 +78,47 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth:admin')->group(func
     Route::resource('/demandes', 'DemandeController',['as'=>'admin']);  
 });
 
+//Cadre
+Route::namespace('Cadre')->prefix('cadre')->middleware('auth:cadre')->group(function () {
+    Route::get('/', 'cadreController@index')->name('cadre');
+    Route::any('/demandes/search', function () {
+        $q = Input::get ('q');
+        if ($q != "") {
+            $demande = Demande::where('numero_dossier', 'LIKE', '%'.$q.'%')->get();
+            if (count($demande) > 0){
+                return redirect()->route('cadre.demandes.index')->withDetails($demande)->withQuery($q);
+            }
+            return redirect()->route('cadre.demandes.index')->withMessage('Pas de demandes trouvees. Veuillez reesayer !!!');       
+        }
+    })->name('recherche');
+    Route::get('/collaborateurs/{id}/demande', 'DemandeController@detail',['as'=>'cadre'])->name('detail');
+    Route::get('/collaborateurs/delete/{id}','CollaborateurController@delete',['as'=>'cadre'])->name('delete');
+    Route::resource('/collaborateurs', 'CollaborateurController',['as'=>'cadre']);
+    Route::get('/demandes/affecte','DemandeController@affecte',['as'=>'cadre'])->name('affecte');
+    Route::get('/demandes/{demande}/affectation', 'DemandeController@affectation')->name('affectation');
+    Route::put('/demandes/{demande}/suivie', 'DemandeController@suivre',['as'=>'cadre'])->name('suivie');
+    Route::put('/demandes/{demande}/affecter', 'DemandeController@affecter')->name('affecter');
+    Route::get('/demandes/nonaffecte','DemandeController@nonAffecte',['as'=>'cadre'])->name('non_affecte');
+    Route::get('/demandes/non_traites','DemandeController@nonTraite',['as'=>'cadre'])->name('non_traites');
+    Route::get('/demandes/traites','DemandeController@traite',['as'=>'cadre'])->name('traites');
+    Route::get('/demandes/clotures','DemandeController@cloture',['as'=>'cadre'])->name('cloture');
+    Route::get('/demandes/nonClotures','DemandeController@nonCloture',['as'=>'cadre'])->name('non_cloture');
+    Route::get('/demandes/transmisClient','DemandeController@transmisClient',['as'=>'cadre'])->name('transmisClient');
+    Route::get('/demandes/nonTransmisClient','DemandeController@nonTransmisClient',['as'=>'cadre'])->name('non_transmisClient');
+    Route::get('/demandes/visa/{id}/detail','DemandeController@detailVisa',['as'=>'cadre'])->name('detailVisa');
+    Route::get('/demandes/visa/{id}/signe','DemandeController@suivreSigne',['as'=>'cadre'])->name('suivreSigne');
+    Route::get('/demandes/visa','DemandeController@visa',['as'=>'cadre'])->name('visa');
+    Route::get('/demandes/signe','DemandeController@signe',['as'=>'cadre'])->name('signe');
+    Route::get('/demandes/nonArchive','DemandeController@nonArchive',['as'=>'cadre'])->name('non_archive');
+    Route::get('/demandes/saisieHr','DemandeController@saisieHr',['as'=>'cadre'])->name('saisieHr');
+    Route::get('/demandes/nonSaisieHr','DemandeController@nonSaisieHr',['as'=>'cadre'])->name('non_saisieHr');
+    Route::get('/demandes/complet','DemandeController@complet',['as'=>'cadre'])->name('complet');
+    Route::get('/demandes/nonComplet','DemandeController@nonComplet',['as'=>'cadre'])->name('non_complet');
+    Route::get('/demandes/mise_a_jour', 'DemandeController@mise_a_jour',['as'=>'cadre'])->name('mise_a_jour');
+    Route::patch('/demandes/{id}/suivieDemande', 'DemandeController@detailDemande',['as'=>'cadre'])->name('detailDemande');
+    Route::resource('/demandes', 'DemandeController',['as'=>'cadre']);  
+});
+
 //HomeController
 Route::namespace('Respo')->prefix('home')->middleware('auth')->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
