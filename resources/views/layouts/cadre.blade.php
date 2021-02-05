@@ -62,7 +62,7 @@
 
           <p>
             {{Auth::user()->name}}
-            <small>Chef de Service Emploi et reglementation</small>
+            <small>Cadre Emploi</small>
           </p>
         </li>
         <!-- Menu Body -->

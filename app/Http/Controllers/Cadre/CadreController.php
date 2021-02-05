@@ -15,7 +15,7 @@ use DB;
 
 
 
-class AdminController extends Controller
+class CadreController extends Controller
 {
      /**
      * Create a new controller instance.
