@@ -24,7 +24,7 @@
             @if ($message = Session::get('success'))
             <div class="alert alert-success  ">
                 <p> 
-                    {{$message}}  
+                    {{ $message}}  
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </p>
             </div>
@@ -96,7 +96,7 @@
                             <td> {{$cadre->name}} </td>
                             <td> {{$cadre->email}}</td>
                             <th>@if($cadre->role == 0) Inactif @else Actif @endif</th>
-                            <th><a href="{{ route('statusCadre', ['id'=>$cadre->id]) }}">@if($user->status == 1) Inactif @else Actif @endif</a></th>                          
+                            <th><a href="{{ route('statusCadre', ['id'=>$cadre->id]) }}">@if($cadre->role == 1) Inactif @else Actif @endif</a></th>                          
                         </tr>
                     
                     @endforeach 
