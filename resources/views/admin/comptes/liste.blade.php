@@ -67,8 +67,8 @@
                             <td> {{$i++}} </td>
                             <td> {{$user->name}} </td>
                             <td> {{$user->email}}</td>
-                            <th>@if($user->role == 0) Inactive @else Active @endif</th>
-                            <th><a href="{{ route('status', ['id'=>$user->id]) }}">@if($user->role == 1) Inactive @else Active @endif</a></th>
+                            <th>@if($user->status == 0) Inactive @else Active @endif</th>
+                            <th><a href="{{ route('status', ['id'=>$user->id]) }}">@if($user->status == 1) Inactive @else Active @endif</a></th>
                         </tr>
                         @endforeach
                 @else
