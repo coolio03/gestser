@@ -68,7 +68,7 @@
                             <td> {{$user->name}} </td>
                             <td> {{$user->email}}</td>
                             <th>@if($user->status == 0) Inactif @else Actif @endif</th>
-                            <th><a href="{{ route('status', ['id'=>$user->id]) }}">@if($user->status == 1) <span style="background-color: red">Bloqué</span>  @else <span  style="background-color: green"> Activé </span>  @endif</a></th>
+                            <th><a href="{{ route('status', ['id'=>$user->id]) }}">@if($user->status == 1) Inactif @else Actif @endif</a></th>
                         </tr>
                         @endforeach
                 @else
@@ -96,7 +96,7 @@
                             <td> {{$cadre->name}} </td>
                             <td> {{$cadre->email}}</td>
                             <th >@if($cadre->role == 0) Inactif @else Actif @endif</th>
-                            <th><a href="{{ route('statusCadre', ['id'=>$cadre->id]) }}">@if($cadre->role == 1) <span style="background-color: red">Bloqué</span>  @else <span  style="background-color: green"> Activé </span>  @endif</a></th>                          
+                            <th @if($cadre->role == 1) style="color: green" @else style="color: red" @endif ><a href="{{ route('statusCadre', ['id'=>$cadre->id]) }}">@if($cadre->role == 1) Inactif @else Actif @endif</a></th>                          
                         </tr>
                     
                     @endforeach 
