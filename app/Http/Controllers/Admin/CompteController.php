@@ -84,11 +84,11 @@ class CompteController extends Controller
     public function status(Request $request, $id)
     {
         $data = User::find($id);
-        if ($data->role == 0) {
+        if ($data->status == 0) {
             # code...
-            $data->role =1;
+            $data->status =1;
         }else{
-            $data->role = 0;
+            $data->status = 0;
         }
         $data->save();
         return redirect()->route('admin.comptes.index')->with('success',$data->name.'Status mis a jour avec succes');
