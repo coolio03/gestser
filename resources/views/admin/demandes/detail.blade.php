@@ -113,7 +113,7 @@
         <textarea name="observation" class="form-control" rows="3" placeholder="Observation ..." disabled>
             {{$demande->observation}} 
         </textarea>
-      </div>
+    </div>
     </div>
     </div>
   </div>

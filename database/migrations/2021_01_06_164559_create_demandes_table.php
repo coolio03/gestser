@@ -23,6 +23,8 @@ class CreateDemandesTable extends Migration
             $table->text('motif_demande');
             $table->date('date_debut')->nullable();
             $table->date('date_fin')->nullable();
+            $table->date('date_debut_pro')->nullable();
+            $table->date('date_fin_pro')->nullable();
             $table->date('date_fin_essai')->nullable();
             $table->string('direction');
             $table->date('date_reception');

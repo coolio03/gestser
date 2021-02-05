@@ -50,4 +50,15 @@ class HomeController extends Controller
 
         return view('respo.index',['traitement'=>$traitement, 'saisie'=>$saisie, 'archive'=>$archive]);
     }
+    public function status(Request $request, $id)
+    {
+        $data = User::find($id);
+        if ($data->role == 0) {
+            # code...
+            $data->role =1;
+        }else{
+            $data->role = 0;
+        }
+        $data->save();
+    }
 }
