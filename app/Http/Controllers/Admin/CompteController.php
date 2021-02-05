@@ -80,13 +80,17 @@ class CompteController extends Controller
         //
     }
     
-    public function updateStatusUser(Request $request)
+    public function status(Request $request, $id)
     {
-        $user = User::find($request->id);
-        $user->status = $request->status;
-        $member->save();
-  
-        return response()->json(['success'=>'Status change successfully.']);
+        $data = User::find($id);
+        if ($data->role == 0) {
+            # code...
+            $data->role =1;
+        }else{
+            $data->role = 0;
+        }
+        $data->save();
+        return Redirect::to('admin.comptes.index')->with('message',$data->name.'Status mis a jour avec succes');
     }
     /**
      * Remove the specified resource from storage.

@@ -57,6 +57,7 @@
                     <th>#</th>
                     <th>Nom et prenoms</th>
                     <th>Email</th>
+                    <th>Statut</th>
                     <th>Actions</th>
                 </tr {{$i=1}}>
                 @if (count($users) )
@@ -66,9 +67,19 @@
                             <td> {{$i++}} </td>
                             <td> {{$user->name}} </td>
                             <td> {{$user->email}}</td>
-                            <td>
-                                
-                            </td>
+                            <th>@if($user->role == 0) Inactive @else Active @endif</th>
+                            <th><a href="{{ route('status', ['id'=>$user->id]) }}">@if($user->role == 1) Inactive @else Active @endif</a></th>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+@endsection
+
                            
                         </tr>
                     

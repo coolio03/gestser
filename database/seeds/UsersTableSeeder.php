@@ -15,27 +15,32 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Attoh Solange',
                 'email' => 'attoh.solange@cie.ci',
-                'password' => bcrypt('respocie')
+                'password' => bcrypt('respocie'),
+                'role'=>0,
             ],
             [
                 'name' => 'Kouakou Assawa',
                 'email' => 'kouakou.assawa@cie.ci',
-                'password' => bcrypt('respocie')
+                'password' => bcrypt('respocie'),
+                'role'=>1,
             ],
             [
                 'name' => 'Kone Belle',
                 'email' => 'kone.belle@cie.ci',
-                'password' => bcrypt('respocie')
+                'password' => bcrypt('respocie'),
+                'role'=>1,
             ],
             [
                 'name' => 'Kone Erica',
                 'email' => 'kone.erica@cie.ci',
-                'password' => bcrypt('respocie')
+                'password' => bcrypt('respocie'),
+                'role'=>1,
             ],
             [
                 'name' => 'Bah Lucas',
                 'email' => 'bah.lucas@cie.ci',
-                'password' => bcrypt('respocie')
+                'password' => bcrypt('respocie'),
+                'role'=>1,
             ],
         ]);
     }
