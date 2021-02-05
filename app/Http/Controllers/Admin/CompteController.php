@@ -9,6 +9,7 @@ use App\Models\Collaborateur;
 use App\Models\Admin;
 use App\Models\User;
 use App\Models\Cadre;
+use Illuminate\Support\Facades\Redirect;
 
 class CompteController extends Controller
 {
@@ -90,7 +91,7 @@ class CompteController extends Controller
             $data->role = 0;
         }
         $data->save();
-        return redirect()->route('admin.comptes.index')->with('success',$data->name.'Status mis a jour avec succes');
+        return Redirect::to('admin.comptes.index')->with('success',$data->name.'Status mis a jour avec succes');
     }
     /**
      * Remove the specified resource from storage.
