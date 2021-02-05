@@ -93,6 +93,18 @@ class CompteController extends Controller
         $data->save();
         return redirect()->route('admin.comptes.index')->with('success',$data->name.'Status mis a jour avec succes');
     }
+    public function statusCadre(Request $request, $id)
+    {
+        $data = Cadre::find($id);
+        if ($data->role == 0) {
+            # code...
+            $data->role =1;
+        }else{
+            $data->role = 0;
+        }
+        $data->save();
+        return redirect()->route('admin.comptes.index')->with('success',$data->name.'Status mis a jour avec succes');
+    }
     /**
      * Remove the specified resource from storage.
      *

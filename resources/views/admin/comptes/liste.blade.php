@@ -67,8 +67,8 @@
                             <td> {{$i++}} </td>
                             <td> {{$user->name}} </td>
                             <td> {{$user->email}}</td>
-                            <th>@if($user->status == 0) Inactive @else Active @endif</th>
-                            <th><a href="{{ route('status', ['id'=>$user->id]) }}">@if($user->status == 1) Inactive @else Active @endif</a></th>
+                            <th>@if($user->status == 0) Inactif @else Actif @endif</th>
+                            <th><a href="{{ route('status', ['id'=>$user->id]) }}">@if($user->status == 1) Inactif @else Actif @endif</a></th>
                         </tr>
                         @endforeach
                 @else
@@ -85,6 +85,7 @@
                     <th>#</th>
                     <th>Nom et prenoms</th>
                     <th>Email</th>
+                    <th>Statut</th>
                     <th>Actions</th>
                 </tr {{$i=1}}>
                 @if (count($cadres) )
@@ -94,11 +95,8 @@
                             <td> {{$i++}} </td>
                             <td> {{$cadre->name}} </td>
                             <td> {{$cadre->email}}</td>
-                            <td>
-                                <input data-id="{{$cadre->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
-                                data-toggle="toggle" data-on="Active" data-off="InActive" {{ $cadre->role == true ? 'checked' : '' }}>    
-                            </td>
-                           
+                            <th>@if($cadre->role == 0) Inactif @else Actif @endif</th>
+                            <th><a href="{{ route('statusCadre', ['id'=>$cadre->id]) }}">@if($user->status == 1) Inactif @else Actif @endif</a></th>                          
                         </tr>
                     
                     @endforeach 
