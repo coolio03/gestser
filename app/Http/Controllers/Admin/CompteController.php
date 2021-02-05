@@ -90,7 +90,7 @@ class CompteController extends Controller
             $data->role = 0;
         }
         $data->save();
-        return redirect()->route('admin.comptes.index')->with('message',$data->name.'Status mis a jour avec succes');
+        return redirect()->route('admin.comptes.index')->with('success',$data->name.'Status mis a jour avec succes');
     }
     /**
      * Remove the specified resource from storage.
