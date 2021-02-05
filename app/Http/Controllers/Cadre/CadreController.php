@@ -72,5 +72,5 @@ class CadreController extends Controller
         $arr['collaborateurs'] = Collaborateur::all();
         return view('cadre.index',['traitement'=>$traitement,'signature'=>$signature,'cloture'=>$cloture,'transmission'=>$transmission,'saisie'=>$saisie,
         'archive'=>$archive,'complet'=>$complet,'ddeRa'=>$ddeRa])->with($arr);
-
+    }
 }
