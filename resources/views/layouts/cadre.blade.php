@@ -109,7 +109,7 @@
           <img src="{{asset('dist/img/user.png')}}" class="img-square elevation-2" alt="User Image">
           <div class="info">
             <a href="" class="d-block">{{Auth::user()->name}}</a>
-            <span style="color: white">(cadreistrateur)</span>
+            <span style="color: white">(Cadre Emploi)</span>
   
           </div>
           </div>
