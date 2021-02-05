@@ -71,24 +71,12 @@
                             <th><a href="{{ route('status', ['id'=>$user->id]) }}">@if($user->role == 1) Inactive @else Active @endif</a></th>
                         </tr>
                         @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-@endsection
-
-                           
-                        </tr>
-                    
-                    @endforeach 
                 @else
-                <tr><td colspan="12"> Pas de comptes trouves</td></tr>
+                    <tr><td colspan="5"> Pas de comptes trouves</td></tr>
                 @endif
-            </table>
-<p>  </p>
+            </table>    
+
+            <p>  </p>
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <h2>Liste des Comptes de Cadre Emploi</h2>
