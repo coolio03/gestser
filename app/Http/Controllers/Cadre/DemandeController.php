@@ -209,7 +209,7 @@ class DemandeController extends Controller
                 $demande->status = false;
         }
        $demande->update($request->all());
-       return back();
+       return back()->with('success','Demande mise a jour avec succes!!!!');
     }
 
 
