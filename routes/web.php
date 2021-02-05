@@ -29,9 +29,6 @@ Route::post('/register/cadre', 'Auth\RegisterController@createCadre')->name('cad
 //**********************FIN AUTENTIFICATION**************************** */
 
 
-//ClientController
-Route::get('/cadre', 'CadreController@index')->name('cadre');
-
 
 /***************************Administrateur****************************** */
 //AdminController
@@ -80,7 +77,7 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth:admin')->group(func
 
 //Cadre
 Route::namespace('Cadre')->prefix('cadre')->middleware('auth:cadre')->group(function () {
-    Route::get('/', 'cadreController@index')->name('cadre');
+    Route::get('/', 'CadreController@index')->name('cadre');
     Route::any('/demandes/search', function () {
         $q = Input::get ('q');
         if ($q != "") {

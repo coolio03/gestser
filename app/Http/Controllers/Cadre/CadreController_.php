@@ -3,17 +3,25 @@
 namespace App\Http\Controllers\Cadre;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Charts\DemandeChart;
 
+use App\Http\Controllers\Controller;
 use App\Models\Demande;
 use App\Models\Collaborateur;
 
 use Charts;
 use DB;
 
+
+
+
 class CadreController extends Controller
 {
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('auth:cadre');
@@ -72,5 +80,5 @@ class CadreController extends Controller
         $arr['collaborateurs'] = Collaborateur::all();
         return view('cadre.index',['traitement'=>$traitement,'signature'=>$signature,'cloture'=>$cloture,'transmission'=>$transmission,'saisie'=>$saisie,
         'archive'=>$archive,'complet'=>$complet,'ddeRa'=>$ddeRa])->with($arr);
-
+    }
 }
