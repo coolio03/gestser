@@ -35,87 +35,90 @@
                 <form method="post" action=" {{route('admin.demandes.store')}} ">
                   <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
                   <input type="hidden" name="cadre_id" value=" {{ Auth::user()->id }} ">
-                  @include('partials.form-group',[
-                    'title'=>__('Direction'),
-                    'type'=>'text',
-                    'name'=>'direction',
-                    'required'=>true
-                  ])
+                  <div class="row">
                     @include('partials.form-group',[
-                      'title'=>__('Matricule'),
+                      'title'=>__('Direction'),
                       'type'=>'text',
-                      'name'=>'matricule',
+                      'name'=>'direction',
                       'required'=>true
                     ])
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="" >Type de demande</label>
-                            <select name="type" id="" class="form-control">
-                                <option value="">Choisir type</option>
-                                <option value="STAGE ECOLE">STAGE ECOLE</option>
-                                <option value="STAGE IMMERSION">STAGE IMMERSION</option>
-                                <option value="STAGE QUALIFICATION">STAGE QUALIFICATION</option>
-                                <option value="CDD">CDD</option>
-                                <option value="CDI">CDI</option>
-                                <option value="EMBAUCHE A L ESSAI">EMBAUCHE A L'ESSAI</option>
-                                <option value="CONSULTANCE">CONSULTANCE</option>
-                                <option value="PROMOTION">PROMOTION</option>
-                                <option value="PROROGATION">PROROGATION</option>
-                                <option value="NOMINATION">NOMINATION</option>
-                                <option value="RECLASSEMENT">RECLASSEMENT</option>
-                                <option value="RECLAMATION">RECLAMATION</option>                                      
-                            </select>
-                        </div>
-                            <div class="clearfix"></div>
-                    </div>
-                    @include('partials.form-group',[
-                        'title'=>__('Motif de la demande'),
+                      @include('partials.form-group',[
+                        'title'=>__('Matricule'),
                         'type'=>'text',
-                        'name'=>'motif_demande',
+                        'name'=>'matricule',
                         'required'=>true
-                    ]) 
-                    @include('partials.form-group',[
-                      'title'=>__('Date de debut'),
-                      'type'=>'date',
-                      'name'=>'date_debut',
-                      'required'=>false
-                    ]) 
-                    @include('partials.form-group',[
-                      'title'=>__('Date de Fin'),
-                      'type'=>'date',
-                      'name'=>'date_fin',
-                      'required'=>true
-                  ]) 
-                    
-                    @include('partials.form-group',[
-                        'title'=>__('Date Reception'),
+                      ])
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label for="" >Type de demande</label>
+                              <select name="type" id="" class="form-control">
+                                  <option value="">Choisir type</option>
+                                  <option value="STAGE ECOLE">STAGE ECOLE</option>
+                                  <option value="STAGE IMMERSION">STAGE IMMERSION</option>
+                                  <option value="STAGE QUALIFICATION">STAGE QUALIFICATION</option>
+                                  <option value="CDD">CDD</option>
+                                  <option value="CDI">CDI</option>
+                                  <option value="EMBAUCHE A L ESSAI">EMBAUCHE A L'ESSAI</option>
+                                  <option value="CONSULTANCE">CONSULTANCE</option>
+                                  <option value="PROMOTION">PROMOTION</option>
+                                  <option value="PROROGATION">PROROGATION</option>
+                                  <option value="NOMINATION">NOMINATION</option>
+                                  <option value="RECLASSEMENT">RECLASSEMENT</option>
+                                  <option value="RECLAMATION">RECLAMATION</option>                                      
+                              </select>
+                          </div>
+                              <div class="clearfix"></div>
+                      </div>
+                      @include('partials.form-group',[
+                          'title'=>__('Motif de la demande'),
+                          'type'=>'text',
+                          'name'=>'motif_demande',
+                          'required'=>true
+                      ]) 
+                      @include('partials.form-group',[
+                        'title'=>__('Date de debut'),
                         'type'=>'date',
-                        'name'=>'date_reception',
+                        'name'=>'date_debut',
+                        'required'=>false
+                      ]) 
+                      @include('partials.form-group',[
+                        'title'=>__('Date de Fin'),
+                        'type'=>'date',
+                        'name'=>'date_fin',
                         'required'=>true
                     ]) 
-                    
-                        
-                    
-                   <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="" class="col-md-6">Responsable de Traitement</label>
-                            <div class="col-md-14">
-                                <select name="responsable_id"  class="form-control">
-                                        <option value="">Choisir Responsable</option>
-                                        @foreach ($users as $user)
-                                            <option value="{{$user->id}} " class="">{{$user->name}}</option>
-                                                                    
-                                        @endforeach                                    
-                                </select>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                  </div>   
-                  <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Enregistrer</button>
-                  </div>       
-                </div>
+                      
+                      @include('partials.form-group',[
+                          'title'=>__('Date Reception'),
+                          'type'=>'date',
+                          'name'=>'date_reception',
+                          'required'=>true
+                      ]) 
+                      
+                          
+                      
+                     <div class="col-sm-6">
+                          <div class="form-group">
+                              <label for="" class="col-md-6">Responsable de Traitement</label>
+                              <div class="col-md-14">
+                                  <select name="responsable_id"  class="form-control">
+                                          <option value="">Choisir Responsable</option>
+                                          @foreach ($users as $user)
+                                              <option value="{{$user->id}} " class="">{{$user->name}}</option>
+                                                                      
+                                          @endforeach                                    
+                                  </select>
+                              </div>
+                              <div class="clearfix"></div>
+                          </div>
+                      </div>
+                  </div>
+                  
+              </div>   
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+              </div>       
+            </div>
                 <!-- /.card-body -->
                
               </form>
