@@ -98,11 +98,12 @@
                             </div>
                         </div>
                   </div>
-                </form>
               </div>   
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Enregistrer</button>
-              </div>       
+              </div>     
+            </form>
+
             </div>
                 <!-- /.card-body -->
                
