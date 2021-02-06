@@ -56,7 +56,7 @@
                           </div>
                           <div class="clearfix"></div>
                       </div>
-                  </div>
+                    </div>
                     @include('partials.form-group',[
                         'title'=>__('Nom'),
                         'type'=>'text',
@@ -117,13 +117,14 @@
                       'name'=>'contact',
                       'required'=>true
                     ])
-                  </div>          
+                  </div>
+                </form>
+                          
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Enregistrer</button>
                 </div>
-              </form>
             </div>
             <!-- /.card -->
             </div>
