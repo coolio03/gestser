@@ -142,7 +142,7 @@ trait AuthenticatesUsers
         // and status is false i.e. 0 w will override the default error message
  
         if($user and Hash::check($request->password, $user->password) and $user->status !=1){
-            $errors = [$this->username() => 'Your account is not activated.'];
+            $errors = [$this->username() => "Votre compte n'est pas activé"];
         }
  
         if ($request->expectsJson()) {

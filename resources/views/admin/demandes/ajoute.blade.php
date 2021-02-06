@@ -35,7 +35,7 @@
                 <form method="post" action=" {{route('admin.demandes.store')}} ">
                   <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
                   <input type="hidden" name="cadre_id" value=" {{ Auth::user()->id }} ">
-                  <div class="row">
+                <div class="row">
                     @include('partials.form-group',[
                       'title'=>__('Direction'),
                       'type'=>'text',
@@ -75,18 +75,6 @@
                           'name'=>'motif_demande',
                           'required'=>true
                       ]) 
-                      @include('partials.form-group',[
-                        'title'=>__('Date de debut'),
-                        'type'=>'date',
-                        'name'=>'date_debut',
-                        'required'=>false
-                      ]) 
-                      @include('partials.form-group',[
-                        'title'=>__('Date de Fin'),
-                        'type'=>'date',
-                        'name'=>'date_fin',
-                        'required'=>true
-                    ]) 
                       
                       @include('partials.form-group',[
                           'title'=>__('Date Reception'),
@@ -94,9 +82,6 @@
                           'name'=>'date_reception',
                           'required'=>true
                       ]) 
-                      
-                          
-                      
                      <div class="col-sm-6">
                           <div class="form-group">
                               <label for="" class="col-md-6">Responsable de Traitement</label>
