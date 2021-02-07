@@ -35,7 +35,7 @@
                     <form action="/search " method="get" role="search" style="text-align: right">
                         {{csrf_field()}}
                         <div class="input-group">
-                            <input type="search" class="form-control text" name="search" placeholder="Rechercher collaborateurs"> <span class="input-group-btn">
+                            <input type="search" class="form-control text" name="search" placeholder="Rechercher Demandes"> <span class="input-group-btn">
                                 <button type="submit" class="btn btn-default">
                                     <span class="fas fa-search"></span>
                                 </button>

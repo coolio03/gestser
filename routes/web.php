@@ -27,6 +27,7 @@ Route::post('/register/admin', 'Auth\RegisterController@createAdmin')->name('adm
 Route::post('/register/cadre', 'Auth\RegisterController@createCadre')->name('cadre_register');
 
 //**********************FIN AUTENTIFICATION**************************** */
+//Recherche
 Route::get('/search', 'Admin\DemandeController@search');
 
 
