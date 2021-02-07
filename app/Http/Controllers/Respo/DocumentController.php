@@ -206,7 +206,7 @@ class DocumentController extends Controller
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
         $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
-        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/COURRIER PROMOTION SUITE A PUBLICATION DE POSTE.docx"));
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/PROMOTION/COURRIER PROMOTION SUITE A PUBLICATION DE POSTE.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
