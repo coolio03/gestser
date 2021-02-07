@@ -102,6 +102,24 @@
                                     </a>
                         
                                @endif
+                               @if ($dde->type == "PROMOTION")
+                               <a class="btn btn-warning" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr="{{route('courrierPromotion', $dde->id)}} " title="Courrier de promotion">
+                                   <i class="nav-icon fas fa-file"></i>
+                               </a>&nbsp;
+                               <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('reglementInterieur', $dde->id)}} " title="Fiche d'attribution de Reglement Interieur">
+                                   <i class="nav-icon fas fa-file"></i>
+                               </a>&nbsp;
+                               <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('contratCDD', $dde->id)}} " title="Contrat Embauche CDD">
+                                   <i class="nav-icon fas fa-file"></i>
+                               </a>&nbsp;
+                               <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('renouvellementEmbEssai', $dde->id)}} " title="Lettre renouvellement periode essai ">
+                                   <i class="nav-icon fas fa-file"></i>
+                               </a>
+                               <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('finContratCDD',$dde->id)}} " title="Lettre de fin de contrat CDD">
+                                   <i class="nav-icon fas fa-file"></i>
+                               </a>
+                   
+                          @endif
 
                                 
                             </td>
