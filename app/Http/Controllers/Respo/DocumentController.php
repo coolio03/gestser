@@ -59,6 +59,12 @@ class DocumentController extends Controller
         return view('respo.documents.promotion_pub_poste')->with($arr);
     }
 
+    public function passageMC(Demande $demande)
+    {
+        $arr['demande'] = Demande::findOrFail($demande->id);
+        return view('respo.documents.passage_maitrise_cadre')->with($arr);
+    }
+
     public function contratCDI(Demande $demande)
     {
         $arr['demande'] = Demande::findOrFail($demande->id);
@@ -232,6 +238,52 @@ class DocumentController extends Controller
         $collaborateur->prenoms = $request->prenoms;
         $desc->date_debut = $request->date_effet;
         $filename = "DCRH IS 71 15 01 COURRIER PROMOTION SUITE A PUBLICATION DE POSTE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        try{
+            $desc->update();
+            $collaborateur->update();
+            $my_template->saveAs(public_path("$filename.docx"));
+        }catch (Exception $e){
+           dd($e);
+        }
+        $downloadName = $downloadName??$filename;
+       
+       
+        return response()->download(public_path("$filename.docx"));
+        
+    }
+
+    public function redigePassageMC(Request $request,Demande $demande,$downloadName = null)
+    {
+        setlocale(LC_TIME, 'fra_fra');
+        $desc = Demande::find($demande->id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/PROMOTION/COURRIER DE PASSAGE DE MAITRISE A CADRE.docx"));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('emetteur',strtoupper($desc->user->name) );
+        $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
+        $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
+        $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
+        $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
+        $my_template->setValue('matricule', $request->matricule);
+        $my_template->setValue('copie', $request->copie);
+        $my_template->setValue('ancienne_fonction', $request->ancienne_fonction);
+        $my_template->setValue('nouvelle_fonction', $request->nouvelle_fonction);
+        $my_template->setValue('fonction', $request->nouvelle_fonction);
+        $my_template->setValue('plage_categorielle', $request->plage_categorielle);
+        $my_template->setValue('classement', $request->classement_actuel);
+        $my_template->setValue('classement_nouveau', $request->classement_nouveau);
+        $my_template->setValue('nouveau_salaire', $request->salaire_nouveau);
+        $my_template->setValue('prime_logement', $request->prime_logement);
+        $my_template->setValue('ind_kilo_info', $request->ind_kilo_info);
+        $my_template->setValue('ind_tranche_grat', $request->ind_tranche_grat);
+        $my_template->setValue('ind_vehicule_sc', $request->ind_vehicule_sc);
+        $my_template->setValue('ind_entretien_bleu', $request->ind_entretien_bleu);
+        $my_template->setValue('date_effet',strftime('%d %B %Y',strtotime($request->date_effet)));
+        $collaborateur->matricule = $request->matricule;
+        $collaborateur->nom = $request->nom;
+        $collaborateur->prenoms = $request->prenoms;
+        $desc->date_debut = $request->date_effet;
+        $filename = "DCRH IS 71 28 01 COURRIER DE PASSAGE DE MAITRISE A CADRE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $desc->update();
             $collaborateur->update();
