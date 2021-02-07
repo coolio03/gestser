@@ -479,14 +479,14 @@ class DocumentController extends Controller
         $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
         $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_fin)));
         $filename = "DCRH IS 71 10 01 LETTRE DE FIN DE CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
-        $collaborateur->matricule = $request->matricule;
+       /* $collaborateur->matricule = $request->matricule;
         $collaborateur->nom = $request->nom;
         $collaborateur->prenoms = $request->prenoms;
         $desc->date_debut = $request->date_debut; 
-        $desc->date_fin = $request->date_fin; 
+        $desc->date_fin = $request->date_fin; */
         try{
-            $desc->update();
-            $collaborateur->update();
+            $desc->update($request->all());
+            $collaborateur->update($request->all());
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
