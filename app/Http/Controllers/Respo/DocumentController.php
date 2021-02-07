@@ -487,7 +487,7 @@ class DocumentController extends Controller
         try{
             $desc->update();
             $collaborateur->update();
-            $my_template->saveAs(public_path("$filename.docx"));
+            $my_template->saveAs(storage_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
         }
