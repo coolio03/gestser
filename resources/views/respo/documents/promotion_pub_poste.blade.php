@@ -1,11 +1,11 @@
-<form method="post" action=" {{route('redigeAvisTitularisation', $demande->id)}}  ">
+<form method="post" action=" {{route('redigeNoteEmbauche', $demande->id)}}  ">
     @method('PUT')
     <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
     <input type="hidden" name="id" value=" {{$demande->id}} ">
-    <input type="hidden" name="responsable_id" value=" {{ Auth::user()->id }} "> 
+    <input type="hidden" name="responsable_id" value=" {{ Auth::user()->id }} ">   
     <div class="card-header">
-        <h3 class="card-title">Formulaire d'Avis de Titularisation</h3>
-      </div>   
+        <h3 class="card-title">Formulaire de Courier de Promotion suite a publication de Poste</h3>
+      </div> 
     <div class="card-body">
         <div class="row">
             @include('partials.form-group',[
@@ -30,54 +30,68 @@
                 'required'=>true
             ])
             @include('partials.form-group',[
-                'title'=>__('Destinataire'),
+                'title'=>__('Ancienne Fonction'),
                 'type'=>'text',
-                'name'=>'destinataire',
+                'name'=>'ancienne_fonction',
                 'required'=>true
-            ])   
+            ]) 
             @include('partials.form-group',[
-                'title'=>__('Copie'),
+                'title'=>__('Nouvelle Fonction'),
                 'type'=>'text',
-                'name'=>'copie',
+                'name'=>'nouvelle_fonction',
                 'required'=>true
-            ])
-           
+            ]) 
             @include('partials.form-group',[
-                'title'=>__('Classement'),
+                'title'=>__('Plage Catégorielle'),
+                'type'=>'text',
+                'name'=>'plage_categorielle',
+                'required'=>true
+            ]) 
+            @include('partials.form-group',[
+                'title'=>__('Classement Actuel'),
                 'type'=>'text',
                 'name'=>'classement_actuel',
                 'required'=>true
             ]) 
-             @include('partials.form-group',[
-                'title'=>__('Fonction'),
-                'type'=>'text',
-                'name'=>'fonction',
-                'required'=>true
-            ]) 
-             @include('partials.form-group',[
-                'title'=>__('Direction'),
-                'type'=>'text',
-                'name'=>'direction',
-                'required'=>true
-            ]) 
-             @include('partials.form-group',[
-                'title'=>__('Code Exploitation'),
-                'type'=>'text',
-                'name'=>'code_expl',
-                'required'=>true
-            ])        
             @include('partials.form-group',[
-                'title'=>__('Date de debut'),
-                'type'=>'date',
-                'name'=>'date_debut',
+                'title'=>__('Nouveau Classement'),
+                'type'=>'text',
+                'name'=>'classement_nouveau',
                 'required'=>true
             ]) 
+             @include('partials.form-group',[
+                'title'=>__('Ancien Salaire'),
+                'type'=>'text',
+                'name'=>'salaire_ancien',
+                'required'=>true
+            ])
             @include('partials.form-group',[
-                'title'=>__('Date de fin Essaie'),
-                'type'=>'date',
-                'name'=>'date_fin_essaie',
+                'title'=>__("Prime d'ancienneté"),
+                'type'=>'text',
+                'name'=>'prime_anciennete',
+                'required'=>true
+            ])
+            @include('partials.form-group',[
+                'title'=>__('Nouveau Salaire'),
+                'type'=>'text',
+                'name'=>'salaire_nouveau',
+                'required'=>true
+            ])
+            @include('partials.form-group',[
+                'title'=>__('Personnes en copie'),
+                'type'=>'text',
+                'name'=>'copie',
                 'required'=>true
             ]) 
+            
+            @include('partials.form-group',[
+                'title'=>__('Date Effet'),
+                'type'=>'date',
+                'name'=>'date_effet',
+                'required'=>true
+                ])          
+            
+
         </div> 
     </div>            
       

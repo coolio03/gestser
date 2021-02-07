@@ -185,7 +185,52 @@ class DocumentController extends Controller
         try{
             $desc->update();
             $collaborateur->update();
-            $my_template->saveAs(storage_path("$filename.docx"));
+            $my_template->saveAs(public_path("$filename.docx"));
+        }catch (Exception $e){
+           dd($e);
+        }
+        $downloadName = $downloadName??$filename;
+       
+       
+        return response()->download(public_path("$filename.docx"));
+        
+    }
+
+    public function redigeCourrierPromotion(Request $request,Demande $demande,$downloadName = null)
+    {
+        setlocale(LC_TIME, 'fra_fra');
+        $desc = Demande::find($demande->id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/NOTE_EMBAUCHE.docx"));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('emetteur',strtoupper($desc->user->name) );
+        $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
+        $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
+        $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
+        $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
+        $my_template->setValue('matricule', $request->matricule);
+        $my_template->setValue('copie', $request->copie);
+        $my_template->setValue('poste', $request->poste);
+        $my_template->setValue('ancienne_fontion', $request->ancienne_fonction);
+        $my_template->setValue('nouvelle_fontion', $request->nouvelle_fonction);
+        $my_template->setValue('plage_categorielle', $request->plage_categorielle);
+        $my_template->setValue('classement_actuel', $request->classement_actuel);
+        $my_template->setValue('classement_nouveau', $request->classement_nouveau);
+        $my_template->setValue('ancien_salaire', $request->ancien_salaire);
+        $my_template->setValue('nouveau_salaire', $request->nouveau_salaire);
+        $my_template->setValue('revalorisation', ($request->nouveau_salaire-$request->ancien_salaire));
+        $my_template->setValue('prime_anciennete', $request->prime_anciennete);
+        $my_template->setValue('salaire_total', $request->prime_anciennete+$request->nouveau_salaire);
+        $my_template->setValue('date_effet',strftime('%d %B %Y',strtotime($request->date_effet)));
+        $collaborateur->matricule = $request->matricule;
+        $collaborateur->nom = $request->nom;
+        $collaborateur->prenoms = $request->prenoms;
+        $desc->date_debut = $request->date_effet;
+        $filename = "DCRH IS 71 25 01 NOTE D'INFO EMBAUCHE EO M".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        try{
+            $desc->update();
+            $collaborateur->update();
+            $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
         }
