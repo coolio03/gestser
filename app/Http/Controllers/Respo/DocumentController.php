@@ -23,7 +23,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $arr['demandes'] = Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_remise_ra')->get();
+        $arr['demandes'] = Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_remise_ra')->latest()->paginate(5);;
         return view('respo.documents.index')->with($arr);
     }
 
