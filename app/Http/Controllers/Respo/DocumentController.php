@@ -210,7 +210,7 @@ class DocumentController extends Controller
         $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
         $my_template->setValue('matricule', $request->matricule);
         $my_template->setValue('direction_sc', $request->direction_sc);
-        $my_template->setValue('date_debut',strftime('%d %B %Y',$request->date_debut));
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
         $collaborateur->matricule = $request->matricule;
         $collaborateur->nom = $request->nom;
         $collaborateur->prenoms = $request->prenoms;
