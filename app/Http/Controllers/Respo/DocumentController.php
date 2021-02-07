@@ -485,7 +485,8 @@ class DocumentController extends Controller
         $desc->date_debut = $request->date_debut; 
         $desc->date_fin = $request->date_fin; 
         try{
-            
+            $desc->update();
+            $collaborateur->update();
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
