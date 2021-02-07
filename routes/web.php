@@ -78,7 +78,7 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth:admin')->group(func
 //Cadre
 Route::namespace('Cadre')->prefix('cadre')->middleware('auth:cadre')->group(function () {
     Route::get('/', 'CadreController@index')->name('cadre');
-    Route::get('/search', 'DemandeController@search');
+    Route::get('/search', 'DemandeController@search')->name('recherche');
     Route::get('/collaborateurs/{id}/demande', 'DemandeController@detail',['as'=>'cadre'])->name('detail');
     Route::get('/collaborateurs/delete/{id}','CollaborateurController@delete',['as'=>'cadre'])->name('delete');
     Route::resource('/collaborateurs', 'CollaborateurController',['as'=>'cadre']);

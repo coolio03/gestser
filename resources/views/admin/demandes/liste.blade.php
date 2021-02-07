@@ -32,7 +32,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-tools">
-                    <form action="/search " method="get" role="search" style="text-align: right">
+                    <form action=" {{route('recherche')}} " method="get" role="search" style="text-align: right">
                         {{csrf_field()}}
                         <div class="input-group">
                             <input type="search" class="form-control text" name="search" placeholder="Rechercher collaborateurs"> <span class="input-group-btn">
