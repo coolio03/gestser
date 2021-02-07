@@ -27,6 +27,7 @@ Route::post('/register/admin', 'Auth\RegisterController@createAdmin')->name('adm
 Route::post('/register/cadre', 'Auth\RegisterController@createCadre')->name('cadre_register');
 
 //**********************FIN AUTENTIFICATION**************************** */
+Route::get('/search', 'DemandeController@search');
 
 
 
@@ -34,7 +35,6 @@ Route::post('/register/cadre', 'Auth\RegisterController@createCadre')->name('cad
 //AdminController
 Route::namespace('Admin')->prefix('admin')->middleware('auth:admin')->group(function () {
     Route::get('/', 'AdminController@index')->name('admin');
-    Route::get('/search', 'DemandeController@search');
     Route::get('/collaborateurs/{id}/demande', 'DemandeController@detail',['as'=>'admin'])->name('detail');
     Route::get('/collaborateurs/delete/{id}','CollaborateurController@delete',['as'=>'admin'])->name('delete');
     Route::resource('/collaborateurs', 'CollaborateurController',['as'=>'admin']);
