@@ -252,6 +252,12 @@ class DemandeController extends Controller
         
         
     }
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $demande = Demande::where('numero_dossier','%'.$search.'%')->paginate(5);
+        return view('admin.demandes.index',['demande'=> $demande]);
+    }
 
     /**
      * Display the specified resource.
