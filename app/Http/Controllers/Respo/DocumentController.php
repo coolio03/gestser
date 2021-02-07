@@ -103,7 +103,7 @@ class DocumentController extends Controller
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);   
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/STAGE/ATTESTATION_STAGE.docx"));
-        $my_template->setValue('date_redaction',(strftime('%d %B %Y')));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
@@ -236,7 +236,7 @@ class DocumentController extends Controller
         $desc = Demande::find($demande->id);
         $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/EMBAUCHE_A_L_ESSAI/LETTRE_DE_RENOUVELLEMENT_PERIODE_ESSAI.docx"));
-        $my_template->setValue('date_redaction',date(strftime('%d %B %Y')));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
         $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
@@ -485,8 +485,7 @@ class DocumentController extends Controller
         $desc->date_debut = $request->date_debut; 
         $desc->date_fin = $request->date_fin; 
         try{
-            $desc->update();
-            $collaborateur->update();
+            
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);
