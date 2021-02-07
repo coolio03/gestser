@@ -221,8 +221,8 @@ class DocumentController extends Controller
         $my_template->setValue('plage_categorielle', $request->plage_categorielle);
         $my_template->setValue('classement_actuel', $request->classement_actuel);
         $my_template->setValue('classement_nouveau', $request->classement_nouveau);
-        $my_template->setValue('ancien_salaire', $request->ancien_salaire);
-        $my_template->setValue('nouveau_salaire', $request->nouveau_salaire);
+        $my_template->setValue('ancien_salaire', $request->salaire_ancien);
+        $my_template->setValue('nouveau_salaire', $request->salaire_nouveau);
         $my_template->setValue('revalorisation', ($request->nouveau_salaire-$request->ancien_salaire));
         $my_template->setValue('prime_anciennete', $request->prime_anciennete);
         $my_template->setValue('salaire_total', ($request->prime_anciennete+$request->nouveau_salaire));

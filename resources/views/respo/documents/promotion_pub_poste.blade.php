@@ -65,16 +65,17 @@
                 'name'=>'salaire_ancien',
                 'required'=>true
             ])
-            @include('partials.form-group',[
-                'title'=>__("Prime d'ancienneté"),
-                'type'=>'text',
-                'name'=>'prime_anciennete',
-                'required'=>true
-            ])
+           
             @include('partials.form-group',[
                 'title'=>__('Nouveau Salaire'),
                 'type'=>'text',
                 'name'=>'salaire_nouveau',
+                'required'=>true
+            ])
+             @include('partials.form-group',[
+                'title'=>__("Prime d'ancienneté"),
+                'type'=>'text',
+                'name'=>'prime_anciennete',
                 'required'=>true
             ])
             @include('partials.form-group',[
