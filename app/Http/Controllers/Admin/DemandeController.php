@@ -255,7 +255,7 @@ class DemandeController extends Controller
     public function search(Request $request)
     {
         $search = $request->get('search');
-        $arr['users'] = User::all();
+        $arr['users'] = User::get();
         $demandes = Demande::where('numero_dossier','%'.$search.'%')->paginate(5);
         return view('admin.demandes.liste',['demandes'=> $demandes]);
     }
