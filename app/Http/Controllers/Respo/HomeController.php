@@ -39,13 +39,13 @@ class HomeController extends Controller
         $saisie = Charts::create('pie', 'highcharts')
         ->title('Saisie des demandes dans Hr')
         ->labels([ 'Saisie','Non Saisie'])
-        ->values([Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_saisir_hr')->count() ,Demande::where('responsable_id',Auth::user()->id)->whereNull('date_saisir_hr')->count()])
+        ->values([Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_traitement')->whereNotNull('date_saisir_hr')->count() ,Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_traitement')->whereNull('date_saisir_hr')->count()])
         ->responsive(true);
 
         $archive = Charts::create('pie', 'highcharts')
         ->title('Archivage des demandes')
         ->labels([ 'Archive','Non Archive'])
-        ->values([Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_archive')->count() ,Demande::where('responsable_id',Auth::user()->id)->whereNull('date_archive')->count()])
+        ->values([Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_traitement')->whereNotNull('date_archive')->count() ,Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_traitement')->whereNull('date_archive')->count()])
         ->responsive(true);
 
         $arr['demandes'] = Demande::all();
