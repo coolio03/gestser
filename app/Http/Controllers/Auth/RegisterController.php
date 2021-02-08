@@ -111,4 +111,34 @@ class RegisterController extends Controller
         ]);
         return redirect()->intended('login/cadre');
     }
+    
+    protected function createUser(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        if($request->type_user == 'Responsable Adm')
+        {
+            User::create([
+                'name'=>$request['name'],
+                'email'=>$request['email'],
+                'password'=>Hash::make($request['password']),
+            ]);
+        }
+        if($request->type_user == 'Admin')
+        {
+            Admin::create([
+                'name'=>$request['name'],
+                'email'=>$request['email'],
+                'password'=>Hash::make($request['password']),
+            ]);
+        }
+        if($request->type_user == 'Cadre')
+        {
+            Cadre::create([
+                'name'=>$request['name'],
+                'email'=>$request['email'],
+                'password'=>Hash::make($request['password']),
+            ]);
+        }
+        return redirect()->intented('admin.comptes.index');
+    }
 }

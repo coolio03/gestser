@@ -17,7 +17,31 @@ class CompteController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
      */
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest:cadre')->except('logout');
+    }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+    }
+    protected function createUser(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'status'=> false,
+        ]);
+    }
     public function index()
     {
         $arr['admins'] = Admin::all();
@@ -33,7 +57,7 @@ class CompteController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.comptes.ajoute');
     }
 
     /**
@@ -44,7 +68,33 @@ class CompteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validator($request->all())->validate();
+        if($request->type_user == 'Responsable Adm')
+        {
+            User::createUser([
+                'name'=>$request['name'],
+                'email'=>$request['email'],
+                'password'=>Hash::make($request['password']),
+            ]);
+        }
+        if($request->type_user == 'Admin')
+        {
+            Admin::createUser([
+                'name'=>$request['name'],
+                'email'=>$request['email'],
+                'password'=>Hash::make($request['password']),
+            ]);
+        }
+        if($request->type_user == 'Cadre')
+        {
+            Cadre::createUser([
+                'name'=>$request['name'],
+                'email'=>$request['email'],
+                'password'=>Hash::make($request['password']),
+            ]);
+        }
+        
+        return redirect()->intented('admin.comptes.index');
     }
 
     /**

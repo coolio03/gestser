@@ -5,12 +5,12 @@
         <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark"> <i class="nav-icon fas fa-file"></i>&nbsp;Demandes</h1>
+                <h1 class="m-0 text-dark"> <i class="nav-icon fas fa-file"></i>&nbsp;Comptes</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href=" {{route('admin')}} ">Acceuil</a></li>
-                <li class="breadcrumb-item active">Listes des Demandes</li>
+                <li class="breadcrumb-item active">Listes des comptes</li>
             </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
