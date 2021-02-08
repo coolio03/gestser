@@ -35,6 +35,11 @@ class CompteController extends Controller
         return view('admin.comptes.ajoute');
     }
 
+    public function creation()
+    {
+        return view('admin.comptes.ajoute');
+    }
+
     public function status(Request $request, $id)
     {
         $data = User::find($id);
@@ -47,7 +52,7 @@ class CompteController extends Controller
         $data->save();
         return redirect()->route('admin.comptes.index')->with('success',$data->name.' Status mis a jour avec succes');
     }
-    
+
     public function statusCadre(Request $request, $id)
     {
         $data = Cadre::find($id);

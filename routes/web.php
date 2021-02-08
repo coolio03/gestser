@@ -63,6 +63,7 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth:admin')->group(func
     Route::patch('/demandes/{id}/suivieDemande', 'DemandeController@detailDemande',['as'=>'admin'])->name('detailDemande');
     Route::get('/comptes/cadre/{id}', 'CompteController@statusCadre',['as'=>'admin'])->name('statusCadre');  
     Route::get('/comptes/{id}', 'CompteController@status',['as'=>'admin'])->name('status');  
+    Route::get('/comptes/creerComptes', 'CompteController@creation',['as'=>'admin'])->name('creation');  
     Route::resource('/comptes', 'CompteController',['as'=>'admin']);  
     Route::resource('/demandes', 'DemandeController',['as'=>'admin']);  
 });
