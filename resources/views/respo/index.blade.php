@@ -36,7 +36,7 @@
                     <div> <h6>Traitements</h6></div>
                     <div style="margin-left: 5%">
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Demandes Reçus :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demande->where('responsable_id',Auth::user()->id)->where('date_remise_ra','<>',null)))}}</span>
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Demandes Reçus :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demande->where('responsable_id',Auth::user()->id)->where('date_remise_ra','<>',null))}}</span>
                       </div>
                       <div>
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('traites')}}">Demandes Traitées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_traitement','<>',Null)) }} </span> 
