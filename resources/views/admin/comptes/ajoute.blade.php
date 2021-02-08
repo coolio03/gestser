@@ -37,8 +37,6 @@
             <div class="card-body"> 
                 <div class="row">
                     <form method="post" action=" {{route('admin.comptes.store')}} ">
-                        <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
-                        <input type="hidden" name="cadre_id" value=" {{ Auth::user()->id }} ">
                         <div class="col-sm-6">
                         <div class="form-group">
                             <label for="" class="col-md-6">Type d'utilistateur</label>
@@ -85,26 +83,3 @@
     <!-- Modal -->
 
 @endsection
-@push('scripts')
-<script src="{{asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
-<script>
-    $(function() {
-      $('.toggle-class').change(function() {
-          var role = $(this).prop('checked') == true ? 1 : 0; 
-          var cadre_id = $(this).data('id'); 
-           
-          $.ajax({
-              type: "GET",
-              dataType: "json",
-              url: '/updateStatus',
-              data: {'role': role, 'id': cadre_id},
-              success: function(data){
-                console.log(data.success)
-              }
-          });
-      })
-    })
-  </script>
-  
-
-@endpush
