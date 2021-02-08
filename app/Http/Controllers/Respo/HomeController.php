@@ -48,7 +48,8 @@ class HomeController extends Controller
         ->values([Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_archive')->count() ,Demande::where('responsable_id',Auth::user()->id)->whereNull('date_archive')->count()])
         ->responsive(true);
 
-        return view('respo.index',['traitement'=>$traitement, 'saisie'=>$saisie, 'archive'=>$archive]);
+        $arr['demandes'] = Demande::all();
+        return view('respo.index',['traitement'=>$traitement, 'saisie'=>$saisie, 'archive'=>$archive])->with($arr);
     }
     
 }
