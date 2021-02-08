@@ -19,23 +19,6 @@ class CompteController extends Controller
      * @return \Illuminate\Http\Response
      * 
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-    }
-    protected function createUser(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'status'=> false,
-        ]);
-    }
     public function index()
     {
         $arr['admins'] = Admin::all();
@@ -51,7 +34,7 @@ class CompteController extends Controller
      */
     public function create()
     {
-        return view('admin.comptes.ajoute');
+        //
     }
 
     /**
