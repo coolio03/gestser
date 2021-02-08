@@ -7,8 +7,7 @@
     </div>
     <div class="modal-body">
         <input type="hidden" name="id" value=" {{$demande->id}} ">
-        <div class="row">
-            <input type="hidden" name="id" value=" {{$demande->type}} ">
+        <input type="hidden" name="id" value=" {{$demande->type}} ">
             <div class="row">
                 @include('partials.form-group-d',[
                     'title'=>__('Date reception'),
@@ -37,7 +36,7 @@
                 ])                      
             </div>
                 
-        </div>
+        
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>

@@ -80,9 +80,9 @@
                                     <i title="Voir Detail de la demande de {{$dde->collaborateur->nom.' '. $dde->collaborateur->prenoms}}" class="nav-icon fas fa-eye"></i>
                                 </button>
                                 &nbsp;
-                                <a class="btn btn-success" data-toggle="modal" id="signeButton"  class="btn btn-success" data-target="#signeModal" data-attr="{{ route('signalTraiter', $dde->id) }}" title="Continuer le suivie ">
+                                <a class="btn btn-success" data-toggle="modal" id="signeButton"  class="btn btn-success" data-target="#signeModal" data-attr="{{ route('signalTraiter', $dde->id) }}" title="Signaler traitement ">
                                     <i class="nav-icon fas fa-chart-pie"></i> 
-                                </a> 
+                                </a>  
 
                                 
                             </td>
