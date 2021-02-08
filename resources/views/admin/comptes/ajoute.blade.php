@@ -29,56 +29,60 @@
                 </p>
             </div>
             @endif
-        <div class="card">
-            <div class="card-header">
-                <h3>Formulaire de creation de comptes</h3>
-            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3>Formulaire de creation de comptes</h3>
+                </div>
         
-            <div class="card-body"> 
-                <div class="row">
+                <div class="card-body"> 
                     <form method="post" action=" {{route('admin.comptes.store')}} ">
-                        <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="" class="col-md-6">Type d'utilistateur</label>
-                            <div class="col-md-14">
-                                <select name="type_user" id="" class="form-control" required>
-                                        <option value="">Choisir type</option>
-                                        <option value="Responsable Adm">Responsable Adm</option>
-                                        <option value="Cadre">Cadre</option>
-                                        <option value="Admin">Administrateur</option>                                                                       
-                                </select>
+                        <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="col-md-6">Type d'utilistateur</label>
+                                    <div class="col-md-14">
+                                        <select name="type_user" id="" class="form-control" required>
+                                                <option value="">Choisir type</option>
+                                                <option value="Responsable Adm">Responsable Adm</option>
+                                                <option value="Cadre">Cadre</option>
+                                                <option value="Admin">Administrateur</option>                                                                       
+                                        </select>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
                             </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        </div>
-                        @include('partials.form-group',[
-                        'title'=>__('Nom et prenoms'),
-                        'type'=>'text',
-                        'name'=>'name',
-                        'required'=>true
-                        ])
-                        @include('partials.form-group',[
-                            'title'=>__('Email'),
+                            @include('partials.form-group',[
+                            'title'=>__('Nom et prenoms'),
                             'type'=>'text',
-                            'name'=>'email',
+                            'name'=>'name',
                             'required'=>true
-                        ])
-                        @include('partials.form-group',[
-                            'title'=>__('Mot de passe'),
-                            'type'=>'password',
-                            'name'=>'password',
-                            'required'=>true
-                        ])
-                    </form>
-                </div> 
+                            ])
+                            @include('partials.form-group',[
+                                'title'=>__('Email'),
+                                'type'=>'text',
+                                'name'=>'email',
+                                'required'=>true
+                            ])
+                            @include('partials.form-group',[
+                                'title'=>__('Mot de passe'),
+                                'type'=>'password',
+                                'name'=>'password',
+                                'required'=>true
+                            ])
+                        </div>
+                </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
-                  </div>       
+                </div>  
+                    </form>
+            </div> 
+                     
 
-            </div>
-        </div> 
+        </div>
+
         <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
+<!-- /.container-fluid -->
     </section>
     <!-- Modal -->
 
