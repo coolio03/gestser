@@ -30,14 +30,11 @@
             </div>
             @endif
         <div class="card">
-        <div class="card-body"> 
-            <p>
-                <a href=" {{route('admin.demandes.create')}} " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter une demande</a>
-            </p>
-          
-          
-
-        </div>
+            <div class="card-body"> 
+                <p>
+                    <a href=" {{route('admin.comptes.create')}} " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter un Compte</a>
+                </p>
+            </div>
         </div> 
         <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
@@ -45,61 +42,3 @@
     <!-- Modal -->
   
 @endsection
-@push('scripts')
-<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="{{asset('js/app.js')}}"></script>
-<script>
-     $(document).on('click', '#signeButton', function(event) {
-            event.preventDefault();
-            let href = $(this).attr('data-attr');
-            $.ajax({
-                url: href,
-                beforeSend: function() {
-                    $('#loader').show();
-                },
-                // return the result
-                success: function(result) {
-                    $('#signeModal').modal("show");
-                    $('#signeContent').html(result).show();
-                    
-                },
-                complete: function() {
-                    $('#loader').hide();
-                },
-                error: function(jqXHR, testStatus, error) {
-                    console.log(error);
-                    alert("Page " + href + " cannot open. Error:" + error);
-                    $('#loader').hide();
-                },
-                timeout: 8000
-            })
-        });
-        $(document).on('click', '#consulterButton', function(event) {
-            event.preventDefault();
-            let href = $(this).attr('data-attr');
-            $.ajax({
-                url: href,
-                beforeSend: function() {
-                    $('#loader').show();
-                },
-                // return the result
-                success: function(result) {
-                    $('#consulterModal').modal("show");
-                    $('#consulterContent').html(result).show();
-                    
-                },
-                complete: function() {
-                    $('#loader').hide();
-                },
-                error: function(jqXHR, testStatus, error) {
-                    console.log(error);
-                    alert("Page " + href + " cannot open. Error:" + error);
-                    $('#loader').hide();
-                },
-                timeout: 8000
-            })
-        });
-</script>
-
-@endpush
