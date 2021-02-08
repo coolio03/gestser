@@ -274,7 +274,8 @@ class DocumentController extends Controller
         $my_template->setValue('copie', $request->copie);
         $my_template->setValue('ancienne_fonction', $request->ancienne_fonction);
         $my_template->setValue('nouvelle_fonction', $request->nouvelle_fonction);
-        $my_template->setValue('poste', $request->nouvelle_fonction);
+        $my_template->setValue('fonction', $request->nouvelle_fonction);
+        $my_template->setValue('direction', $request->direction);
         $my_template->setValue('ancien_classement', $request->classement_actuel);
         $my_template->setValue('nouveau_classement', $request->classement_nouveau);
         $my_template->setValue('ancien_salaire', $request->salaire_ancien);

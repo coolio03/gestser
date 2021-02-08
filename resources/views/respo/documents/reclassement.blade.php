@@ -29,6 +29,12 @@
                 'value'=>$demande->collaborateur->matricule,
                 'required'=>true
             ])
+             @include('partials.form-group',[
+                'title'=>__('Direction'),
+                'type'=>'text',
+                'name'=>'direction',
+                'required'=>true
+            ]) 
             @include('partials.form-group',[
                 'title'=>__('Ancienne Fonction'),
                 'type'=>'text',
