@@ -1,10 +1,10 @@
-<form method="post" action=" {{route('redigePassageMC', $demande->id)}}  ">
+<form method="post" action=" {{route('redigeReclassement', $demande->id)}}  ">
     @method('PUT')
     <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
     <input type="hidden" name="id" value=" {{$demande->id}} ">
     <input type="hidden" name="responsable_id" value=" {{ Auth::user()->id }} ">   
     <div class="card-header">
-        <h3 class="card-title">Formulaire de Courier de Passage de maitrise a cadre</h3>
+        <h3 class="card-title">Formulaire de Courier de reclassement</h3>
       </div> 
     <div class="card-body">
         <div class="row">
@@ -28,15 +28,22 @@
                 'name'=>'matricule',
                 'value'=>$demande->collaborateur->matricule,
                 'required'=>true
-            ]) 
+            ])
             @include('partials.form-group',[
-                'title'=>__('Plage Catégorielle'),
+                'title'=>__('Ancienne Fonction'),
                 'type'=>'text',
-                'name'=>'plage_categorielle',
+                'name'=>'ancienne_fonction',
                 'required'=>true
             ]) 
             @include('partials.form-group',[
-                'title'=>__('Ancien Classement'),
+                'title'=>__('Nouvelle Fonction'),
+                'type'=>'text',
+                'name'=>'nouvelle_fonction',
+                'required'=>true
+            ]) 
+            
+            @include('partials.form-group',[
+                'title'=>__('Classement Actuel'),
                 'type'=>'text',
                 'name'=>'classement_actuel',
                 'required'=>true
@@ -47,6 +54,13 @@
                 'name'=>'classement_nouveau',
                 'required'=>true
             ]) 
+             @include('partials.form-group',[
+                'title'=>__('Ancien Salaire'),
+                'type'=>'text',
+                'name'=>'salaire_ancien',
+                'required'=>true
+            ])
+           
             @include('partials.form-group',[
                 'title'=>__('Nouveau Salaire'),
                 'type'=>'text',
@@ -54,35 +68,17 @@
                 'required'=>true
             ])
              @include('partials.form-group',[
-                'title'=>__("Prime de logement"),
+                'title'=>__("Prime d'ancienneté"),
                 'type'=>'text',
-                'name'=>'prime_logement',
+                'name'=>'prime_anciennete',
                 'required'=>true
             ])
-             @include('partials.form-group',[
-                'title'=>__("Indemnite Kilo Info"),
+            @include('partials.form-group',[
+                'title'=>__('Personnes en copie'),
                 'type'=>'text',
-                'name'=>'ind_kilo_info',
+                'name'=>'copie',
                 'required'=>true
-            ])
-             @include('partials.form-group',[
-                'title'=>__("Indemnite Tranche Gratuite"),
-                'type'=>'text',
-                'name'=>'ind_tranche_grat',
-                'required'=>true
-            ])
-             @include('partials.form-group',[
-                'title'=>__("Indemnite Vehicule S/C"),
-                'type'=>'text',
-                'name'=>'ind_vehicule_sc',
-                'required'=>true
-            ])
-             @include('partials.form-group',[
-                'title'=>__("Indemnite Entretien Bleu"),
-                'type'=>'text',
-                'name'=>'ind_entretien_bleu',
-                'required'=>true
-            ])
+            ]) 
             
             @include('partials.form-group',[
                 'title'=>__('Date Effet'),

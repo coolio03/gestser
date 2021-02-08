@@ -109,6 +109,11 @@
                                <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('passageMC', $dde->id)}} " title="Passsage de maitrise a cadre">
                                    <i class="nav-icon fas fa-file"></i>
                                </a>&nbsp;
+                               @if ($dde->type == "RECLASSEMENT")
+                               <a class="btn btn-warning" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr="{{route('reclassement', $dde->id)}} " title="Courrier de reclassement">
+                                   <i class="nav-icon fas fa-file"></i>
+                               </a>&nbsp;
+                               
                    
                           @endif
 

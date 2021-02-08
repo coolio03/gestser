@@ -112,6 +112,7 @@ Route::namespace('Respo')->prefix('home')->middleware('auth')->group(function(){
     Route::put('/document/{demande}/redigeNote', 'DocumentController@redigeNote',['as'=>'home'])->name('redigeNote');
     Route::put('/document/{demande}/redigeCourrierPromotion', 'DocumentController@redigeCourrierPromotion',['as'=>'home'])->name('redigeCourrierPromotion');
     Route::put('/document/{demande}/redigePassageMC', 'DocumentController@redigePassageMC',['as'=>'home'])->name('redigePassageMC');
+    Route::put('/document/{demande}/redigeReclassement', 'DocumentController@redigeReclassement',['as'=>'home'])->name('redigeReclassement');
     Route::put('/document/{demande}/redigeNoteEmbauche', 'DocumentController@redigeNoteEmbauche',['as'=>'home'])->name('redigeNoteEmbauche');
     Route::put('/document/{demande}/redigeReglementInterieur', 'DocumentController@redigeReglementInterieur',['as'=>'home'])->name('redigeReglementInterieur');
     Route::put('/document/{demande}/redigeContratEmbauche', 'DocumentController@redigeContratEmbauche',['as'=>'home'])->name('redigeContratEmbauche');
@@ -133,6 +134,7 @@ Route::namespace('Respo')->prefix('home')->middleware('auth')->group(function(){
     Route::get('/documents/rediger/{demande}/finContratCDD','DocumentController@finContratCDD',['as'=>'home'])->name('finContratCDD');
     Route::get('/documents/rediger/{demande}/promotioSuitePubPoste','DocumentController@courrierPromotion',['as'=>'home'])->name('courrierPromotion');
     Route::get('/documents/rediger/{demande}/passageMC','DocumentController@passageMC',['as'=>'home'])->name('passageMC');
+    Route::get('/documents/rediger/{demande}/reclassement','DocumentController@reclassement',['as'=>'home'])->name('reclassement');
     Route::get('/documents/rediger/{demande}/renouvellementEmbEssai','DocumentController@renouvellementEmbEssai',['as'=>'home'])->name('renouvellementEmbEssai');
     Route::get('/demandes/saisie/{id}/suivie','DemandeController@signalTraiter',['as'=>'home'])->name('signalTraiter');
     Route::get('/demandes/documents', 'DemandeController@document',['as'=>'home'])->name('redaction');
