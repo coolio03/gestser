@@ -102,6 +102,7 @@
                                     </a>
                         
                                @endif
+
                                @if ($dde->type == "PROMOTION")
                                <a class="btn btn-warning" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr="{{route('courrierPromotion', $dde->id)}} " title="Courrier de promotion">
                                    <i class="nav-icon fas fa-file"></i>
@@ -110,11 +111,12 @@
                                    <i class="nav-icon fas fa-file"></i>
                                </a>&nbsp;
                                @endif
-                               @if ($dde->type == "RECLASSEMENT")
-                               <a class="btn btn-warning" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr="{{route('reclassement', $dde->id)}} " title="Courrier de reclassement">
-                                   <i class="nav-icon fas fa-file"></i>
-                               </a>&nbsp;
-                               @endif
+
+                                @if ($dde->type == "RECLASSEMENT")
+                                    <a class="btn btn-warning" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr="{{route('reclassement', $dde->id)}} " title="Courrier de reclassement">
+                                        <i class="nav-icon fas fa-file"></i>
+                                    </a>&nbsp;
+                                @endif
                    
                           @endif
 
