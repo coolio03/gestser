@@ -36,31 +36,31 @@
                     <div> <h6>Traitements</h6></div>
                     <div style="margin-left: 5%">
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Demandes Reçus :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('responsable_id',Auth::user()->id)->where('date_remise_ra','<>',null))}}</span>
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('home.demandes.index')}}">Demandes Reçus :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('responsable_id',Auth::user()->id)->where('date_remise_ra','<>',null))}}</span>
                       </div>
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('traites')}}">Demandes Traitées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_traitement','<>',Null)) }} </span> 
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('traite')}}">Demandes Traitées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_traitement','<>',Null)) }} </span> 
                       </div>
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('non_traites')}}">Demande Non Traitées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_traitement','=',Null)) }} </span> 
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('non_traite')}}">Demande Non Traitées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_traitement','=',Null)) }} </span> 
                       </div>
                     </div>
                     <div> <h6>Saisie Hra</h6></div>
                     <div style="margin-left: 5%">
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Demandes Saisies :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('responsable_id',Auth::user()->id)->where('date_saisir_hr','<>',null))}}</span>
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('saisirHR')}}">Demandes Saisies :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('responsable_id',Auth::user()->id)->where('date_saisir_hr','<>',null)->where('date_traitement','<>',null))}}</span>
                       </div>
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('traites')}}">Demandes Non Saisies :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_saisir_hr',null)) }} </span> 
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('nonSaisirHR')}}">Demandes Non Saisies :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_saisir_hr',null)->where('date_traitement','<>',null)) }} </span> 
                       </div>
                     </div>
                     <div> <h6>Archivage</h6></div>
                     <div style="margin-left: 5%">
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Demandes Archivées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('responsable_id',Auth::user()->id)->where('date_archive','<>',null))}}</span>
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('archives')}}">Demandes Archivées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('responsable_id',Auth::user()->id)->where('date_archive','<>',null)->where('date_traitement','<>',null))}}</span>
                       </div>
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('traites')}}">Demandes Non Archivées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_archive','=',null)) }} </span> 
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('nonArchives')}}">Demandes Non Archivées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_archive','=',null)->where('date_traitement','<>',null)) }} </span> 
                       </div>
                     </div>
                   </div>

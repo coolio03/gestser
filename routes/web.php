@@ -106,6 +106,8 @@ Route::namespace('Respo')->prefix('home')->middleware('auth')->group(function(){
     Route::get('/demandes/non_traites', 'DemandeController@nonTraite',['as'=>'home'])->name('non_traite');
     Route::get('/demandes/non_saisi', 'DemandeController@nonSaisirHR',['as'=>'home'])->name('nonSaisirHR');
     Route::get('/demandes/saisi', 'DemandeController@saisirHR',['as'=>'home'])->name('saisirHR');
+    Route::get('/demandes/archive', 'DemandeController@archive',['as'=>'home'])->name('archives');
+    Route::get('/demandes/nonArchive', 'DemandeController@nonArchive',['as'=>'home'])->name('nonArchives');
     Route::put('/demandes/{demande}/traiter', 'DemandeController@traiter',['as'=>'home'])->name('traiter');
     Route::put('/demandes/{demande}/suivieSaisie', 'DemandeController@suivieSaisie',['as'=>'home'])->name('suivieSaisie');
     Route::put('/document/{demande}/redige', 'DocumentController@redige',['as'=>'home'])->name('redige');

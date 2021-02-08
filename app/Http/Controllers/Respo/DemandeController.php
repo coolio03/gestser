@@ -49,6 +49,17 @@ class DemandeController extends Controller
         $arr['demandes'] = Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_traitement')->whereNotNull('date_remise_ra')->whereNull('date_saisir_hr')->latest()->paginate(5);
         return view('respo.demandes.liste')->with($arr);
     }
+    
+    public function nonArchive()
+    {
+        $arr['demandes'] = Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_traitement')->whereNotNull('date_remise_ra')->whereNull('date_archive')->latest()->paginate(5);
+        return view('respo.demandes.liste')->with($arr);
+    }
+    public function archive()
+    {
+        $arr['demandes'] = Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_traitement')->whereNotNull('date_remise_ra')->whereNotNull('date_archive')->latest()->paginate(5);
+        return view('respo.demandes.liste')->with($arr);
+    }
     public function signalTraiter($id)
     {
         $arr['demande'] = Demande::findOrFail($id);

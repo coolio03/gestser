@@ -34,9 +34,7 @@
                     'name'=>'date_saisir_hr',
                     'required'=>false
                 ])                      
-            </div>
-                
-        
+            </div>       
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
