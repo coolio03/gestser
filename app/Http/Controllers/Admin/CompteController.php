@@ -19,12 +19,6 @@ class CompteController extends Controller
      * @return \Illuminate\Http\Response
      * 
      */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admin')->except('logout');
-        $this->middleware('guest:cadre')->except('logout');
-    }
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -93,7 +87,7 @@ class CompteController extends Controller
                 'password'=>Hash::make($request['password']),
             ]);
         }
-        
+
         return redirect()->intented('admin.comptes.index');
     }
 

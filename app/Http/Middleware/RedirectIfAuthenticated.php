@@ -24,8 +24,6 @@ class RedirectIfAuthenticated
             return redirect('/cadre');
         }
 
-
-
         if (Auth::guard($guard)->check()) {
             return redirect()->route('home');
         }
