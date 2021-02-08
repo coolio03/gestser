@@ -9,6 +9,7 @@ use App\Models\Collaborateur;
 use App\Models\Admin;
 use App\Models\User;
 use App\Models\Cadre;
+use Illuminate\Support\Facades\Redirect;
 
 class CompteController extends Controller
 {
@@ -16,6 +17,7 @@ class CompteController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
      */
     public function index()
     {
@@ -43,7 +45,7 @@ class CompteController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
@@ -79,7 +81,31 @@ class CompteController extends Controller
     {
         //
     }
-
+    
+    public function status(Request $request, $id)
+    {
+        $data = User::find($id);
+        if ($data->status == 0) {
+            # code...
+            $data->status =1;
+        }else{
+            $data->status = 0;
+        }
+        $data->save();
+        return redirect()->route('admin.comptes.index')->with('success',$data->name.' Status mis a jour avec succes');
+    }
+    public function statusCadre(Request $request, $id)
+    {
+        $data = Cadre::find($id);
+        if ($data->role == 0) {
+            # code...
+            $data->role =1;
+        }else{
+            $data->role = 0;
+        }
+        $data->save();
+        return redirect()->route('admin.comptes.index')->with('success',$data->name.' Status mis a jour avec succes');
+    }
     /**
      * Remove the specified resource from storage.
      *
