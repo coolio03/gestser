@@ -5,12 +5,12 @@
         <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark"> <i class="nav-icon fas fa-file"></i>&nbsp;Demandes</h1>
+                <h1 class="m-0 text-dark"> <i class="nav-icon fas fa-file"></i>&nbsp;Comptes</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href=" {{route('admin')}} ">Acceuil</a></li>
-                <li class="breadcrumb-item active">Listes des Demandes</li>
+                <li class="breadcrumb-item active">Listes des Comptes</li>
             </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,27 +30,12 @@
             </div>
             @endif
         <div class="card">
-            <div class="card-header">
-                <div class="card-tools">
-                    <form action="/search " method="get" role="search" style="text-align: right">
-                        {{csrf_field()}}
-                        <div class="input-group">
-                            <input type="search" class="form-control text" name="search" placeholder="Rechercher Demandes"> <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default">
-                                    <span class="fas fa-search"></span>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        
         <div class="card-body"> 
             <p>
                 <a href=" {{route('admin.demandes.create')}} " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter une demande</a>
             </p>
           
-            {{$demandes->render("pagination::bootstrap-4")}}
+          
 
         </div>
         </div> 
