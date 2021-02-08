@@ -45,33 +45,7 @@ class CompteController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validator($request->all())->validate();
-        if($request->type_user == 'Responsable Adm')
-        {
-            User::createUser([
-                'name'=>$request['name'],
-                'email'=>$request['email'],
-                'password'=>Hash::make($request['password']),
-            ]);
-        }
-        if($request->type_user == 'Admin')
-        {
-            Admin::createUser([
-                'name'=>$request['name'],
-                'email'=>$request['email'],
-                'password'=>Hash::make($request['password']),
-            ]);
-        }
-        if($request->type_user == 'Cadre')
-        {
-            Cadre::createUser([
-                'name'=>$request['name'],
-                'email'=>$request['email'],
-                'password'=>Hash::make($request['password']),
-            ]);
-        }
-
-        return redirect()->intented('admin.comptes.index');
+        //
     }
 
     /**
