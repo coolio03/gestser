@@ -9,7 +9,6 @@ use App\Models\Collaborateur;
 use App\Models\Admin;
 use App\Models\User;
 use App\Models\Cadre;
-use Illuminate\Support\Facades\Redirect;
 
 class CompteController extends Controller
 {

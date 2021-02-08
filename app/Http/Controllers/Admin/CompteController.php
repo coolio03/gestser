@@ -35,11 +35,6 @@ class CompteController extends Controller
         return view('admin.comptes.ajoute');
     }
 
-    public function creation()
-    {
-        return view('admin.comptes.ajoute');
-    }
-
     public function status(Request $request, $id)
     {
         $data = User::find($id);
