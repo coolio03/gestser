@@ -35,6 +35,31 @@ class CompteController extends Controller
         return view('admin.comptes.ajoute');
     }
 
+    public function status(Request $request, $id)
+    {
+        $data = User::find($id);
+        if ($data->status == 0) {
+            # code...
+            $data->status =1;
+        }else{
+            $data->status = 0;
+        }
+        $data->save();
+        return redirect()->route('admin.comptes.index')->with('success',$data->name.' Status mis a jour avec succes');
+    }
+    
+    public function statusCadre(Request $request, $id)
+    {
+        $data = Cadre::find($id);
+        if ($data->role == 0) {
+            # code...
+            $data->role =1;
+        }else{
+            $data->role = 0;
+        }
+        $data->save();
+        return redirect()->route('admin.comptes.index')->with('success',$data->name.' Status mis a jour avec succes');
+    }
     /**
      * Store a newly created resource in storage.
      *
