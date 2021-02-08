@@ -47,7 +47,7 @@
         
         <div class="card-body"> 
             <p>
-                <a href=" {{route('admin.comptes.create')}} " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter un compte</a>
+                <a href="  " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter un compte</a>
             </p>
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
