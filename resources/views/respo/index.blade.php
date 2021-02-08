@@ -48,7 +48,7 @@
                     <div> <h6>Saisie Hra</h6></div>
                     <div style="margin-left: 5%">
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Demandes Saisies :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('responsable_id',Auth::user()->id)->where('date_saisir_hr','<>',null))}}</span>
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Demandes Saisies :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('responsable_id',Auth::user()->id)->where('date_saisir_hr','<>',null))}}</span>
                       </div>
                       <div>
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('traites')}}">Demandes Non Saisies :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_saisir_hr',null)) }} </span> 
