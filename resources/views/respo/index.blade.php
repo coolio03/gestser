@@ -28,19 +28,60 @@
               </div>
             </div>
             <div class="col-6">
-                <div class="card rounded">
-                    <div class="card-body py-6 px-6">
-                      {!! $saisie->html() !!} 
+              <div class="card ">
+                  <div class="card-header">
+                    <h4 style="text-align: center">Bilan Du Traitements</h4>
+                  </div>
+                  <div class="card-body py-6 px-6">
+                    <div> <h6>Traitements</h6></div>
+                    <div style="margin-left: 5%">
+                      <div>
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Demandes Reçus :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demande->where('responsable_id',Auth::user()->id)->where('date_remise_ra','<>',null)))}}</span>
+                      </div>
+                      <div>
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('traites')}}">Demandes Traitées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_traitement','<>',Null)) }} </span> 
+                      </div>
+                      <div>
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('non_traites')}}">Demande Non Traitées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_traitement','=',Null)) }} </span> 
+                      </div>
                     </div>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="card rounded">
-                    <div class="card-body py-6 px-6">
-                      {!! $archive->html() !!} 
+                    <div> <h6>Saisie Hra</h6></div>
+                    <div style="margin-left: 5%">
+                      <div>
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Demandes Saisies :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('responsable_id',Auth::user()->id)->where('date_saisir_hr','<>',null))}}</span>
+                      </div>
+                      <div>
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('traites')}}">Demandes Non Saisies :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_saisir_hr',null)) }} </span> 
+                      </div>
                     </div>
-                </div>
+                    <div> <h6>Archivage</h6></div>
+                    <div style="margin-left: 5%">
+                      <div>
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('admin.demandes.index')}}">Demandes Archivées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('responsable_id',Auth::user()->id)->where('date_archive','<>',null))}}</span>
+                      </div>
+                      <div>
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('traites')}}">Demandes Non Archivées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_archive','=',null)) }} </span> 
+                      </div>
+                    </div>
+                  </div>
               </div>
+            </div>
+        </div>
+        <div>
+          <div class="col-6">
+            <div class="card rounded">
+                <div class="card-body py-6 px-6">
+                  {!! $saisie->html() !!} 
+                </div>
+            </div>
+          </div>
+            <div class="col-6">
+              <div class="card rounded">
+                  <div class="card-body py-6 px-6">
+                    {!! $archive->html() !!} 
+                  </div>
+              </div>
+            </div>
         </div>
     </div>
 </section>
