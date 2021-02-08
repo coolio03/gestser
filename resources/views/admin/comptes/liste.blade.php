@@ -47,7 +47,7 @@
         
         <div class="card-body"> 
             <p>
-                <a href=" {{route('creation')}} " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter un compte</a>
+                <a href=" {{route('admin.comptes.create')}} " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter un compte</a>
             </p>
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -76,35 +76,7 @@
                 @endif
             </table>    
 
-            <p>  </p>
-            <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                    <h2>Liste des Comptes de Cadre Emploi</h2>
-                </thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nom et prenoms</th>
-                    <th>Email</th>
-                    <th>Statut</th>
-                    <th>Actions</th>
-                </tr {{$i=1}}>
-                @if (count($cadres) )
-                    @foreach ($cadres as $cadre)
-                       
-                        <tr>              
-                            <td> {{$i++}} </td>
-                            <td> {{$cadre->name}} </td>
-                            <td> {{$cadre->email}}</td>
-                            <th >@if($cadre->role == 0) Inactif @else Actif @endif</th>
-                            <th ><a href="{{ route('statusCadre', ['id'=>$cadre->id]) }}">@if($cadre->role == 1) <small class="badge badge-danger"> Bloquer</small> @else<small class="badge badge-success">Activer</small>  @endif</a></th>                          
-                        </tr>
-                    
-                    @endforeach 
-                @else
-                <tr><td colspan="12"> Pas de comptes trouves</td></tr>
-                @endif
-            </table>
-            
+           
 
         </div>
         </div> 
