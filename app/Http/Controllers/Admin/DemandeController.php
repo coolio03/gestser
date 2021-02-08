@@ -163,7 +163,7 @@ class DemandeController extends Controller
     {
         $arr['collaborateurs'] = Collaborateur::all();
         $arr['users'] = User::all();
-        return view('admin.demandes.ajoute')->with($arr)->with('succes','Demandes creer avec succes');
+        return view('admin.demandes.ajoute')->with($arr)->with('success','Demandes creer avec succes');
     }
 
 
