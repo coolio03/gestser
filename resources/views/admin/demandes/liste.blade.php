@@ -47,7 +47,7 @@
         
         <div class="card-body"> 
             <p>
-                <a href="# " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter une demande</a>
+                <a href=" {{route('admin.demandes.create')}} " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter une demande</a>
             </p>
             <table id="example1" class="table table-bordered table-striped">
                 <tr>
