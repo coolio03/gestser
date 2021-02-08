@@ -32,7 +32,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-tools">
-                    <form action=" {{route('recherche')}} " method="post" role="search" style="text-align: right">
+                    <form action="/search" method="post" role="search" style="text-align: right">
                         {{csrf_field()}}
                         <div class="input-group">
                             <input type="text" class="form-control text" name="q" placeholder="Rechercher collaborateurs"> <span class="input-group-btn">
@@ -47,7 +47,7 @@
         
         <div class="card-body"> 
             <p>
-                <a href=" {{route('admin.compte.create')}} " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter un compte</a>
+                <a href=" {{route('admin.comptes.create')}} " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter un compte</a>
             </p>
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -114,26 +114,3 @@
     <!-- Modal -->
 
 @endsection
-@push('scripts')
-<script src="{{asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
-<script>
-    $(function() {
-      $('.toggle-class').change(function() {
-          var role = $(this).prop('checked') == true ? 1 : 0; 
-          var cadre_id = $(this).data('id'); 
-           
-          $.ajax({
-              type: "GET",
-              dataType: "json",
-              url: '/updateStatus',
-              data: {'role': role, 'id': cadre_id},
-              success: function(data){
-                console.log(data.success)
-              }
-          });
-      })
-    })
-  </script>
-  
-
-@endpush
