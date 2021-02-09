@@ -96,7 +96,6 @@ class DocumentController extends Controller
     public function contratCDD(Demande $demande)
     {
         $arr['demande'] = Demande::findOrFail($demande->id);
-        $arr['collaborateur'] = Collaborateur::where('id',$demande->collaborateur_id)->get();
         return view('respo.documents.contrat_cdd')->with($arr);
     }
     public function finContratCDD(Demande $demande)
@@ -105,6 +104,11 @@ class DocumentController extends Controller
         return view('respo.documents.fin_contrat_cdd')->with($arr);
     }
     
+    public function prorogation(Demande $demande)
+    {
+        $arr['demande'] = Demande::findOrFail($demande->id);
+        return view('respo.documents.prorogation')->with($arr);
+    }
     
     /**
      * Show the form for creating a new resource.
@@ -198,15 +202,63 @@ class DocumentController extends Controller
         $collaborateur->nom = $request->nom;
         $collaborateur->prenoms = $request->prenoms;
         $desc->date_debut = $request->date_debut;
-        $document->cadre_id = $request->responsable_id;
-        $document->demande_id  = $desc->id;
+      //  $document->responsable_id = $request->responsable_id;
+       // $document->demande_id  = $desc->id;
         $filename = "DCRH IS 71 25 01 NOTE D'INFO EMBAUCHE EO M".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
-        $document->nom_document = $filename;
-        $document->chemin_document = public_path("$filename.docx");
+      //  $document->nom_document = $filename;
+       // $document->chemin_document = public_path("$filename.docx");
         try{
             $desc->update();
             $collaborateur->update();
-            $document->save();
+           // $document->save();
+            $my_template->saveAs(public_path("$filename.docx"));
+        }catch (Exception $e){
+           dd($e);
+        }
+        $downloadName = $downloadName??$filename;
+       
+       
+        return response()->download(public_path("$filename.docx"));
+        
+    }
+
+    public function redigeProrogation(Request $request,Demande $demande,Document $document,$downloadName = null)
+    {
+        setlocale(LC_TIME, 'fra_fra');
+        $desc = Demande::find($demande->id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/PROROGATION/PROROGATION.docx"));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('emetteur',strtoupper($desc->user->name) );
+        $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
+        $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
+        $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
+        $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
+        $my_template->setValue('matricule', $request->matricule);
+        $my_template->setValue('civilite_sc', ucfirst($request->civilite_sc));
+        $my_template->setValue('direction_sc', ucfirst($request->direction_sc));
+        $my_template->setValue('copie', $request->copie);
+        $my_template->setValue('type_contrat', $desc->motif_demande);
+        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_debut)));
+        $my_template->setValue('delai', $request->delai);
+        $my_template->setValue('unite', $request->unite);
+        $my_template->setValue('date_debut_pro',strftime('%d %B %Y',strtotime($request->date_debut_pro)));
+        $my_template->setValue('date_fin_pro',strftime('%d %B %Y',strtotime($request->date_fin_pro)));
+        $collaborateur->matricule = $request->matricule;
+        $collaborateur->nom = $request->nom;
+        $collaborateur->prenoms = $request->prenoms;
+        $desc->date_debut = $request->date_debut;
+        if ($desc->motif_demande == CDD) {
+            $filename = "DCRH IS 71 11 01 PROROGATION CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        }
+        if ($desc->motif_demande == "CONSULTANCE") {
+            $filename = "DCRH IS 71 14 01 PROROGATION CONSULTANCE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+            
+        }
+        
+        try{
+            $desc->update();
+            $collaborateur->update();
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);

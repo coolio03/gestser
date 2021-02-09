@@ -28,6 +28,7 @@
                     <th>Nom</th>
                     <th>Prénoms</th>
                     <th>Type de demande</th>
+                    <th>Motif demande</th>
                     <th>Documents à rediger</th>
                 </tr {{$i=1}}>
                 @if (count($demandes))
@@ -39,6 +40,7 @@
                             <td> {{$dde->collaborateur->nom}} </td>
                             <td>{{$dde->collaborateur->prenoms}} </td>
                             <td> {{$dde->type}} </td>
+                            <td> {{$dde->motif_demande}} </td>
                             <td>
                                @if ($dde->type == "STAGE ECOLE" or $dde->type == "STAGE QUALIFICATION" or $dde->type == "STAGE IMMERSION")
                                <a class="btn btn-warning" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr="{{ route('attestationStage', $dde->id) }}" title="Attestation de stage ">
@@ -116,6 +118,11 @@
                                     <a class="btn btn-warning" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr="{{route('reclassement', $dde->id)}} " title="Courrier de reclassement">
                                         <i class="nav-icon fas fa-file"></i>
                                     </a>&nbsp;
+                                @endif
+                                @if ($dde->type == "PROROGATION")
+                                <a class="btn btn-warning" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr="{{route('prorogation', $dde->id)}} " title="Prorogation de contrat">
+                                    <i class="nav-icon fas fa-file"></i>
+                                </a>&nbsp;
                                 @endif
                    
 
