@@ -121,7 +121,7 @@ Route::namespace('Respo')->prefix('home')->middleware('auth')->group(function(){
     Route::put('/document/{demande}/redigeContratEmbauche', 'DocumentController@redigeContratEmbauche',['as'=>'home'])->name('redigeContratEmbauche');
     Route::put('/document/{demande}/redigeProrogation', 'DocumentController@redigeProrogation',['as'=>'home'])->name('redigeProrogation');
     Route::put('/document/{demande}/redigeContratCDI', 'DocumentController@redigeContratCDI',['as'=>'home'])->name('redigeContratCDI');
-    Route::put('/document/{demande}/{collaborateur}/redigeContratCDD', 'DocumentController@redigeContratCDD',['as'=>'home'])->name('redigeContratCDD');
+    Route::put('/document/{demande}/redigeContratCDD', 'DocumentController@redigeContratCDD',['as'=>'home'])->name('redigeContratCDD');
     Route::put('/document/{demande}/redigeAvisTitularisation', 'DocumentController@redigeAvisTitularisation',['as'=>'home'])->name('redigeAvisTitularisation');
     Route::put('/document/{demande}/redigeTitularisation', 'DocumentController@redigeTitularisation',['as'=>'home'])->name('redigeTitularisation');
     Route::put('/document/{demande}/redigeFinContratCDD', 'DocumentController@redigeFinContratCDD',['as'=>'home'])->name('redigeFinContratCDD');

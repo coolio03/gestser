@@ -34,13 +34,13 @@
                 @if (count($demandes))
                     @foreach ($demandes as $dde)
                         <tr>              
-                            <td> {{$i++}} </td>
-                            <td> {{$dde->numero_dossier}}</td>
-                            <td> {{$dde->collaborateur->matricule}}</td>
-                            <td> {{$dde->collaborateur->nom}} </td>
-                            <td>{{$dde->collaborateur->prenoms}} </td>
-                            <td> {{$dde->type}} </td>
-                            <td> {{$dde->motif_demande}} </td>
+                            <td>{{$i++}}</td>
+                            <td>{{$dde->numero_dossier}}</td>
+                            <td>{{$dde->collaborateur->matricule}}</td>
+                            <td>{{$dde->collaborateur->nom}} </td>
+                            <td>{{$dde->collaborateur->prenoms}}</td>
+                            <td>{{$dde->type}}</td>
+                            <td>{{$dde->motif_demande}}</td>
                             <td>
                                @if ($dde->type == "STAGE ECOLE" or $dde->type == "STAGE QUALIFICATION" or $dde->type == "STAGE IMMERSION")
                                <a class="btn btn-warning" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr="{{ route('attestationStage', $dde->id) }}" title="Attestation de stage ">

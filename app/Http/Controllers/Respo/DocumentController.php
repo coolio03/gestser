@@ -133,8 +133,8 @@ class DocumentController extends Controller
         $my_template->setValue('niveau', $request->niveau);
         $my_template->setValue('option', $request->option);
         $my_template->setValue('ecole', $request->ecole);
-        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
-        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
+        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_fin)));
         $filename = "DCRH IS 71 18 01 ATTESTATION STAGE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
             $my_template->saveAs(public_path("$filename.docx"));
@@ -165,8 +165,8 @@ class DocumentController extends Controller
         $my_template->setValue('ecole', $request->ecole);
         $my_template->setValue('delai', $request->delai);
         $my_template->setValue('unite', $request->unite);
-        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($desc->date_debut)));
-        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($desc->date_fin)));
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
+        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_fin)));
         $my_template->setValue('objet',$request->objet);
         $filename = "DCRH IS 71 16 01 Note de STAGE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         try{
@@ -181,7 +181,7 @@ class DocumentController extends Controller
         
     }
 
-    public function redigeNoteEmbauche(Request $request,Demande $demande,Document $document,$downloadName = null)
+    public function redigeNoteEmbauche(Request $request,Demande $demande,$downloadName = null)
     {
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);

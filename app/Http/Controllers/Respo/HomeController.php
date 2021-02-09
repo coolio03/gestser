@@ -33,7 +33,7 @@ class HomeController extends Controller
         $traitement = Charts::create('pie', 'highcharts')
         ->title('Traitement des demandes')
         ->labels([ 'Traitées','Non Traitées'])
-        ->values([Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_traitement')->count() ,Demande::where('responsable_id',Auth::user()->id)->whereNull('date_traitement')->count()])
+        ->values([Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_remise_ra')->whereNotNull('date_traitement')->count() ,Demande::where('responsable_id',Auth::user()->id)->whereNotNull('date_remise_ra')->whereNull('date_traitement')->count()])
         ->responsive(true);
 
         $saisie = Charts::create('pie', 'highcharts')
