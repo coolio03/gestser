@@ -55,7 +55,7 @@
                             @include('partials.form-group',[
                             'title'=>__('Nom et prenoms'),
                             'type'=>'text',
-                            'name'=>'name',
+                            'name'=>'nom',
                             'required'=>true
                             ])
                             @include('partials.form-group',[
@@ -67,7 +67,7 @@
                             @include('partials.form-group',[
                                 'title'=>__('Mot de passe'),
                                 'type'=>'password',
-                                'name'=>'password',
+                                'name'=>'motpasse',
                                 'required'=>true
                             ])
                         </div>
