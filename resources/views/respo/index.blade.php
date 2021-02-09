@@ -39,10 +39,10 @@
                         <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('home.demandes.index')}}">Demandes Reçus :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{count($demandes->where('responsable_id',Auth::user()->id)->where('date_remise_ra','<>',null))}}</span>
                       </div>
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('traite')}}">Demandes Traitées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_traitement','<>',Null)) }} </span> 
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('traite')}}">Demandes Traitées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_remise_ra','<>',null)->where('date_traitement','<>',Null)) }} </span> 
                       </div>
                       <div>
-                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('non_traite')}}">Demande Non Traitées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_traitement','=',Null)) }} </span> 
+                        <i class="nav-icon fas fa-file"></i>&nbsp;<a href="{{route('non_traite')}}">Demande Non Traitées :</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($demandes->where('responsable_id',Auth::user()->id)->where('date_remise_ra','<>',null)->where('date_traitement','=',Null)) }} </span> 
                       </div>
                     </div>
                     <div> <h6>Saisie Hra</h6></div>
