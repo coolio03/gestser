@@ -126,8 +126,9 @@
           <h4 style="color: white" > General</h4>
           <li class="nav-item ">
             <a href="{{route('admin')}}" class="nav-link @if(!$segment)
-            active
-          @endif">
+            active 
+            @else 
+            @endif">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Acceuil
@@ -204,8 +205,10 @@
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link @if($segment=='Suivis des demandes')
+            <a href="#" class="nav-link @if(!$segment)
             active
+            @else
+            
           @endif">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
