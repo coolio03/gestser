@@ -16,7 +16,7 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('demande_id')->unsigned();
-            $table->integer('cadre_id')->unsigned();
+            $table->integer('responsable_id')->unsigned();
             $table->string('nom_document');
             $table->string('chemin_document');
             $table->foreign('demande_id')->references('id')->on('demandes')->onDelete('cascade');

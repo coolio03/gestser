@@ -16,35 +16,30 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Attoh Solange',
                 'email' => 'attoh.solange@cie.ci',
                 'password' => Hash::make('respocie'),
-                'status'=>false,
 
             ],
             [
                 'name' => 'Kouakou Assawa',
                 'email' => 'kouakou.assawa@cie.ci',
                 'password' => Hash::make('respocie'),
-                'status'=>false,
 
             ],
             [
                 'name' => 'Kone Belle',
                 'email' => 'kone.belle@cie.ci',
                 'password' => Hash::make('respocie'),
-                'status'=>false,
 
             ],
             [
                 'name' => 'Kone Erica',
                 'email' => 'kone.erica@cie.ci',
                 'password' => Hash::make('respocie'),
-                'status'=>false,
 
             ],
             [
                 'name' => 'Bah Lucas',
                 'email' => 'bah.lucas@cie.ci',
                 'password' => Hash::make('respocie'),
-                'status'=>false,
             ],
         ]);
     }
