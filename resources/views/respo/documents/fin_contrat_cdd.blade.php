@@ -1,4 +1,9 @@
-<form method="post" action=" {{route('redigeFinContratCDD', $demande->id)}}  ">
+<form method="post" action=" 
+    @if($demande->type == 'PROROGATION')
+        {{route('redigeFinContratCDD', $demande->id)}} 
+    @else
+        {{route('redigeFinProrogationCDD', $demande->id)}}
+    @endif ">
     @method('PUT')
     <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
     <input type="hidden" name="id" value=" {{$demande->id}} ">

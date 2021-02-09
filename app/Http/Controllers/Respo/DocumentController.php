@@ -714,6 +714,46 @@ class DocumentController extends Controller
         
     }
 
+    public function redigeFinProrogationCDD(Request $request,Demande $demande,$downloadName = null)
+    {
+        setlocale(LC_TIME, 'fra_fra');
+        $desc = Demande::find($demande->id);
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
+        $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/LETTRE_DE_FIN_DE_CDD.docx"));
+        $my_template->setValue('date_redaction',strftime('%d %B %Y'));
+        $my_template->setValue('emetteur',strtoupper($desc->user->name) );
+        $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
+        $my_template->setValue('initial', implode('',array_map(function($p){return strtoupper($p[0]);},explode(' ',$desc->user->name))));
+        $my_template->setValue('nom', strtoupper($desc->collaborateur->nom));
+        $my_template->setValue('prenoms', strtoupper($desc->collaborateur->prenoms));
+        $my_template->setValue('matricule', $request->matricule);
+        $my_template->setValue('direction_sc', $request->direction_sc);
+        $my_template->setValue('destinataire', $request->destinataire);
+        $my_template->setValue('fonction', $request->fonction);
+        $my_template->setValue('direction_acceuil', $request->direction_acceuil);
+        $my_template->setValue('copie', $request->copie);
+        $my_template->setValue('date_debut',strftime('%d %B %Y',strtotime($request->date_debut)));
+        $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_fin)));
+        $filename = "DCRH IS 71 10 01 LETTRE DE FIN DE CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $collaborateur->matricule = $request->matricule;
+        $collaborateur->nom = $request->nom;
+        $collaborateur->prenoms = $request->prenoms;
+        $desc->date_debut = $request->date_debut;
+        $desc->date_fin = $request->date_fin;
+        try{
+            $desc->update();
+            $collaborateur->update();
+            $my_template->saveAs(public_path("$filename.docx"));
+        }catch (Exception $e){
+           dd($e);
+        }
+        $downloadName = $downloadName??$filename;
+       
+       
+        return response()->download(public_path("$filename.docx"));
+        
+    }
+
     public function redigeAvisTitularisation(Request $request,Demande $demande,$downloadName = null)
     {
         setlocale(LC_TIME, 'fra_fra');

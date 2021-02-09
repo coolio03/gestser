@@ -124,7 +124,7 @@
                                         <i class="nav-icon fas fa-file"></i>
                                     </a>&nbsp;
                                     @if ($dde->motif_demande == 'CDD')
-                                        <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('finContratCDD',$dde->id)}} " title="Lettre de fin de contrat CDD">
+                                        <a class="btn btn-success" data-toggle="modal" id="redigeButton"  class="btn btn-success" data-target="#redigeModal" data-attr=" {{route('finContratCDD',$dde->id)}} " title="Lettre de fin de prorogation CDD">
                                             <i class="nav-icon fas fa-file"></i>
                                         </a>
                                     @endif
