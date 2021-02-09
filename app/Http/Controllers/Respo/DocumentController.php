@@ -222,7 +222,7 @@ class DocumentController extends Controller
         
     }
 
-    public function redigeProrogation(Request $request,Demande $demande,Document $document,$downloadName = null)
+    public function redigeProrogation(Request $request,Demande $demande,$downloadName = null)
     {
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
