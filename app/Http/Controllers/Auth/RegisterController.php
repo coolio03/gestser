@@ -111,6 +111,11 @@ class RegisterController extends Controller
         ]);
         return redirect()->intended('login/cadre');
     }
+
+    protected function showRegisterForm()
+    {
+        return view('auth.register');
+    }
     
     protected function createUser(Request $request)
     {
