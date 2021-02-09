@@ -4,7 +4,7 @@
     <input type="hidden" name="id" value=" {{$demande->id}} ">
     <input type="hidden" name="responsable_id" value=" {{ Auth::user()->id }} ">   
     <div class="card-header">
-        <h3 class="card-title">Formulaire de note d'Embauche</h3>
+        <h3 class="card-title">Formulaire de Prorogation de contrat de {{$demande->motif_demande}} </h3>
       </div> 
     <div class="card-body">
         <div class="row">
