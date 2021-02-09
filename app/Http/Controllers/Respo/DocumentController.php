@@ -236,7 +236,6 @@ class DocumentController extends Controller
         $my_template->setValue('civilite_sc', ucfirst($request->civilite_sc));
         $my_template->setValue('direction_sc', ucfirst($request->direction_sc));
         $my_template->setValue('copie', $request->copie);
-        $my_template->setValue('type_contrat', $desc->motif_demande);
         $my_template->setValue('date_fin',strftime('%d %B %Y',strtotime($request->date_debut)));
         $my_template->setValue('delai', $request->delai);
         $my_template->setValue('unite', $request->unite);
@@ -248,11 +247,19 @@ class DocumentController extends Controller
         $desc->date_debut = $request->date_debut_pro;
         $desc->date_fin = $request->date_fin_pro;
         if ($desc->motif_demande =='CDD') {
+            $my_template->setValue('type_contrat',"CONTRAT A DUREE DETERMINEE");
             $filename = "DCRH IS 71 11 01 PROROGATION CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         }
         if ($desc->motif_demande == "CONSULTANCE") {
+            $my_template->setValue('type_contrat',"CONTRAT DE CONSULTANCE");
             $filename = "DCRH IS 71 14 01 PROROGATION CONSULTANCE".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
-            
+        }
+        if ($desc->motif_demande != 'STAGE QUALIFICATION' OR $desc->motif_demande != 'STAGE IMMERSION' OR $desc->motif_demande != 'STAGE ECOLE') {
+            $my_template->setValue('type',"travail");
+        }else
+        {
+            $my_template->setValue('type',"stage");
+
         }
         
         try{
