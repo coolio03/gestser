@@ -95,7 +95,7 @@
                             <td> {{$cadre->name}} </td>
                             <td> {{$cadre->email}}</td>
                             <th>@if($cadre->role == 0) Inactif @else Actif @endif</th>
-                            <th><a href="{{ route('role', $cadre->id) }}">@if($cadre->role == 1) <small class="badge badge-danger"> Bloquer</small> @else<small class="badge badge-success">Activer</small>  @endif</a></th>
+                            <th><a href="{{ route('statusCadre', $cadre->id) }}">@if($cadre->role == 1) <small class="badge badge-danger"> Bloquer</small> @else<small class="badge badge-success">Activer</small>  @endif</a></th>
                         </tr>
                         @endforeach
                 @else
