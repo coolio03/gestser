@@ -23,6 +23,13 @@
                 'required'=>true
             ]) 
             @include('partials.form-group',[
+                'title'=>__('Matricule'),
+                'type'=>'text',
+                'name'=>'matricule',
+                'value'=>$demande->collaborateur->matricule,
+                'required'=>true
+            ]) 
+            @include('partials.form-group',[
                 'title'=>__('Direction S/C'),
                 'type'=>'text',
                 'name'=>'direction_sc',

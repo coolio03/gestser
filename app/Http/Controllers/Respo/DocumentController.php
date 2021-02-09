@@ -523,12 +523,12 @@ class DocumentController extends Controller
         
     }
 
-    public function redigeContratCDD(Request $request,Demande $demande,Collaborateur $collaborateur,$downloadName = null)
+    public function redigeContratCDD(Request $request,Demande $demande,$downloadName = null)
     {
         
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
-        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->get();
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/CONTRAT_CDD.docx"));
         $my_template->setValue('date_redaction',date('d/m/Y'));
         $my_template->setValue('civilite', ucfirst($desc->collaborateur->civilite));
@@ -579,7 +579,7 @@ class DocumentController extends Controller
     {
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
-        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->get();
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/TITULARISATION.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
@@ -615,7 +615,7 @@ class DocumentController extends Controller
     {
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
-        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->get();
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDD/LETTRE_DE_FIN_DE_CDD.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
@@ -651,11 +651,11 @@ class DocumentController extends Controller
         
     }
 
-    public function redigeAvisTitularisation(Request $request,Demande $demande,Collaborateur $collaborateur,$downloadName = null)
+    public function redigeAvisTitularisation(Request $request,Demande $demande,$downloadName = null)
     {
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
-        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->get();
+        $collaborateur = Collaborateur::where('id',$desc->collaborateur_id)->first();
         $my_template = new \PhpOffice\PhpWord\TemplateProcessor(public_path("Documents/CDI/AVIS_TITULARISATION.docx"));
         $my_template->setValue('date_redaction',strftime('%d %B %Y'));
         $my_template->setValue('emetteur',strtoupper($desc->user->name) );
