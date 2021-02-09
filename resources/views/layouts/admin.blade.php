@@ -135,7 +135,9 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a href=" {{route('admin.comptes.index')}} " class="nav-link ">
+            <a href=" {{route('admin.comptes.index')}} " class="nav-link @if(!$segment=='comptes')
+            active
+          @endif">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Comptes
@@ -202,7 +204,7 @@
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link @if($segment=='visa')
+            <a href="#" class="nav-link @if($segment=='Suivis des demandes')
             active
           @endif">
               <i class="nav-icon fas fa-chart-pie"></i>
