@@ -32,4 +32,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Demande');
     }
+    public function document()
+    {
+        return $this->hasMany('App\Models\Document');
+    }
 }
