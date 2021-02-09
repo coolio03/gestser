@@ -20,7 +20,7 @@ class CreateDocumentsTable extends Migration
             $table->string('nom_document');
             $table->string('chemin_document');
             $table->foreign('demande_id')->references('id')->on('demandes')->onDelete('cascade');
-            $table->foreign('cadre_id')->references('id')->on('cadres')->onDelete('cascade');
+            $table->foreign('responsable_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -37,7 +37,7 @@ class CreateDocumentsTable extends Migration
         });
 
         Schema::table('documents',function(Blueprint $table){
-            $table->dropForeign('documents_cadre_id_foreign');
+            $table->dropForeign('documents_responsable_id_foreign');
         });
 
         Schema::dropIfExists('documents');

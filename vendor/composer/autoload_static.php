@@ -508,6 +508,7 @@ class ComposerStaticInit4909e262e5e493c730b862fe0eea2ef4
 
     public static $classMap = array (
         'AdminsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminsTableSeeder.php',
+        'App\\Admin\\CompteController' => __DIR__ . '/../..' . '/app/Admin/CompteController.php',
         'App\\Charts\\DemandeChart' => __DIR__ . '/../..' . '/app/Charts/DemandeChart.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -518,7 +519,9 @@ class ComposerStaticInit4909e262e5e493c730b862fe0eea2ef4
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
-        'App\\Http\\Controllers\\CadreController' => __DIR__ . '/../..' . '/app/Http/Controllers/CadreController.php',
+        'App\\Http\\Controllers\\Cadre\\CadreController' => __DIR__ . '/../..' . '/app/Http/Controllers/Cadre/CadreController.php',
+        'App\\Http\\Controllers\\Cadre\\CollaborateurController' => __DIR__ . '/../..' . '/app/Http/Controllers/Cadre/CollaborateurController.php',
+        'App\\Http\\Controllers\\Cadre\\DemandeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Cadre/DemandeController.php',
         'App\\Http\\Controllers\\ChartController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChartController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Respo\\DemandeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Respo/DemandeController.php',
@@ -535,6 +538,7 @@ class ComposerStaticInit4909e262e5e493c730b862fe0eea2ef4
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\Cadre' => __DIR__ . '/../..' . '/app/Models/Cadre.php',
         'App\\Models\\Collaborateur' => __DIR__ . '/../..' . '/app/Models/Collaborateur.php',
+        'App\\Models\\Compte' => __DIR__ . '/../..' . '/app/Models/Compte.php',
         'App\\Models\\Demande' => __DIR__ . '/../..' . '/app/Models/Demande.php',
         'App\\Models\\Document' => __DIR__ . '/../..' . '/app/Models/Document.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

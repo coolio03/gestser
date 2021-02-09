@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AdminsTableSeeder' => $baseDir . '/database/seeds/AdminsTableSeeder.php',
+    'App\\Admin\\CompteController' => $baseDir . '/app/Admin/CompteController.php',
     'App\\Charts\\DemandeChart' => $baseDir . '/app/Charts/DemandeChart.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -17,7 +18,9 @@ return array(
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
-    'App\\Http\\Controllers\\CadreController' => $baseDir . '/app/Http/Controllers/CadreController.php',
+    'App\\Http\\Controllers\\Cadre\\CadreController' => $baseDir . '/app/Http/Controllers/Cadre/CadreController.php',
+    'App\\Http\\Controllers\\Cadre\\CollaborateurController' => $baseDir . '/app/Http/Controllers/Cadre/CollaborateurController.php',
+    'App\\Http\\Controllers\\Cadre\\DemandeController' => $baseDir . '/app/Http/Controllers/Cadre/DemandeController.php',
     'App\\Http\\Controllers\\ChartController' => $baseDir . '/app/Http/Controllers/ChartController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\Respo\\DemandeController' => $baseDir . '/app/Http/Controllers/Respo/DemandeController.php',
@@ -34,6 +37,7 @@ return array(
     'App\\Models\\Admin' => $baseDir . '/app/Models/Admin.php',
     'App\\Models\\Cadre' => $baseDir . '/app/Models/Cadre.php',
     'App\\Models\\Collaborateur' => $baseDir . '/app/Models/Collaborateur.php',
+    'App\\Models\\Compte' => $baseDir . '/app/Models/Compte.php',
     'App\\Models\\Demande' => $baseDir . '/app/Models/Demande.php',
     'App\\Models\\Document' => $baseDir . '/app/Models/Document.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

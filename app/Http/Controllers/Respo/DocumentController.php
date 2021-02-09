@@ -177,7 +177,7 @@ class DocumentController extends Controller
         
     }
 
-    public function redigeNoteEmbauche(Request $request,Demande $demande,$downloadName = null)
+    public function redigeNoteEmbauche(Request $request,Demande $demande,Document $document,$downloadName = null)
     {
         setlocale(LC_TIME, 'fra_fra');
         $desc = Demande::find($demande->id);
@@ -198,10 +198,15 @@ class DocumentController extends Controller
         $collaborateur->nom = $request->nom;
         $collaborateur->prenoms = $request->prenoms;
         $desc->date_debut = $request->date_debut;
+        $document->cadre_id = $request->responsable_id;
+        $document->demande_id  = $desc->id;
         $filename = "DCRH IS 71 25 01 NOTE D'INFO EMBAUCHE EO M".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
+        $document->nom_document = $filename;
+        $document->chemin_document = public_path("$filename.docx");
         try{
             $desc->update();
             $collaborateur->update();
+            $document->save();
             $my_template->saveAs(public_path("$filename.docx"));
         }catch (Exception $e){
            dd($e);

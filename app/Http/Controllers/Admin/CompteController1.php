@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Demande;
+use Response;
 use App\Models\Collaborateur;
-use App\Models\Admin;
 use App\Models\User;
-use App\Models\Cadre;
+use App\Models\Admin;
+use App\Models\Demande;
+use app\Models\Cadre;
+use app\Models\Document;
+use Auth;
+use Carbon\Carbon;
 
 class CompteController extends Controller
 {
