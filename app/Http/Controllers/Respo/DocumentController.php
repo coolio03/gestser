@@ -246,7 +246,7 @@ class DocumentController extends Controller
         $collaborateur->nom = $request->nom;
         $collaborateur->prenoms = $request->prenoms;
         $desc->date_debut = $request->date_debut;
-        if ($desc->motif_demande == CDD) {
+        if ($desc->motif_demande =='CDD') {
             $filename = "DCRH IS 71 11 01 PROROGATION CDD".' '.$desc->collaborateur->nom.' '.$desc->collaborateur->prenoms;
         }
         if ($desc->motif_demande == "CONSULTANCE") {
