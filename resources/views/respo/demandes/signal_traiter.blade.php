@@ -12,11 +12,11 @@
         <div class="row">
                 @if (!isset($demande->date_traitement))
                     @include('partials.form-group',[
-                    'title'=>__('Date de Traitement'),
-                    'type'=>'date',
-                    'name'=>'date_traitement',
-                    'value' => $demande->date_traitement,
-                    'required'=>true
+                        'title'=>__('Date de Traitement'),
+                        'type'=>'date',
+                        'name'=>'date_traitement',
+                        'value' => $demande->date_traitement,
+                        'required'=>true
                     ])
                 @endif
                 @if ($demande->date_traitement != null)
