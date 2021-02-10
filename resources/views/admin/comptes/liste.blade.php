@@ -33,9 +33,12 @@
             <p>
                 <a href=" {{route('admin.comptes.create')}} " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter un compte</a>
             </p>
-            <a class="btn btn-success" data-toggle="modal" id="ajouteButton"  class="btn btn-success" data-target="#ajouteModal" data-attr="{{ route('admin.comptes.create') }}" title="Ajouter un compte ">
-                <i class="nav-icon fas fa-chart-pie"></i> Creation 
-            </a>
+            <p>
+                <a class="btn btn-success" data-toggle="modal" id="ajouteButton"  class="btn btn-success" data-target="#ajouteModal" data-attr="{{ route('admin.comptes.create') }}" title="Ajouter un compte ">
+                    <i class="nav-icon fas fa-chart-pie"></i> Creation 
+                </a>
+            </p>
+            
         <div class="card-body"> 
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
