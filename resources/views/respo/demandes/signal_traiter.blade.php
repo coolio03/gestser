@@ -2,7 +2,7 @@
     @method('put')
     {{csrf_field()}}
     <div class="modal-header">
-        <h4 class="modal-title" >Mise a jour du suivie de la demande de <em  style="color: blue" >{{$demande->type}}  </em> de @if ($demande->motif_demande == 'CDD' or $demande->motif_demande =="CONSULTANCE") de {{$demande->motif_demande}}
+        <h4 class="modal-title" >Mise a jour du suivie de la demande de <em  style="color: blue" >{{$demande->type}}  </em> de @if ($demande->motif_demande == 'CDD' or $demande->motif_demande =="CONSULTANCE"){{$demande->motif_demande}}  de
             
         @endif <em  style="color: blue">{{$demande->collaborateur->nom.' '.$demande->collaborateur->prenoms }}  </em> </h4>
        
