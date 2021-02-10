@@ -19,23 +19,25 @@
                     'required'=>true
                     ])
                 @endif
-                @if (!isset($demande->date_saisir_hr))
-                @include('partials.form-group',[
-                    'title'=>__('Date de saisir HR'),
-                    'type'=>'date',
-                    'name'=>'date_saisir_hr',
-                    'value' => $demande->date_saisir_hr,
-                    'required'=>true
-                ])
-                @endif
-                @if (!isset($demande->date_archive))
-                    @include('partials.form-group',[
-                        'title'=>__('Date Archivage'),
-                        'type'=>'date',
-                        'name'=>'date_archive',
-                        'value' => $demande->date_archive,
-                        'required'=>true
-                    ])
+                @if ($demande->date_traitement != null)
+                    @if (!isset($demande->date_saisir_hr))
+                        @include('partials.form-group',[
+                            'title'=>__('Date de saisir HR'),
+                            'type'=>'date',
+                            'name'=>'date_saisir_hr',
+                            'value' => $demande->date_saisir_hr,
+                            'required'=>true
+                        ])
+                    @endif
+                    @if (!isset($demande->date_archive))
+                        @include('partials.form-group',[
+                            'title'=>__('Date Archivage'),
+                            'type'=>'date',
+                            'name'=>'date_archive',
+                            'value' => $demande->date_archive,
+                            'required'=>true
+                        ])
+                    @endif
                 @endif
                 <div class="form-group col-6">
                     <label>Observation</label>
