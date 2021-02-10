@@ -33,6 +33,9 @@
             <p>
                 <a href=" {{route('admin.comptes.create')}} " class="btn btn-primary"><i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Ajouter un compte</a>
             </p>
+            <a class="btn btn-success" data-toggle="modal" id="ajouteButton"  class="btn btn-success" data-target="#ajouteModal" data-attr="{{ route('admin.comptes.create') }}" title="Ajouter un compte ">
+                <i class="nav-icon fas fa-chart-pie"></i> 
+            </a>
             <a href=" {{url('/admin/comptes/creerComptes')}} ">creer</a>
         <div class="card-body"> 
             <table id="example1" class="table table-bordered table-striped">
@@ -93,5 +96,46 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- Modal -->
+    <div class="modal fade" id="ajouteModal" tabindex="-1" role="dialog" aria-labelledby="ajouteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" id="ajouteContent" >
+            
+                
+            </div>
+        </div>
+    </div>
 
 @endsection
+@push('scripts')
+<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="{{asset('js/app.js')}}"></script>
+    <script>
+        $(document).on('click', '#ajouteButton', function(event) {
+                event.preventDefault();
+                let href = $(this).attr('data-attr');
+                $.ajax({
+                    url: href,
+                    beforeSend: function() {
+                        $('#loader').show();
+                    },
+                    // return the result
+                    success: function(result) {
+                        $('#ajouteModal').modal("show");
+                        $('#ajouteContent').html(result).show();
+                        
+                    },
+                    complete: function() {
+                        $('#loader').hide();
+                    },
+                    error: function(jqXHR, testStatus, error) {
+                        console.log(error);
+                        alert("Page " + href + " cannot open. Error:" + error);
+                        $('#loader').hide();
+                    },
+                    timeout: 8000
+                })
+            });
+    </script>
+
+@endpush
