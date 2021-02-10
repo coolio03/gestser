@@ -80,8 +80,8 @@ class DemandeController extends Controller
 
     public function traiter(Request $request, Demande $demande)
     {
-       $demande->date_traitement = $request->date_traitement;
-       $demande->update();
+       
+       $demande->update($request->all());
        return back();
     }
 
