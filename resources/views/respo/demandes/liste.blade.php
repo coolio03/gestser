@@ -61,7 +61,7 @@
                             @else
                                 style="background-color: lime"
                             @endif> 
-                                @if (empty($dde->date_traitement))
+                                @if (empty($dde->date_traitement)) 
                                     Non traite
                                 @else 
                                     Traite
