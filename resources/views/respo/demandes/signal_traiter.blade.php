@@ -1,43 +1,50 @@
-<form action=" " method="post">
+<form action=" {{route('traiter', $demande->id)}}" method="post">
     @method('put')
     {{csrf_field()}}
     <div class="modal-header">
         <h4 class="modal-title" >Mise a jour du suivie de la demande de <em  style="color: blue" >{{$demande->type}}  </em> de <em  style="color: blue">{{$demande->collaborateur->nom.' '.$demande->collaborateur->prenoms }}  </em> </h4>
-        
+       
     </div>
     <div class="modal-body">
         <input type="hidden" name="id" value=" {{$demande->id}} ">
-        <input type="hidden" name="id" value=" {{$demande->type}} ">
-            <div class="row">
-                @include('partials.form-group-d',[
-                    'title'=>__('Date reception'),
-                    'type'=>'date',
-                    'name'=>'date_reception',
-                    'value' =>,
-                    'required'=>false  
-                ])                                          
-                @include('partials.form-group-d',[
-                    'title'=>__('Date de remise RA'),
-                    'type'=>'date',
-                    'name'=>'date_remise_ra',
-                    'required'=>false,
-                ])
-                @include('partials.form-group',[
-                    'title'=>__('Date de traitement'),
+        <div class="row">
+                @if (!isset($demande->date_traitement))
+                    @include('partials.form-group',[
+                    'title'=>__('Date de Traitement'),
                     'type'=>'date',
                     'name'=>'date_traitement',
-                    'required'=>false
-                ])  
+                    'value' => $demande->date_traitement,
+                    'required'=>true
+                    ])
+                @endif
+                @if (!isset($demande->date_saisir_hr))
                 @include('partials.form-group',[
-                    'title'=>__('Date de Saisie Hr'),
+                    'title'=>__('Date de saisir HR'),
                     'type'=>'date',
                     'name'=>'date_saisir_hr',
-                    'required'=>false
-                ])                      
-            </div>       
+                    'value' => $demande->date_saisir_hr,
+                    'required'=>true
+                ])
+                @endif
+                @if (!isset($demande->date_archive))
+                    @include('partials.form-group',[
+                        'title'=>__('Date Archivage'),
+                        'type'=>'date',
+                        'name'=>'date_archive',
+                        'value' => $demande->date_archive,
+                        'required'=>true
+                    ])
+                @endif
+                <div class="form-group col-6">
+                    <label>Observation</label>
+                    <textarea name="observation" class="form-control" rows="3" placeholder="Observation ..." >
+                        {{$demande->observation}} 
+                    </textarea>
+                </div>
+                
+        </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
         <button type="submit" class="btn btn-primary">Enregistrer</button>
     </div>
 </form>
