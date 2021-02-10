@@ -47,7 +47,7 @@
                             <td> {{$dde->type}} </td>
                             <td> {{date('d/m/Y',strtotime($dde->date_remise_ra))}} </td>
                             <td>
-                                @if (!$dde->date_traitement == null)
+                                @if ($dde->date_traitement != null)
                                     {{date('d/m/Y',strtotime($dde->date_traitement))}} 
                                 @else 
                                     
