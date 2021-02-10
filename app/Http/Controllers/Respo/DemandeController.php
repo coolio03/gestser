@@ -80,7 +80,6 @@ class DemandeController extends Controller
 
     public function traiter(Request $request, Demande $demande)
     {
-       
        $demande->update($request->all());
        return back();
     }
